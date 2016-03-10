@@ -8,6 +8,7 @@ app.get('/',function(req,res){
   res.type('text/plain');
   //res.type('application/json');
   res.send('Welcome to the main page!');
+  console.log("I jave just been called");
 });
 
 app.use(function(req,res){
