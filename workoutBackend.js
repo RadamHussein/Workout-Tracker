@@ -35,7 +35,7 @@ app.get('/reset-table',function(req,res,next){
 app.get('/insert',function(req,res,next){
   console.log("/insert has been called");
   var context = {};
-  pool.query("INSERT INTO workouts (`name, reps, weight, date, lbs`) VALUES (?)", [req.query.c, req.query.d, req.query.e, req.query.f, req.query.g], function(err, result){
+  pool.query("INSERT INTO workouts (`name, reps, weight, date, lbs`) VALUES (?)", [req.query.c], function(err, result){
     if(err){
       next(err);
       return;
