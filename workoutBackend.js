@@ -49,7 +49,7 @@ app.get('/insert',function(req,res,next){
 //get database
 app.get('/',function(req, res, next){
   var context = {};
-  pool.query('SELECT FROM workouts', function(err, row, fields){
+  pool.query('SELECT * FROM workouts', function(err, row, fields){
     if(err){
       next(err);
       return;
