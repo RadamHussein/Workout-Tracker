@@ -2,16 +2,15 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.34.min.js"></script>
 		<script src="workoutFrontend.js"></script>
 	</head>
 	<body>
 		<h1 id="response"></h1>
-		<form role="form" id="workouts">
-			<div class="form-group">
+		<form id="workouts">
 				<label for="workoutName">Name:</label>
 				<input type="text" name="workoutName" id="name">
-				<input type="submit" name="submit" id="add">
-			</div>
+				<input type="submit" value="submit" name="submit" id="add">
 		</form>
 	</body>
 </html>
