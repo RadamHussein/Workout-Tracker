@@ -13,18 +13,7 @@ var pool = mysql.createPool({
   database: 'student'
 });
 
-/*
-//make table with desired columns
-CREATE TABLE workouts (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL,
-    reps INT,
-    weight INT,
-    date DATE,
-    lbs BOOLEAN
-);
-*/
-
+//sets up empty database
 app.get('/reset-table',function(req,res,next){
   var context = {};
   pool.query("DROP TABLE IF EXISTS workouts", function(err){ //replace your connection pool with the your variable containing the connection pool
@@ -42,6 +31,7 @@ app.get('/reset-table',function(req,res,next){
   });
 });
 
+//insert into database
 app.get('/insert',function(req,res,next){
   console.log("/insert has been called");
   var context = {};
@@ -56,11 +46,58 @@ app.get('/insert',function(req,res,next){
   });
 });
 
-app.get('/',function(req,res){
-  res.type('text/plain');
-  //res.type('application/json');
-  res.send('Welcome to the main page!');
-  console.log("I jave just been called"); //delete this in the final version
+//get database
+app.get('/',function(req,res, next){
+  var context = {};
+  pool.query('SELECT FROM workouts', function(err, row, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = JSON.stringify(rows);
+    res.type('text/plain');
+    res.send(context.results);
+    console.log("I have just been called");
+  });
+});
+
+//update database entry
+app.get('/safe-update',function(req,res,next){
+  var context = {};
+  mysql.pool.query("SELECT * FROM workouts WHERE id=?", [req.query.id], function(err, result){
+    if(err){
+      next(err);
+      return;
+    }
+    if(result.length == 1){
+      var curVals = result[0];
+      mysql.pool.query("UPDATE workouts SET name=?, done=?, due=? WHERE id=? ",
+        [req.query.name || curVals.name, req.query.done || curVals.done, req.query.due || curVals.due, req.query.id],
+        function(err, result){
+        if(err){
+          next(err);
+          return;
+        }
+        context.results = "Updated " + result.changedRows + " rows.";
+        //res.render('home',context);
+        res.send("Entry has been updated");
+      });
+    }
+  });
+});
+
+//delete database entry
+app.get('/delete', function(req, res, next){
+  var context = {};
+  //possibly change id to name 
+  pool.query("DELETE FROM workouts WHERE id=?", [req.query.id], function(err, result){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = "Deleted" + resultChangedRows + " rows.";
+    res.send("Delete successful");
+  });
 });
 
 app.use(function(req,res){
