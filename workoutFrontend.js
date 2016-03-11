@@ -9,9 +9,9 @@ function main(){
 		document.getElementById("response").textContent = res;
 	});
 	req.send();
-};
 
 document.getElementById("add").addEventListener("click", function(event){
+		console.log("click is working");
 		var name = document.getElementById("name").value;
 		var req = new XMLHttpRequest();
 		req.open("GET", "http://52.33.123.66:3000/insert", true);
@@ -21,4 +21,5 @@ document.getElementById("add").addEventListener("click", function(event){
 		});
 		event.preventDefault();
 });
+};
 	
