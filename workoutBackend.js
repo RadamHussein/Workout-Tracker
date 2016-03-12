@@ -16,7 +16,7 @@ var pool = mysql.createPool({
 //sets up empty database
 app.get('/reset-table',function(req,res,next){
   var context = {};
-  pool.query("DROP TABLE IF EXISTS workouts", function(err){ //replace your connection pool with the your variable containing the connection pool
+  pool.query("DROP TABLE IF EXISTS workouts", function(err){
     var createString = "CREATE TABLE workouts("+
     "id INT PRIMARY KEY AUTO_INCREMENT,"+
     "name VARCHAR(255) NOT NULL,"+
@@ -62,7 +62,7 @@ app.get('/',function(req, res, next){
 });
 
 //update database entry
-app.get('/safe-update',function(req,res,next){
+app.get('/update',function(req,res,next){
   var context = {};
   pool.query("SELECT * FROM workouts WHERE id=?", [req.query.id], function(err, result){
     if(err){
@@ -71,8 +71,8 @@ app.get('/safe-update',function(req,res,next){
     }
     if(result.length == 1){
       var curVals = result[0];
-      pool.query("UPDATE workouts SET name=?, done=?, due=? WHERE id=? ",
-        [req.query.name || curVals.name, req.query.done || curVals.done, req.query.due || curVals.due, req.query.id],
+      pool.query("UPDATE workouts SET name=?, reps=?, weight=?, date=?, lbs=? WHERE id=? ",
+        [req.query.name || curVals.name, req.query.reps || curVals.reps, req.query.weight || curVals.weight, req.query.date || curVals.date, req.query.lbs || curVals.lbs, req.query.id],
         function(err, result){
         if(err){
           next(err);
@@ -95,7 +95,7 @@ app.get('/delete', function(req, res, next){
       next(err);
       return;
     }
-    context.results = "Deleted" + result.ChangedRows + " rows.";
+    context.results = "Deleted" + resultChangedRows + " rows.";
     res.send("Delete successful");
   });
 });
