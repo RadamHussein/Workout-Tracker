@@ -2,7 +2,7 @@ var express = require('express');
 
 var app = express();
 
-app.use('/main', express.static(workoutTracker/Worktou-Tracker + 'workout.html'));
+app.use('/main', express.static('/workout.html'));
 
 app.set('port', 3000);
 
