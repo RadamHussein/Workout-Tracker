@@ -3,6 +3,7 @@ var express = require('express');
 var app = express();
 
 app.set('port', 3000);
+app.use(express.static('workout.html'));
 
 //connects to the database
 var mysql = require('mysql');
