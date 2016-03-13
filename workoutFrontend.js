@@ -6,7 +6,7 @@ function main(){
 	req1.withCredentials = true;
 	req1.addEventListener("load", function(){
 		var res = req1.response;
-		console.log(res);
+		console.log(typeof(res));
 		document.getElementById("response").textContent = res;
 	});
 	req1.send(null);
