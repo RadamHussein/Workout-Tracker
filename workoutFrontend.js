@@ -11,7 +11,6 @@ function main(){
 	});
 	req1.send(null);
 
-
 document.getElementById("add").addEventListener("click", function(event){
 		console.log("click is working");
 		var name = document.getElementById("name").value;
