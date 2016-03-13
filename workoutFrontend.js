@@ -6,9 +6,10 @@ function main(){
 	req1.withCredentials = true;
 	req1.addEventListener("load", function(){
 		var res = req1.response;
-		console.log(typeof(res));
+		console.log(typeof(res)); //what is coming back?
 		document.getElementById("response").textContent = res;
-		var object = JSON.parse(res);
+		var object = JSON.parse(res); //change it to an object
+		console.log(typeof(res)); //did it change to an object?
 		var newRow = document.createElement("tr");
 		document.getElementById("tableBody").appendChild(newRow);
 		for (var i=0; i<object.length; i++){
