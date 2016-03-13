@@ -10,10 +10,10 @@ function main(){
 		document.getElementById("response").textContent = res;
 		var object = JSON.parse(res);
 		var newRow = document.createElement("tr");
-		document.getElementByTagName("tbody").appendChild("newRow");
+		document.getElementsByTagName("tbody").appendChild("newRow");
 		for (var i=0; i<object.length; i++){
 			var addMe = document.createElement("td");
-			document.getElementByTagName("tbody").appendChild("addMe");
+			document.getElementsByTagName("tbody").appendChild("addMe");
 		}
 	});
 	req1.send(null);
