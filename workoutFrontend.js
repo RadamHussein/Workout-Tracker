@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", main);
 
 function main(){
 	var req = new XMLHttpRequest();
+	req.withCredentials = true;
 	req.open("GET", "http://52.33.123.66:3000/", true);
 	req.addEventListener("load", function(){
 		var res = req.response;
