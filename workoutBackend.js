@@ -2,9 +2,9 @@ var express = require('express');
 
 var app = express();
 
-app.use('/main', express.static('/workout.html'));
-
 app.set('port', 3000);
+
+app.use(express.static('public'));
 
 //connects to the database
 var mysql = require('mysql');
