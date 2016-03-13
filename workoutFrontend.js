@@ -12,7 +12,7 @@ function main(){
 		console.log(typeof(res)); //did it change to an object?
 		var newRow = document.createElement("tr");
 		document.getElementById("tableBody").appendChild(newRow);
-		for (var i=0; i<object.length; i++){
+		for (var i=0; i<res.length; i++){
 			var addMe = document.createElement("td");
 			document.getElementById("tableBody").appendChild(addMe);
 		}
