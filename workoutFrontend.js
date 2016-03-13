@@ -13,11 +13,12 @@ ec2.describeInstances(function(err, data) {
   }
 });
 */
+
 document.addEventListener("DOMContentLoaded", main);
 
 function main(){
 	var req = new XMLHttpRequest();
-	req.open("GET", "http://52.33.123.66:3000/", true);
+	req.open("GET", "http://52.33.123.66:3000/", false);
 	req.addEventListener("load", function(){
 		var res = req.response;
 		console.log(res);
@@ -29,7 +30,7 @@ document.getElementById("add").addEventListener("click", function(event){
 		console.log("click is working");
 		var name = document.getElementById("name").value;
 		var req = new XMLHttpRequest();
-		req.open("GET", "http://52.33.123.66:3000/insert", name, true);
+		req.open("GET", "http://52.33.123.66:3000/insert", name, false);
 		req.addEventListener("load", function(){
 			var res = req.response;					
 			document.getElementById("response").textContent = res;
