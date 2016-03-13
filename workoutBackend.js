@@ -58,6 +58,8 @@ app.get('/',function(req, res, next){
     }
     context.results = JSON.stringify(rows);
     res.type('text/plain');
+    //context.results = rows;
+    //res.type = ('application/JSON');
     res.send(context.results);
     console.log("I have just been called");
   });
