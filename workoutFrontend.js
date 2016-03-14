@@ -12,18 +12,13 @@ function main(){
 		console.log(typeof(obj)); //did it change to an object?
 		var newRow = document.createElement("tr");
 		document.getElementById("tableBody").appendChild(newRow);
-		for (var prop in obj){
-			var addMe = document.createElement("td");
-			document.getElementById("tableBody").appendChild(addMe);
-			addMe.textContent = obj[prop].prop;
-		}
-		/*
 		for (var i=0; i<obj.length; i++){
-			var addMe = document.createElement("td");
-			document.getElementById("tableBody").appendChild(addMe);
-			addMe.textContent = obj.i;
+			for (var x=0; x<obj[i].length; x++){
+				var addMe = document.createElement("td");
+				document.getElementById("tableBody").appendChild(addMe);
+				addMe.textContent = obj[i].obj[x];
+			}	
 		}
-		*/
 	});
 	req1.send(null);
 
