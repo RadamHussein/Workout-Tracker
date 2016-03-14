@@ -6,28 +6,18 @@ function main(){
 	req1.withCredentials = true;
 	req1.addEventListener("load", function(){
 		var res = req1.responseText;
-		console.log(typeof(res)); //what is coming back?
 		document.getElementById("response").textContent = res;
 		var obj = JSON.parse(res); //change it to an object
 		console.log(typeof(obj)); //did it change to an object?
 		var newRow = document.createElement("tr");
 		document.getElementById("tableBody").appendChild(newRow);
-		for (var prop in obj){
-			for (var i=0; i<prop.length; i++){
+		for (var i=0; i<obj.length; i++) {
+			for each (var item in i){
 				var addMe = document.createElement("td");
 				document.getElementById("tableBody").appendChild(addMe);
-				addMe.textContent = prop[i];
+				addMe.textContent = item;
 			}
 		}
-/*
-		for (var i=0; i<obj.length; i++){
-			for (var x=0; x<obj[i].obj.length; x++){
-				var addMe = document.createElement("td");
-				document.getElementById("tableBody").appendChild(addMe);
-				addMe.textContent = obj[i].obj[x];
-			}	
-		}
-*/
 	});
 	req1.send(null);
 
