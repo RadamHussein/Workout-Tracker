@@ -12,6 +12,14 @@ function main(){
 		console.log(typeof(obj)); //did it change to an object?
 		var newRow = document.createElement("tr");
 		document.getElementById("tableBody").appendChild(newRow);
+		for (var prop in obj){
+			for (var i=0; i<prop.length; i++){
+				var addMe = document.createElement("td");
+				document.getElementById("tableBody").appendChild(addMe);
+				addMe.textContent = prop[i];
+			}
+		}
+/*
 		for (var i=0; i<obj.length; i++){
 			for (var x=0; x<obj[i].obj.length; x++){
 				var addMe = document.createElement("td");
@@ -19,6 +27,7 @@ function main(){
 				addMe.textContent = obj[i].obj[x];
 			}	
 		}
+*/
 	});
 	req1.send(null);
 
