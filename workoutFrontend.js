@@ -15,7 +15,7 @@ function main(){
 		for (var prop in obj){
 			var addMe = document.createElement("td");
 			document.getElementById("tableBody").appendChild(addMe);
-			addMe.textContent = obj[prop];
+			addMe.textContent = obj[prop].prop;
 		}
 		/*
 		for (var i=0; i<obj.length; i++){
