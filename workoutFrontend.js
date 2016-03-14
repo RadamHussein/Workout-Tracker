@@ -5,7 +5,7 @@ function main(){
 	req1.open("GET", "http://52.33.123.66:3000/", true);
 	req1.withCredentials = true;
 	req1.addEventListener("load", function(){
-		var res = req1.response;
+		var res = req1.responseText;
 		console.log(typeof(res)); //what is coming back?
 		document.getElementById("response").textContent = res;
 		JSON.parse(res); //change it to an object
