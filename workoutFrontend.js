@@ -11,17 +11,18 @@ function main(){
 		console.log(typeof(obj)); //did it change to an object?
 		var newRow = document.createElement("tr");
 		document.getElementById("tableBody").appendChild(newRow);
-		for (var prop in obj){
-			for each (var item in obj){
+		for (var i=0; i<obj.length; i++){
+			for (var x=0; x<obj[i].length; x++){
 				var addMe = document.createElement("td");
 				document.getElementById("tableBody").appendChild(addMe);
-				addMe.textContent = item;
+				var nestedObj = obj[i]; 
+				addMe.textContent = nestedObj[x];
 			}
 		}
 	});
 	req1.send(null);
 
-document.getElementById("add").addEventListener("click", function(event){
+	document.getElementById("add").addEventListener("click", function(event){
 		console.log("click is working");
 		var name = document.getElementById("name").value;
 		var req2 = new XMLHttpRequest();
