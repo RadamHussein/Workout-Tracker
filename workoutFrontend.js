@@ -12,7 +12,7 @@ function main(){
 		var newRow = document.createElement("tr");
 		document.getElementById("tableBody").appendChild(newRow);
 		for (var prop in obj){
-			for each (var item in prop){
+			for each (var item in obj){
 				var addMe = document.createElement("td");
 				document.getElementById("tableBody").appendChild(addMe);
 				addMe.textContent = item;
