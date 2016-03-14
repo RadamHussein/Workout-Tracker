@@ -12,7 +12,10 @@ function main(){
 		var newRow = document.createElement("tr");
 		document.getElementById("tableBody").appendChild(newRow);
 		for (var i=0; i<obj.length; i++) {
+			console.log("first loop");
 			for each (var item in i){
+				console.log("second loop");
+				console.log("item is" + item):
 				var addMe = document.createElement("td");
 				document.getElementById("tableBody").appendChild(addMe);
 				addMe.textContent = item;
