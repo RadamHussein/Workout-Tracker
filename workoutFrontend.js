@@ -11,11 +11,8 @@ function main(){
 		console.log(typeof(obj)); //did it change to an object?
 		var newRow = document.createElement("tr");
 		document.getElementById("tableBody").appendChild(newRow);
-		for (var i=0; i<obj.length; i++) {
-			console.log("first loop");
-			for each (var item in obj[i]){
-				console.log("second loop");
-				console.log("item is" + item):
+		for (var prop in obj){
+			for each (var item in prop){
 				var addMe = document.createElement("td");
 				document.getElementById("tableBody").appendChild(addMe);
 				addMe.textContent = item;
