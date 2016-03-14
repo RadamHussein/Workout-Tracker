@@ -13,7 +13,7 @@ function main(){
 		var newRow = document.createElement("tr");
 		document.getElementById("tableBody").appendChild(newRow);
 		for (var i=0; i<obj.length; i++){
-			for (var x=0; x<obj[i].length; x++){
+			for (var x=0; x<obj[i].obj.length; x++){
 				var addMe = document.createElement("td");
 				document.getElementById("tableBody").appendChild(addMe);
 				addMe.textContent = obj[i].obj[x];
