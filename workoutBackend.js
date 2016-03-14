@@ -54,10 +54,10 @@ app.get('/',function(req, res, next){
       next(err);
       return;
     }
-    context.results = JSON.stringify(rows);
-    res.type('text/plain');
-    //context.results = rows;
-    //res.type = ('application/json');
+    //context.results = JSON.stringify(rows);
+    //res.type('text/plain');
+    context.results = rows;
+    res.type = ('application/json');
     res.send(context.results);
     console.log("I have just been called");
   });

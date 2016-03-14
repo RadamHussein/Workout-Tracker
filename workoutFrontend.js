@@ -8,8 +8,8 @@ function main(){
 		var res = req1.responseText;
 		console.log(typeof(res)); //what is coming back?
 		document.getElementById("response").textContent = res;
-		JSON.parse(res); //change it to an object
-		console.log(typeof(res)); //did it change to an object?
+		var obj = JSON.parse(res); //change it to an object
+		console.log(typeof(obj)); //did it change to an object?
 		var newRow = document.createElement("tr");
 		document.getElementById("tableBody").appendChild(newRow);
 		for (var i=0; i<res.length; i++){
