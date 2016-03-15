@@ -1,3 +1,8 @@
+/*Workout Tracker
+Adam Smith
+CS290 - Winter 2016
+*/
+
 document.addEventListener("DOMContentLoaded", main);
 
 function main(){
@@ -11,6 +16,8 @@ function main(){
 		console.log(typeof(obj)); //did it change to an object?
 		var newRow = document.createElement("tr");
 		document.getElementById("tableBody").appendChild(newRow);
+		buildTable(obj);
+/*
 		for (var i=0; i<obj.length; i++){
 			for (var x=0; x<obj[i].length; x++){
 				var addMe = document.createElement("td");
@@ -19,8 +26,22 @@ function main(){
 				addMe.textContent = nestedObj[x];
 			}
 		}
+*/
 	});
 	req1.send(null);
+
+	function buildTable(obj){
+    	for(var prop in obj){
+        	if(typeof obj[prop]=='object'){
+            	buildTable(obj[prop[i]]);
+        	}else{
+            	var addMe = document.createElement("td");
+            	document.getElementById("tableBody").appendChild(addMe);
+            	addMe.textContent = obj[prop];
+            	//alert('The value of '+prop+' is '+obj[prop]+'.');
+        	}
+    	}
+	}
 
 	document.getElementById("add").addEventListener("click", function(event){
 		console.log("click is working");

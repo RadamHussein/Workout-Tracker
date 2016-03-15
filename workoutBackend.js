@@ -1,8 +1,12 @@
+/*Workout Tracker
+Adam Smith
+CS290 - Winter 2016
+*/
+
 var express = require('express');
-
 var app = express();
-
 app.set('port', 3000);
+app.use(express.static('public'));
 
 //connects to the database
 var mysql = require('mysql');
@@ -54,11 +58,9 @@ app.get('/',function(req, res, next){
       next(err);
       return;
     }
-    //context.results = JSON.stringify(rows);
-    //res.type('text/plain');
     context.results = rows;
-    res.type = ('application/json');
-    res.send(context.results);
+    res.setHeader('Content-Type', 'application/json');
+    res.send(context);
     console.log("I have just been called");
   });
 });
