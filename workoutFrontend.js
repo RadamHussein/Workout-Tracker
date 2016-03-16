@@ -33,7 +33,7 @@ function main(){
 	function buildTable(obj){
     	for(var prop in obj){
         	if(typeof obj[prop]=='object'){
-            	buildTable(obj[prop[i]]);
+            	buildTable(obj[prop[prop]]);
         	}else{
             	var addMe = document.createElement("td");
             	document.getElementById("tableBody").appendChild(addMe);
