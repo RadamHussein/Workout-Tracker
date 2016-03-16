@@ -17,16 +17,6 @@ function main(){
 		var newRow = document.createElement("tr");
 		document.getElementById("tableBody").appendChild(newRow);
 		buildTable(obj);
-/*
-		for (var i=0; i<obj.length; i++){
-			for (var x=0; x<obj[i].length; x++){
-				var addMe = document.createElement("td");
-				document.getElementById("tableBody").appendChild(addMe);
-				var nestedObj = obj[i]; 
-				addMe.textContent = nestedObj[x];
-			}
-		}
-*/
 	});
 	req1.send(null);
 
@@ -42,9 +32,10 @@ function main(){
 
 	function buildTable(obj){
 		for(var prop in obj){
+			console.log(typeof(prop));
 			var addMe = document.createElement("td");
             document.getElementById("tableBody").appendChild(addMe);
-            addMe.textContent = obj[prop];
+            addMe.textContent = prop;
 		}
 	}
 
