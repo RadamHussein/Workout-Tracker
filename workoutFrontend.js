@@ -21,6 +21,14 @@ function main(){
 	req1.send(null);
 
 	function isObject(obj){
+		for (var i=0; i<obj.length; i++){
+			if(typeof(obj[i])=="object"){
+				buildTable(obj[i]);
+			}else{
+				buildTable(obj);
+			}
+		}
+/*
     	for(var prop in obj){
         	if(typeof obj[prop]=='object'){
             	buildTable(obj[prop]);
@@ -28,10 +36,11 @@ function main(){
         		buildTable(obj);
             }
     	}
+*/
 	}
 
 	function buildTable(obj){
-		for(var prop in obj){
+		for each (var prop in obj){
 			console.log(typeof(prop));
 			console.log(prop);
 			var addMe = document.createElement("td");
