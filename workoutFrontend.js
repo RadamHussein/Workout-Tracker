@@ -33,7 +33,7 @@ function main(){
 	function isObject(obj){
     	for(var prop in obj){
         	if(typeof obj[prop]=='object'){
-            	buildTable(obj[prop[prop]]);
+            	buildTable(obj[prop]);
         	}else{
         		buildTable(obj);
             }
