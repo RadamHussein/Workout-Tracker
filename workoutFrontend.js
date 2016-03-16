@@ -30,17 +30,22 @@ function main(){
 	});
 	req1.send(null);
 
-	function buildTable(obj){
+	function isObject(obj){
     	for(var prop in obj){
         	if(typeof obj[prop]=='object'){
             	buildTable(obj[prop[prop]]);
         	}else{
-            	var addMe = document.createElement("td");
-            	document.getElementById("tableBody").appendChild(addMe);
-            	addMe.textContent = obj[prop];
-            	//alert('The value of '+prop+' is '+obj[prop]+'.');
-        	}
+        		buildTable(obj);
+            }
     	}
+	}
+
+	function buildTable(obj){
+		for(var prop in obj){
+			var addMe = document.createElement("td");
+            document.getElementById("tableBody").appendChild(addMe);
+            addMe.textContent = obj[prop];
+		}
 	}
 
 	document.getElementById("add").addEventListener("click", function(event){
