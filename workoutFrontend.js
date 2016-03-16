@@ -40,6 +40,14 @@ function main(){
 	}
 
 	function buildTable(obj){
+		for (var i=0; i<obj.length; i++){
+			console.log(typeof(obj[i]));
+			console.log(obj[i]);
+			var addMe = document.createElement("td");
+            document.getElementById("tableBody").appendChild(addMe);
+            addMe.textContent = obj[i];
+		}
+/*
 		for each (var prop in obj){
 			console.log(typeof(prop));
 			console.log(prop);
@@ -47,6 +55,7 @@ function main(){
             document.getElementById("tableBody").appendChild(addMe);
             addMe.textContent = prop;
 		}
+*/
 	}
 
 	document.getElementById("add").addEventListener("click", function(event){
