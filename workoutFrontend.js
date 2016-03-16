@@ -33,6 +33,7 @@ function main(){
 	function buildTable(obj){
 		for(var prop in obj){
 			console.log(typeof(prop));
+			console.log(prop);
 			var addMe = document.createElement("td");
             document.getElementById("tableBody").appendChild(addMe);
             addMe.textContent = prop;

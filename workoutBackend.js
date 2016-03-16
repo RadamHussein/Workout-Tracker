@@ -60,7 +60,7 @@ app.get('/',function(req, res, next){
     }
     context.results = rows;
     res.setHeader('Content-Type', 'application/json');
-    res.send(context);
+    res.send(context.results);
     console.log("I have just been called");
   });
 });
