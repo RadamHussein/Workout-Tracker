@@ -34,6 +34,7 @@ function main(){
     	for (var prop in obj){
         	if(typeof prop =='object'){
         		console.log("type of first object is" + typeof(prop));
+        		JSON.parse(prop);
             	buildTable(prop);
         	}else{
         		buildTable(obj);
