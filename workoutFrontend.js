@@ -28,17 +28,17 @@ function main(){
 				buildTable(obj);
 			}
 		}
-/*
-    	for(var prop in obj){
+
+    	for each (var prop in obj){
         	if(typeof obj[prop]=='object'){
             	buildTable(obj[prop]);
         	}else{
         		buildTable(obj);
             }
     	}
-*/
-	}
 
+	}
+/*
 	function buildTable(obj){
 		for (var i=0; i<obj.length; i++){
 			console.log(typeof(obj[i]));
@@ -47,7 +47,7 @@ function main(){
             document.getElementById("tableBody").appendChild(addMe);
             addMe.textContent = obj[i];
 		}
-/*
+*/
 		for each (var prop in obj){
 			console.log(typeof(prop));
 			console.log(prop);
@@ -55,7 +55,6 @@ function main(){
             document.getElementById("tableBody").appendChild(addMe);
             addMe.textContent = prop;
 		}
-*/
 	}
 
 	document.getElementById("add").addEventListener("click", function(event){
