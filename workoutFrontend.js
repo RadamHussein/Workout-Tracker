@@ -21,6 +21,7 @@ function main(){
 	req1.send(null);
 
 	function isObject(obj){
+/*
 		for (var i=0; i<obj.length; i++){
 			if(typeof(obj[i])=="object"){
 				buildTable(obj[i]);
@@ -28,7 +29,7 @@ function main(){
 				buildTable(obj);
 			}
 		}
-
+*/
     	for each (var prop in obj){
         	if(typeof obj[prop]=='object'){
             	buildTable(obj[prop]);
@@ -38,8 +39,9 @@ function main(){
     	}
 
 	}
-/*
+
 	function buildTable(obj){
+/*
 		for (var i=0; i<obj.length; i++){
 			console.log(typeof(obj[i]));
 			console.log(obj[i]);
