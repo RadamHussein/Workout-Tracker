@@ -32,6 +32,7 @@ function main(){
 */
     	for each (var prop in obj){
         	if(typeof obj[prop]=='object'){
+        		console.log("type of first object is" + typeof(obj[prop]));
             	buildTable(obj[prop]);
         	}else{
         		buildTable(obj);
@@ -51,7 +52,7 @@ function main(){
 		}
 */
 		for each (var item in obj){
-			console.log(typeof(item));
+			console.log("type of item is " + typeof(item));
 			console.log(item);
 			var addMe = document.createElement("td");
             document.getElementById("tableBody").appendChild(addMe);
