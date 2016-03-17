@@ -21,6 +21,7 @@ function main(){
 	req1.send(null);
 
 	function isObject(obj){
+		console.log("made it to isObject");
 		for (var i=0; i<obj.length; i++){
 			if(typeof(obj[i])=="object"){
 				buildTable(obj[i]);
@@ -41,6 +42,7 @@ function main(){
 	}
 
 	function buildTable(obj){
+		console.log("made it to buildTable");
 		for (var i=0; i<obj.length; i++){
 			console.log(typeof(obj[i]));
 			console.log(obj[i]);
