@@ -33,7 +33,7 @@ function main(){
 */
     	for (var prop in obj){
         	if(typeof prop =='object'){
-        		console.log("type of first object is" + typeof(obj[prop]));
+        		console.log("type of first object is" + typeof(prop));
             	buildTable(prop);
         	}else{
         		buildTable(obj);
