@@ -16,7 +16,7 @@ function main(){
 		console.log(typeof(obj)); //did it change to an object?
 		var newRow = document.createElement("tr");
 		document.getElementById("tableBody").appendChild(newRow);
-		buildTable(obj);
+		isObject(obj);
 	});
 	req1.send(null);
 
