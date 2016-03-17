@@ -41,7 +41,6 @@ function main(){
 	}
 
 	function buildTable(obj){
-/*
 		for (var i=0; i<obj.length; i++){
 			console.log(typeof(obj[i]));
 			console.log(obj[i]);
@@ -49,7 +48,7 @@ function main(){
             document.getElementById("tableBody").appendChild(addMe);
             addMe.textContent = obj[i];
 		}
-*/
+/*
 		for each (var item in obj){
 			console.log("type of item is " + typeof(item));
 			console.log(item);
@@ -57,6 +56,7 @@ function main(){
             document.getElementById("tableBody").appendChild(addMe);
             addMe.textContent = item;
 		}
+*/
 	}
 
 	document.getElementById("add").addEventListener("click", function(event){
