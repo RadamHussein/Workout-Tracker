@@ -31,9 +31,9 @@ function main(){
 		}
 */
     	for each (var prop in obj){
-        	if(typeof obj[prop]=='object'){
+        	if(typeof prop =='object'){
         		console.log("type of first object is" + typeof(obj[prop]));
-            	buildTable(obj[prop]);
+            	buildTable(prop);
         	}else{
         		buildTable(obj);
             }
