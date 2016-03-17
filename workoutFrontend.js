@@ -50,12 +50,12 @@ function main(){
             addMe.textContent = obj[i];
 		}
 */
-		for each (var prop in obj){
-			console.log(typeof(prop));
-			console.log(prop);
+		for each (var item in obj){
+			console.log(typeof(item));
+			console.log(item);
 			var addMe = document.createElement("td");
             document.getElementById("tableBody").appendChild(addMe);
-            addMe.textContent = prop;
+            addMe.textContent = item;
 		}
 	}
 
