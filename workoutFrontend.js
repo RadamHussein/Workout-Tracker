@@ -22,6 +22,7 @@ function main(){
 
 	function isObject(obj){
 		console.log("made it to isObject");
+/*
 		for (var i=0; i<obj.length; i++){
 			if(typeof(obj[i])=="object"){
 				buildTable(obj[i]);
@@ -29,8 +30,8 @@ function main(){
 				buildTable(obj);
 			}
 		}
-/*
-    	for each (var prop in obj){
+*/
+    	for (var prop in obj){
         	if(typeof prop =='object'){
         		console.log("type of first object is" + typeof(obj[prop]));
             	buildTable(prop);
@@ -38,11 +39,11 @@ function main(){
         		buildTable(obj);
             }
     	}
-*/
 	}
 
 	function buildTable(obj){
 		console.log("made it to buildTable");
+/*
 		for (var i=0; i<obj.length; i++){
 			console.log(typeof(obj[i]));
 			console.log(obj[i]);
@@ -50,15 +51,14 @@ function main(){
             document.getElementById("tableBody").appendChild(addMe);
             addMe.textContent = obj[i];
 		}
-/*
-		for each (var item in obj){
+*/
+		for (var item in obj){
 			console.log("type of item is " + typeof(item));
 			console.log(item);
 			var addMe = document.createElement("td");
             document.getElementById("tableBody").appendChild(addMe);
             addMe.textContent = item;
 		}
-*/
 	}
 
 	document.getElementById("add").addEventListener("click", function(event){
