@@ -5,6 +5,80 @@ CS290 - Winter 2016
 
 document.addEventListener("DOMContentLoaded", main);
 
+//#1
+getWorkouts(){
+	//calls get and returns a list of objects
+	var req1 = new XMLHttpRequest();
+	req1.open("GET", "http://52.33.123.66:3000/", true);
+	req1.withCredentials = true;
+	req1.addEventListener("load", function(){
+		var res = req1.responseText;
+		document.getElementById("response").textContent = res;
+		var resultList = JSON.parse(res); //change it to an object
+		console.log(typeof(resultList)); //did it change to an object?
+	});
+	req1.send(null);
+	return resultList;
+}
+
+//#2
+convertWorkoutToTableRow(singleObjectRow){
+	//First method:
+	/*a function that converts a single object to a row element with a column
+	 for each property in the object. 
+	 This function should not actually put anything into the DOM.
+	*/
+    /*
+	var newRow = document.createElement("tr");
+	for (var item in singleObjectRow){
+		var cellData = document.createElement("td");
+		cellData.textContent = item;
+		//return something here
+	}
+	*/
+	/*Now I have a variable for the new row, and multiple variables
+	which each contain data for individual cells in that row. How
+	should I return these to the previous function? Combine them in to a 
+	row object?
+	*/
+
+	//Second Method: 
+	//get cell data from each element in the object and add to DOM
+	var newRow = document.createElement("tr");
+	document.getElementById("tableBody").appendChild(newRow);
+	for (var item in singleObjectRow){
+		var cellData = document.createElement("td");
+		newRow.appendChild(cellData); 
+		cellData.textContent = item;
+	}
+}
+
+//#3
+convertWorkoutsToTable(objList){
+	/*a function that iterates over a list of objects, 
+	calls function number 2, and appends each row to a table body element.
+	*/
+	console.log("objList in function 3 is " + typeof(objList));
+	/*nested loop because the list will always contain objects.
+	First loop gets the object from the list. Second loop iterates over
+	the properties of the object.
+	*/
+	for (var prop in objList){
+		for (var item in prop){
+			convertWorkoutToTableRow(item);
+		}
+	}
+}
+
+//#4
+displayWorkoutsTable(){
+	//Actually insert all of these construct elements into the DOM
+	var list = getWorkouts;
+	convertWorkoutsToTable(list);
+
+}
+
+
 function main(){
 	var req1 = new XMLHttpRequest();
 	req1.open("GET", "http://52.33.123.66:3000/", true);
