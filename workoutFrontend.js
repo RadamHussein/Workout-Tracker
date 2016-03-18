@@ -66,8 +66,10 @@ function convertWorkoutsToTable(objList){
 	First loop gets the object from the list. Second loop iterates over
 	the properties of the object.
 	*/
-	for (var prop in objList.results){
+	for (var prop in objList){
 		console.log("prop is a " + typeof(prop) + "and its value is " + prop);
+		JSON.parse(prop);
+		console.log("prop is now a " + typeof(prop) + "and its value is " + prop);
 		for (var item in prop){
 			console.log("item is a " + typeof(item) + "and its value is " + item);
 			convertWorkoutToTableRow(item);
@@ -86,76 +88,6 @@ function displayWorkoutsTable(){
 };
 
 /*
-function main(){
-	var req1 = new XMLHttpRequest();
-	req1.open("GET", "http://52.33.123.66:3000/", true);
-	req1.withCredentials = true;
-	req1.addEventListener("load", function(){
-		var res = req1.responseText;
-		document.getElementById("response").textContent = res;
-		var result = JSON.parse(res); //change it to an object
-		console.log(typeof(obj)); //did it change to an object?
-		isObject(obj);
-	});
-	req1.send(null);
-
-	function isObject(obj){
-		console.log("made it to isObject");
-		for (var i=0; i<result.length; i++){
-			if(typeof(result[i])=="object"){
-				var newRow = document.createElement("tr");
-				document.getElementById("tableBody").appendChild(newRow);
-				buildTable(result[i]);
-			}else{
-				var newRow = document.createElement("tr");
-				document.getElementById("tableBody").appendChild(newRow);
-				buildTable(result);
-			}
-		}
-
-    	for (var prop in result){
-        	if(typeof prop =='object'){
-        		console.log("type of first object is" + typeof(prop));
-        		var newRow = document.createElement("tr");
-				document.getElementById("tableBody").appendChild(newRow);	
-            	buildTable(prop);
-        	}else{
-        		var newRow = document.createElement("tr");
-				document.getElementById("tableBody").appendChild(newRow);
-        		buildTable(obj);
-            }
-    	}
-
-	}
-
-	function buildTable(obj){
-		console.log("made it to buildTable");
-		for (var i=0; i<obj.length; i++){
-			console.log(typeof(obj[i]));
-			console.log(obj[i]);
-			var addMe = document.createElement("td");
-            document.getElementById("tableBody").appendChild(addMe);
-            addMe.textContent = obj[i];
-		}
-
-		for (var item in obj){
-			//debug statements
-			console.log("type of item is " + typeof(item));
-			console.log(item);
-			//add new table row
-			var addMe = document.createElement("td");
-            document.getElementById("tableBody").appendChild(addMe);
-            addMe.textContent = item;
-            //add edit button to row
-            var edit = document.createElement("button");
-            document.addMe.appendChild("edit");
-            //add delete button to row
-            var rowDelete = document.createElement("button");
-            document.addMe.appendChild("rowDelete");
-		}
-
-	}
-
 	document.getElementById("add").addEventListener("click", function(event){
 		console.log("click is working");
 		var name = document.getElementById("name").value;
