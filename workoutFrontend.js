@@ -68,8 +68,6 @@ function convertWorkoutsToTable(objList){
 	*/
 	for (var prop in objList){
 		console.log("prop is a " + typeof(prop) + "and its value is " + prop);
-		JSON.parse(prop);
-		console.log("prop is now a " + typeof(prop) + "and its value is " + prop);
 		for (var item in prop){
 			console.log("item is a " + typeof(item) + "and its value is " + item);
 			convertWorkoutToTableRow(item);
