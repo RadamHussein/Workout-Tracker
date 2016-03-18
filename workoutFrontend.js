@@ -6,7 +6,7 @@ CS290 - Winter 2016
 document.addEventListener("DOMContentLoaded", displayWorkoutsTable);
 
 //#1
-function getWorkouts(callback){
+function getWorkouts(workouts){
 	//calls get and returns a list of objects
 	var req1 = new XMLHttpRequest();
 	req1.open("GET", "http://52.33.123.66:3000/", true);
