@@ -81,11 +81,10 @@ function displayWorkoutsTable(){
 	//Why is list undefined here when it is an object right before it is returned?
 	function callback(resultList){
 		console.log("resultList is an " + typeof(resultList));
+		return resultList;
 	}
-	getWorkouts(callback);
-	//var list = getWorkouts();
-	//console.log("list in displayWorkoutsTable is " + typeof(list));
-	//convertWorkoutsToTable(list);
+	var list = getWorkouts(callback);
+	console.log("list is an " + typeof(list));
 };
 
 /*
