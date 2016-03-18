@@ -3,7 +3,7 @@ Adam Smith
 CS290 - Winter 2016
 */
 
-document.addEventListener("DOMContentLoaded", main);
+document.addEventListener("DOMContentLoaded", displayWorkoutsTable);
 
 //#1
 getWorkouts(){
@@ -19,7 +19,7 @@ getWorkouts(){
 	});
 	req1.send(null);
 	return resultList;
-}
+};
 
 //#2
 convertWorkoutToTableRow(singleObjectRow){
@@ -51,7 +51,7 @@ convertWorkoutToTableRow(singleObjectRow){
 		newRow.appendChild(cellData); 
 		cellData.textContent = item;
 	}
-}
+};
 
 //#3
 convertWorkoutsToTable(objList){
@@ -76,9 +76,9 @@ displayWorkoutsTable(){
 	var list = getWorkouts;
 	convertWorkoutsToTable(list);
 
-}
+};
 
-
+/*
 function main(){
 	var req1 = new XMLHttpRequest();
 	req1.open("GET", "http://52.33.123.66:3000/", true);
@@ -105,7 +105,7 @@ function main(){
 				buildTable(result);
 			}
 		}
-/*
+
     	for (var prop in result){
         	if(typeof prop =='object'){
         		console.log("type of first object is" + typeof(prop));
@@ -118,7 +118,7 @@ function main(){
         		buildTable(obj);
             }
     	}
-*/
+
 	}
 
 	function buildTable(obj){
@@ -130,7 +130,7 @@ function main(){
             document.getElementById("tableBody").appendChild(addMe);
             addMe.textContent = obj[i];
 		}
-/*
+
 		for (var item in obj){
 			//debug statements
 			console.log("type of item is " + typeof(item));
@@ -146,7 +146,7 @@ function main(){
             var rowDelete = document.createElement("button");
             document.addMe.appendChild("rowDelete");
 		}
-*/
+
 	}
 
 	document.getElementById("add").addEventListener("click", function(event){
@@ -167,3 +167,4 @@ function main(){
 	});
 	event.preventDefault();
 };
+*/
