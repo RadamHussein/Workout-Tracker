@@ -8,18 +8,17 @@ document.addEventListener("DOMContentLoaded", displayWorkoutsTable);
 //#1
 function getWorkouts(workouts){
 	//calls get and returns a list of objects
-	var req1 = new XMLHttpRequest();
-	req1.open("GET", "http://52.33.123.66:3000/", true);
-	req1.withCredentials = true;
-	req1.addEventListener("load", function(){
-		var res = req1.responseText;
-		document.getElementById("response").textContent = res;
-		var resultList = JSON.parse(res); //change it to an object
-		console.log(typeof(resultList)); //did it change to an object?
-		workouts(resultList); // Call the callback provided by the caller
-
+	var request = new XMLHttpRequest();
+	request.open("GET", "http://52.33.123.66:3000/", true);
+	request.withCredentials = true;
+	request.addEventListener("load", function(){
+		var response = request.responseText;
+		document.getElementById("response").textContent = response;
+		var objectListFromDatabase = JSON.parse(response); //change it to an object
+		console.log(typeof(objectListFromDatabase)); //did it change to an object?
+		workouts(objectListFromDatabase); // Call the callback provided by the caller
 	});
-	req1.send(null);
+	request.send(null);
 };
 
 //#2
@@ -79,9 +78,9 @@ function convertWorkoutsToTable(objList){
 function displayWorkoutsTable(){
 	//Actually insert all of these construct elements into the DOM
 
-	getWorkouts(function workouts(resultList){
-		console.log("resultList is an " + typeof(resultList));
-		convertWorkoutsToTable(resultList);
+	getWorkouts(function workouts(objectListFromDatabase){
+		console.log("objectListFromDatabase is an " + typeof(objectListFromDatabase));
+		convertWorkoutsToTable(objectListFromDatabase);
 	});
 };
 
