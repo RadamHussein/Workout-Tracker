@@ -12,7 +12,7 @@ function main(){
 	req1.addEventListener("load", function(){
 		var res = req1.responseText;
 		document.getElementById("response").textContent = res;
-		var obj = JSON.parse(res); //change it to an object
+		var result = JSON.parse(res); //change it to an object
 		console.log(typeof(obj)); //did it change to an object?
 		isObject(obj);
 	});
@@ -29,7 +29,7 @@ function main(){
 			}
 		}
 */
-    	for (var prop in obj){
+    	for (var prop in result){
         	if(typeof prop =='object'){
         		console.log("type of first object is" + typeof(prop));
         		var newRow = document.createElement("tr");
