@@ -52,26 +52,16 @@ function convertWorkoutToTableRow(singleObjectRow){
 	for (var item in singleObjectRow){
 		var cellData = document.createElement("td");
 		newRow.appendChild(cellData); 
-		cellData.textContent = item;
+		//cellData.textContent = item;
+		addTableRowToDOM(item);
 	}
+};
 
-	for (var item in singleObjectRow){
-		if (singleObjectRow.hasOwnProperty(item)){
-			var cellData = document.createElement("td");
-			newRow.appendChild(cellData); 
-			cellData.textContent = item;
-		}
-	}
-	
-	/*
+function addTableRowsToDOM(singleTableItem){
 	var cellData = document.createElement("td");
 	newRow.appendChild(cellData);
-	cellData.textContent = singleObjectRow.id;
-	cellData = document.createElement("td");
-	newRow.appendChild(cellData);
-	cellData.textContent = singleObjectRow.name;
-	*/
-};
+	cellData.textContent = singleTableItem;
+}
 
 //#3
 function convertWorkoutsToTable(objList){
