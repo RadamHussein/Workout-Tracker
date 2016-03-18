@@ -76,15 +76,11 @@ function convertWorkoutsToTable(objList){
 //#4
 function displayWorkoutsTable(){
 	//Actually insert all of these construct elements into the DOM
-
-	//<---Problem #1--->
-	//Why is list undefined here when it is an object right before it is returned?
 	function callback(resultList){
 		console.log("resultList is an " + typeof(resultList));
-		return resultList;
+		convertWorkoutsToTable(resultList);
 	}
-	var list = getWorkouts(callback);
-	console.log("list is an " + typeof(list));
+	getWorkouts(callback);
 };
 
 /*
