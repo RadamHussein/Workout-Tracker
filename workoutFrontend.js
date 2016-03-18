@@ -16,7 +16,7 @@ function getWorkouts(callback){
 		document.getElementById("response").textContent = res;
 		var resultList = JSON.parse(res); //change it to an object
 		console.log(typeof(resultList)); //did it change to an object?
-		callback(resultList); // Call the callback provided by the caller
+		workouts(resultList); // Call the callback provided by the caller
 
 	});
 	req1.send(null);
@@ -78,13 +78,7 @@ function convertWorkoutsToTable(objList){
 //#4
 function displayWorkoutsTable(){
 	//Actually insert all of these construct elements into the DOM
-	/*
-	function callback(resultList){
-		console.log("resultList is an " + typeof(resultList));
-		convertWorkoutsToTable(resultList);
-	}
-	getWorkouts(callback);
-	*/
+
 	getWorkouts(function workouts(resultList){
 		console.log("resultList is an " + typeof(resultList));
 		convertWorkoutsToTable(resultList);
