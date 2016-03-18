@@ -75,6 +75,7 @@ function convertWorkoutsToTable(objList){
 function displayWorkoutsTable(){
 	//Actually insert all of these construct elements into the DOM
 	var list = getWorkouts();
+	console.log("list in displayWorkoutsTable is " + typeof(list));
 	convertWorkoutsToTable(list);
 };
 
