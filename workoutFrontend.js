@@ -20,15 +20,18 @@ function main(){
 
 	function isObject(obj){
 		console.log("made it to isObject");
-/*
-		for (var i=0; i<obj.length; i++){
-			if(typeof(obj[i])=="object"){
-				buildTable(obj[i]);
+		for (var i=0; i<results.length; i++){
+			if(typeof(results[i])=="object"){
+				var newRow = document.createElement("tr");
+				document.getElementById("tableBody").appendChild(newRow);
+				buildTable(results[i]);
 			}else{
-				buildTable(obj);
+				var newRow = document.createElement("tr");
+				document.getElementById("tableBody").appendChild(newRow);
+				buildTable(results);
 			}
 		}
-*/
+/*
     	for (var prop in result){
         	if(typeof prop =='object'){
         		console.log("type of first object is" + typeof(prop));
@@ -41,11 +44,11 @@ function main(){
         		buildTable(obj);
             }
     	}
+*/
 	}
 
 	function buildTable(obj){
 		console.log("made it to buildTable");
-/*
 		for (var i=0; i<obj.length; i++){
 			console.log(typeof(obj[i]));
 			console.log(obj[i]);
@@ -53,7 +56,7 @@ function main(){
             document.getElementById("tableBody").appendChild(addMe);
             addMe.textContent = obj[i];
 		}
-*/
+/*
 		for (var item in obj){
 			//debug statements
 			console.log("type of item is " + typeof(item));
@@ -69,6 +72,7 @@ function main(){
             var rowDelete = document.createElement("button");
             document.addMe.appendChild("rowDelete");
 		}
+*/
 	}
 
 	document.getElementById("add").addEventListener("click", function(event){
