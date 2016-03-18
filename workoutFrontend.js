@@ -6,7 +6,7 @@ CS290 - Winter 2016
 document.addEventListener("DOMContentLoaded", displayWorkoutsTable);
 
 //#1
-function getWorkouts(){
+function getWorkouts(callback){
 	//calls get and returns a list of objects
 	var req1 = new XMLHttpRequest();
 	req1.open("GET", "http://52.33.123.66:3000/", true);
@@ -16,10 +16,10 @@ function getWorkouts(){
 		document.getElementById("response").textContent = res;
 		var resultList = JSON.parse(res); //change it to an object
 		console.log(typeof(resultList)); //did it change to an object?
-		return resultList;
+		callback(resultList); // Call the callback provided by the caller
+
 	});
 	req1.send(null);
-	//return resultList;
 };
 
 //#2
@@ -79,9 +79,13 @@ function displayWorkoutsTable(){
 
 	//<---Problem #1--->
 	//Why is list undefined here when it is an object right before it is returned?
-	var list = getWorkouts();
-	console.log("list in displayWorkoutsTable is " + typeof(list));
-	convertWorkoutsToTable(list);
+	function callback(resultList){
+		console.log("resultList is an " + typeof(resultList));
+	}
+	getWorkouts(callback);
+	//var list = getWorkouts();
+	//console.log("list in displayWorkoutsTable is " + typeof(list));
+	//convertWorkoutsToTable(list);
 };
 
 /*
