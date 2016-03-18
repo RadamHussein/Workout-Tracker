@@ -6,7 +6,7 @@ CS290 - Winter 2016
 document.addEventListener("DOMContentLoaded", displayWorkoutsTable);
 
 //#1
-getWorkouts(){
+function getWorkouts(){
 	//calls get and returns a list of objects
 	var req1 = new XMLHttpRequest();
 	req1.open("GET", "http://52.33.123.66:3000/", true);
@@ -23,7 +23,7 @@ getWorkouts(){
 };
 
 //#2
-convertWorkoutToTableRow(singleObjectRow){
+function convertWorkoutToTableRow(singleObjectRow){
 	//First method:
 	/*a function that converts a single object to a row element with a column
 	 for each property in the object. 
@@ -55,7 +55,7 @@ convertWorkoutToTableRow(singleObjectRow){
 };
 
 //#3
-convertWorkoutsToTable(objList){
+function convertWorkoutsToTable(objList){
 	/*a function that iterates over a list of objects, 
 	calls function number 2, and appends each row to a table body element.
 	*/
@@ -72,7 +72,7 @@ convertWorkoutsToTable(objList){
 }
 
 //#4
-displayWorkoutsTable(){
+function displayWorkoutsTable(){
 	//Actually insert all of these construct elements into the DOM
 	var list = getWorkouts;
 	convertWorkoutsToTable(list);
