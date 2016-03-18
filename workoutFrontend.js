@@ -20,15 +20,15 @@ function main(){
 
 	function isObject(obj){
 		console.log("made it to isObject");
-		for (var i=0; i<results.length; i++){
-			if(typeof(results[i])=="object"){
+		for (var i=0; i<result.length; i++){
+			if(typeof(result[i])=="object"){
 				var newRow = document.createElement("tr");
 				document.getElementById("tableBody").appendChild(newRow);
-				buildTable(results[i]);
+				buildTable(result[i]);
 			}else{
 				var newRow = document.createElement("tr");
 				document.getElementById("tableBody").appendChild(newRow);
-				buildTable(results);
+				buildTable(result);
 			}
 		}
 /*
