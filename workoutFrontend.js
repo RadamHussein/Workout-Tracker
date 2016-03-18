@@ -24,20 +24,22 @@ function getWorkouts(){
 
 //#2
 function convertWorkoutToTableRow(singleObjectRow){
+	//<---Problem #2--->
+	//I can go about this 2 ways from here:
+
 	//First method:
 	/*a function that converts a single object to a row element with a column
 	 for each property in the object. 
 	 This function should not actually put anything into the DOM.
-	*/
-    /*
+	
 	var newRow = document.createElement("tr");
 	for (var item in singleObjectRow){
 		var cellData = document.createElement("td");
 		cellData.textContent = item;
 		//return something here
 	}
-	*/
-	/*Now I have a variable for the new row, and multiple variables
+	
+	Now I have a variable for the new row, and multiple variables
 	which each contain data for individual cells in that row. How
 	should I return these to the previous function? Combine them in to a 
 	row object?
@@ -74,8 +76,10 @@ function convertWorkoutsToTable(objList){
 //#4
 function displayWorkoutsTable(){
 	//Actually insert all of these construct elements into the DOM
+
+	//<---Problem #1--->
+	//Why is list undefined here when it is an object right before it is returned?
 	var list = getWorkouts();
-	//why is list undefined when it is definitely an object in getWorkouts()?
 	console.log("list in displayWorkoutsTable is " + typeof(list));
 	convertWorkoutsToTable(list);
 };
