@@ -52,7 +52,6 @@ function convertWorkoutToTableRow(singleObjectRow){
 	for (var item in singleObjectRow){
 		var cellData = document.createElement("td");
 		newRow.appendChild(cellData); 
-		cellData.textContent = item;
 	}
 
 	addTableRowToDOM(newRow, singleObjectRow.id);
