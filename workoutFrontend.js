@@ -49,7 +49,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 	var newRow = document.createElement("tr");
 	document.getElementById("tableBody").appendChild(newRow);
 	
-	for (var item in singleObjectRow){
+	for each (var item in singleObjectRow){
 		var cellData = document.createElement("td");
 		newRow.appendChild(cellData); 
 		cellData.textContent = item;
