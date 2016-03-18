@@ -56,10 +56,10 @@ function convertWorkoutToTableRow(singleObjectRow){
 	}
 
 	for (var item in singleObjectRow){
-		if (singleObjectRow.hasOwnProperty(key)){
+		if (singleObjectRow.hasOwnProperty(item)){
 			var cellData = document.createElement("td");
 			newRow.appendChild(cellData); 
-			cellData.textContent = key;
+			cellData.textContent = item;
 		}
 	}
 	
