@@ -16,9 +16,10 @@ getWorkouts(){
 		document.getElementById("response").textContent = res;
 		var resultList = JSON.parse(res); //change it to an object
 		console.log(typeof(resultList)); //did it change to an object?
+		return resultList;
 	});
 	req1.send(null);
-	return resultList;
+	//return resultList;
 };
 
 //#2
