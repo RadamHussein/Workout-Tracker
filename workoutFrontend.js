@@ -55,11 +55,12 @@ function convertWorkoutToTableRow(singleObjectRow){
 		cellData.textContent = item;
 	}
 	*/
-	for (var i=o; i<singleObjectRow.length; i++){
-		var cellData = document.createElement("td");
-		newRow.appendChild(cellData);
-		cellData.textContent = singleObjectRow[i];
-	}
+	var cellData = document.createElement("td");
+	newRow.appendChild(cellData);
+	cellData.textContent = singleObjectRow.id;
+	cellData = document.createElement("td");
+	newRow.appendChild(cellData);
+	cellData.textContent = singleObjectRow.name;
 };
 
 //#3
