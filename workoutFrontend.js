@@ -53,7 +53,12 @@ function convertWorkoutToTableRow(singleObjectRow){
 		var cellData = document.createElement("td");
 		newRow.appendChild(cellData); 
 		//cellData.textContent = item;
-		addTableRowToDOM(newRow, item);
+		addTableRowToDOM(newRow, item.id);
+		addTableRowToDOM(newRow, item.name);
+		addTableRowToDOM(newRow, item.reps);
+		addTableRowToDOM(newRow, item.weight);
+		addTableRowToDOM(newRow, item.date);
+		addTableRowToDOM(newRow, item.lbs);
 	}
 };
 
