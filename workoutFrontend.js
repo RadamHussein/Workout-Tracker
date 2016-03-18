@@ -78,11 +78,17 @@ function convertWorkoutsToTable(objList){
 //#4
 function displayWorkoutsTable(){
 	//Actually insert all of these construct elements into the DOM
+	/*
 	function callback(resultList){
 		console.log("resultList is an " + typeof(resultList));
 		convertWorkoutsToTable(resultList);
 	}
 	getWorkouts(callback);
+	*/
+	getWorkouts(function workouts(resultList){
+		console.log("resultList is an " + typeof(resultList));
+		convertWorkoutsToTable(resultList);
+	});
 };
 
 /*
