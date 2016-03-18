@@ -67,7 +67,9 @@ function convertWorkoutsToTable(objList){
 	the properties of the object.
 	*/
 	for (var prop in objList){
+		console.log("prop is a " + typeof(prop) + "and its value is " + prop);
 		for (var item in prop){
+			console.log("item is a " + typeof(item) + "and its value is " + item);
 			convertWorkoutToTableRow(item);
 		}
 	}
