@@ -49,10 +49,18 @@ function convertWorkoutToTableRow(singleObjectRow){
 	var newRow = document.createElement("tr");
 	document.getElementById("tableBody").appendChild(newRow);
 	
-	for each (var item in singleObjectRow){
+	for (var item in singleObjectRow){
 		var cellData = document.createElement("td");
 		newRow.appendChild(cellData); 
 		cellData.textContent = item;
+	}
+
+	for (var item in singleObjectRow){
+		if (singleObjectRow.hasOwnProperty(key)){
+			var cellData = document.createElement("td");
+			newRow.appendChild(cellData); 
+			cellData.textContent = key;
+		}
 	}
 	
 	/*
