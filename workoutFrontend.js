@@ -66,7 +66,7 @@ function convertWorkoutsToTable(objList){
 	First loop gets the object from the list. Second loop iterates over
 	the properties of the object.
 	*/
-	for (var prop in objList){
+	for (var prop in objList.results){
 		console.log("prop is a " + typeof(prop) + "and its value is " + prop);
 		for (var item in prop){
 			console.log("item is a " + typeof(item) + "and its value is " + item);
