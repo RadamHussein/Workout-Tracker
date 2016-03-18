@@ -34,7 +34,6 @@ function main(){
     	for (var prop in obj){
         	if(typeof prop =='object'){
         		console.log("type of first object is" + typeof(prop));
-        		JSON.parse(prop);
             	buildTable(prop);
         	}else{
         		buildTable(obj);
@@ -54,11 +53,19 @@ function main(){
 		}
 */
 		for (var item in obj){
+			//debug statements
 			console.log("type of item is " + typeof(item));
 			console.log(item);
+			//add new table row
 			var addMe = document.createElement("td");
             document.getElementById("tableBody").appendChild(addMe);
             addMe.textContent = item;
+            //add edit button to row
+            var edit = document.createElement("button");
+            document.addMe.appendChild("edit");
+            //add delete button to row
+            var rowDelete = document.createElement("button");
+            document.addMe.appendChild("rowDelete");
 		}
 	}
 
