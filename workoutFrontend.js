@@ -14,8 +14,6 @@ function main(){
 		document.getElementById("response").textContent = res;
 		var obj = JSON.parse(res); //change it to an object
 		console.log(typeof(obj)); //did it change to an object?
-		var newRow = document.createElement("tr");
-		document.getElementById("tableBody").appendChild(newRow);
 		isObject(obj);
 	});
 	req1.send(null);
@@ -34,8 +32,12 @@ function main(){
     	for (var prop in obj){
         	if(typeof prop =='object'){
         		console.log("type of first object is" + typeof(prop));
+        		var newRow = document.createElement("tr");
+				document.getElementById("tableBody").appendChild(newRow);	
             	buildTable(prop);
         	}else{
+        		var newRow = document.createElement("tr");
+				document.getElementById("tableBody").appendChild(newRow);
         		buildTable(obj);
             }
     	}
