@@ -74,8 +74,7 @@ function convertWorkoutsToTable(objList){
 //#4
 function displayWorkoutsTable(){
 	//Actually insert all of these construct elements into the DOM
-	var list = {};
-	list = getWorkouts();
+	var list = getWorkouts();
 	//why is list undefined when it is definitely an object in getWorkouts()?
 	console.log("list in displayWorkoutsTable is " + typeof(list));
 	convertWorkoutsToTable(list);
