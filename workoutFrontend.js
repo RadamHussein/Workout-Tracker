@@ -48,19 +48,21 @@ function convertWorkoutToTableRow(singleObjectRow){
 	//get cell data from each element in the object and add to DOM
 	var newRow = document.createElement("tr");
 	document.getElementById("tableBody").appendChild(newRow);
-	/*
+	
 	for (var item in singleObjectRow){
 		var cellData = document.createElement("td");
 		newRow.appendChild(cellData); 
 		cellData.textContent = item;
 	}
-	*/
+	
+	/*
 	var cellData = document.createElement("td");
 	newRow.appendChild(cellData);
 	cellData.textContent = singleObjectRow.id;
 	cellData = document.createElement("td");
 	newRow.appendChild(cellData);
 	cellData.textContent = singleObjectRow.name;
+	*/
 };
 
 //#3
@@ -73,11 +75,10 @@ function convertWorkoutsToTable(objList){
 	First loop gets the object from the list. Second loop iterates over
 	the properties of the object.
 	*/
-	/*
-	for (var i=0; i<objList.length; i++){
-		convertWorkoutToTableRow(objList.results[i]);
+	
+	for (var i=0; i<objList.results.length; i++){
+		convertWorkoutToTableRow(objList.results[i])
 	}
-	*/
 	console.log(objList.results[0].name);
 	console.log(objList.results[1].name);
 }
