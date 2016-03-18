@@ -57,7 +57,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 	}
 };
 
-function addTableRowsToDOM(singleTableItem){
+function addTableRowToDOM(singleTableItem){
 	var cellData = document.createElement("td");
 	newRow.appendChild(cellData);
 	cellData.textContent = singleTableItem;
