@@ -84,7 +84,7 @@ function convertWorkoutsToTable(objList){
 	*/
 
 	for (var i=0; i<objList.length; i++){
-		convertWorkoutToTableRow(objList[i]);
+		convertWorkoutToTableRow(objList.results[i]);
 	}
 }
 
