@@ -90,8 +90,13 @@ function convertWorkoutToTableRow(singleObjectRow){
 function resetTable(){
 	var tableRowToRemove = document.getElementById("tableBody");
 	tableRowToRemove = tableRowToRemove.firstChild;
-	tableRowToRemove = tableRowToRemove.nextElementSibling
-	tableRowToRemove.removeChild(tableRowToRemove);
+	tableRowToRemove = tableRowToRemove.nextElementSibling;
+	tableRowToRemove.removeChild(tableRowToRemove.childNodes[0]);
+	tableRowToRemove.removeChild(tableRowToRemove.childNodes[1]);
+	tableRowToRemove.removeChild(tableRowToRemove.childNodes[2]);
+	tableRowToRemove.removeChild(tableRowToRemove.childNodes[3]);
+	tableRowToRemove.removeChild(tableRowToRemove.childNodes[4]);
+	tableRowToRemove.removeChild(tableRowToRemove.childNodes[5]);
 }
 /*
 function deleteWorkout(singleObjectRow.id){
