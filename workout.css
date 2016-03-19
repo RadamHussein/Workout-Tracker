@@ -1,4 +1,4 @@
-table {
+table thead tbody{
 	text-align: center;
 	border: solid;
 	border-width: thin;
