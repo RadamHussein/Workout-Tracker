@@ -4,7 +4,7 @@ CS290 - Winter 2016
 */
 
 //document.addEventListener("DOMContentLoaded", displayWorkoutsTable);
-document.addEventListener("DOMContentLoaded", main());
+document.addEventListener("DOMContentLoaded", main);
 
 function main(){
 	displayWorkoutsTable();
