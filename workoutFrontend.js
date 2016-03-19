@@ -127,6 +127,7 @@ function displayWorkoutsTable(){
 function handleInsert(){
 	document.getElementById("submit").addEventListener("click", function(event){
 		console.log("click is working");
+		/*
 		var insertRequest = new XMLHttpRequest();
 		var name = document.getElementById("name").value;
 		var reps = document.getElementById("reps").value;
@@ -143,6 +144,7 @@ function handleInsert(){
 			}
 		});
 		insertRequest.send(null);
+		*/
 		event.preventDefault();
 	});
 };
