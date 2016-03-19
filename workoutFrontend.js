@@ -146,7 +146,7 @@ function handleInsert(){
 		}else{
 			var lbs = 0;
 		}
-		insertRequest.open("GET", "http://52.33.123.66:3000/insert", [name, reps, weight, date, lbs], true);
+		insertRequest.open("GET", "http://52.33.123.66:3000/insert", name, reps, weight, date, lbs, true);
 		insertRequest.addEventListener("load", function(){
 			if (insertRequest.status >= 200 && insertRequest.status < 400){
 				var response = insertRequest.responseText;
