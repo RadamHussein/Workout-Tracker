@@ -5,10 +5,10 @@ table, th, td {
 	border-collapse: collapse;
 }
 
-#edit {
+#Edit {
 	background-color: blue;
 }
 
-#delete {
+#Delete {
 	background-color: red;
 }
