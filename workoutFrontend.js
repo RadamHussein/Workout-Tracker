@@ -3,8 +3,12 @@ Adam Smith
 CS290 - Winter 2016
 */
 
-document.addEventListener("DOMContentLoaded", displayWorkoutsTable);
+//document.addEventListener("DOMContentLoaded", displayWorkoutsTable);
+document.addEventListener("DOMContentLoaded", main);
 
+function main(){
+	displayWorkoutsTable;
+	
 //#1
 function getWorkouts(workouts){
 	//calls get and returns a list of objects
@@ -73,7 +77,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 		deleteRequest.addEventListener("load", function(){
 			var response = deleteRequest.responseText;
 			console.log(response);
-			displayWorkoutsTable();
+			displayWorkoutsTable;
 		});
 		deleteRequest.send(null);
 		//event.preventDefault();
@@ -106,7 +110,6 @@ function displayWorkoutsTable(){
 	});
 };
 
-/*
 	document.getElementById("add").addEventListener("click", function(event){
 		console.log("click is working");
 		var name = document.getElementById("name").value;
@@ -124,5 +127,5 @@ function displayWorkoutsTable(){
 		event.preventDefault();
 	});
 	event.preventDefault();
-};
-*/
+}; //this closes off main()
+
