@@ -127,13 +127,13 @@ function displayWorkoutsTable(){
 function handleInsert(){
 	document.getElementById("submit").addEventListener("click", function(event){
 		console.log("click is working");
-		/*
 		var insertRequest = new XMLHttpRequest();
 		var name = document.getElementById("name").value;
 		var reps = document.getElementById("reps").value;
 		var weight = document.getElementById("weight").value;
 		var date = document.getElementById("date").value;
 		var lbs = document.getElementById("lbs").value;
+		/*
 		insertRequest.open("GET", "http://52.33.123.66:3000/insert", name, reps, weight, date, lbs, false);
 		insertRequest.addEventListener("load", function(){
 			if (insertRequest.status >= 200 && insertRequest.status < 400){
