@@ -67,8 +67,19 @@ function convertWorkoutToTableRow(singleObjectRow){
 	deleteButton.id = "Delete";
 	cellForButtons.appendChild(deleteButton);
 	deleteButton.textContent = "Delete";
+	deleteButton.addEventListener("click", function(){
+		var deleteRequest = new XMLHttpRequest();
+		deleteRequest.open("GET", "http://52.33.123.66:3000/delete?id=" + singleObjectRow.id, true);
+		deleteRequest.addEventListener("load", function(){
+			var response = deleteRequest.responseText;
+			console.log(response);
+		});
+		deleteRequest.send(null);
+		event.preventDefault();
+	});
 };
 
+//takes a single cell of table data and adds it to the current row
 function addTableRowToDOM(newRow, singleTableItem){
 	var cellData = document.createElement("td");
 	newRow.appendChild(cellData);
