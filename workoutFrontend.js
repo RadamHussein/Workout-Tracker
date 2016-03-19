@@ -10,7 +10,7 @@ function main(){
 	displayWorkoutsTable();
 	handleInsert();
 
-//#1
+//gets any table data from database 
 function getWorkouts(workouts){
 	//calls get and returns a list of objects
 	var request = new XMLHttpRequest();
@@ -18,7 +18,6 @@ function getWorkouts(workouts){
 	request.withCredentials = true;
 	request.addEventListener("load", function(){
 		var response = request.responseText;
-		document.getElementById("response").textContent = response;
 		var objectListFromDatabase = JSON.parse(response); //change it to an object
 		console.log(typeof(objectListFromDatabase)); //did it change to an object?
 		workouts(objectListFromDatabase); // Call the callback provided by the caller
@@ -26,30 +25,9 @@ function getWorkouts(workouts){
 	request.send(null);
 };
 
-//#2
+//add workouts to the table
 function convertWorkoutToTableRow(singleObjectRow){
-	//<---Problem #2--->
-	//I can go about this 2 ways from here:
 
-	//First method:
-	/*a function that converts a single object to a row element with a column
-	 for each property in the object. 
-	 This function should not actually put anything into the DOM.
-	
-	var newRow = document.createElement("tr");
-	for (var item in singleObjectRow){
-		var cellData = document.createElement("td");
-		cellData.textContent = item;
-		//return something here
-	}
-	
-	Now I have a variable for the new row, and multiple variables
-	which each contain data for individual cells in that row. How
-	should I return these to the previous function? Combine them in to a 
-	row object?
-	*/
-
-	//Second Method: 
 	//get cell data from each element in the object and add to DOM
 	var newRow = document.createElement("tr");
 	document.getElementById("tableBody").appendChild(newRow);
@@ -73,7 +51,6 @@ function convertWorkoutToTableRow(singleObjectRow){
 	cellForButtons.appendChild(deleteButton);
 	deleteButton.textContent = "Delete";
 	deleteButton.addEventListener("click", function(event){
-		//deleteWorkout(singleObjectRow.id);
 		var deleteRequest = new XMLHttpRequest();
 		deleteRequest.open("GET", "http://52.33.123.66:3000/delete?id=" + singleObjectRow.id, true);
 		deleteRequest.addEventListener("load", function(){
@@ -113,17 +90,14 @@ function addTableRowToDOM(newRow, singleTableItem){
 	cellData.textContent = singleTableItem;
 }
 
-//#3
+//iterates through data returned form mysql and send individual objects to be added to table.
 function convertWorkoutsToTable(objList){
-	/*a function that iterates over a list of objects, 
-	calls function number 2, and appends each row to a table body element.
-	*/
 	for (var i=0; i<objList.results.length; i++){
 		convertWorkoutToTableRow(objList.results[i])
 	}
 }
 
-//#4
+//gets called first. Calls getWorkouts and calls converWorkoutsToTable with results;
 function displayWorkoutsTable(){
 	//Actually insert all of these construct elements into the DOM
 	getWorkouts(function workouts(objectListFromDatabase){
