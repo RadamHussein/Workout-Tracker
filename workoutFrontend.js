@@ -54,6 +54,17 @@ function convertWorkoutToTableRow(singleObjectRow){
 	addTableRowToDOM(newRow, singleObjectRow.weight);
 	addTableRowToDOM(newRow, singleObjectRow.date);
 	addTableRowToDOM(newRow, singleObjectRow.lbs);
+
+	//create buttons
+	var editButton = document.createElement("button");
+	editButton.label = "Edit";
+	var cellForButtons = document.createElement("td");
+	newRow.appendChild(cellForButtons);
+	cellForButtons.appendChild(editButton);
+
+	var deleteButton = document.createElement("button");
+	deleteButton.label = "Delete";
+	cellForButtons.appendChild(deleteButton);
 };
 
 function addTableRowToDOM(newRow, singleTableItem){
@@ -70,8 +81,6 @@ function convertWorkoutsToTable(objList){
 	for (var i=0; i<objList.results.length; i++){
 		convertWorkoutToTableRow(objList.results[i])
 	}
-	console.log(objList.results[0].name);
-	console.log(objList.results[1].name);
 }
 
 //#4
