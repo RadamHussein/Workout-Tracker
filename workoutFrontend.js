@@ -71,7 +71,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 	deleteButton.id = "Delete";
 	cellForButtons.appendChild(deleteButton);
 	deleteButton.textContent = "Delete";
-	deleteButton.addEventListener("click", function(){
+	deleteButton.addEventListener("click", function(event){
 		var deleteRequest = new XMLHttpRequest();
 		deleteRequest.open("GET", "http://52.33.123.66:3000/delete?id=" + singleObjectRow.id, true);
 		deleteRequest.addEventListener("load", function(){
@@ -80,7 +80,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 			displayWorkoutsTable();
 		});
 		deleteRequest.send(null);
-		//event.preventDefault();
+		event.preventDefault();
 	});
 };
 
