@@ -57,13 +57,13 @@ function convertWorkoutToTableRow(singleObjectRow){
 
 	//create buttons
 	var editButton = document.createElement("button");
-	editButton.label = "Edit";
+	editButton.id = "Edit";
 	var cellForButtons = document.createElement("td");
 	newRow.appendChild(cellForButtons);
 	cellForButtons.appendChild(editButton);
 
 	var deleteButton = document.createElement("button");
-	deleteButton.label = "Delete";
+	deleteButton.id = "Delete";
 	cellForButtons.appendChild(deleteButton);
 };
 
