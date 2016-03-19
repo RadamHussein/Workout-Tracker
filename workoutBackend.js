@@ -99,7 +99,7 @@ app.get('/delete', function(req, res, next){
       next(err);
       return;
     }
-    context.results = "Deleted" + resultChangedRows + " rows.";
+    context.results = "Deleted" + result.changedRows + " rows.";
     res.send("Delete successful");
   });
 });

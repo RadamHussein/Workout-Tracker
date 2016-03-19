@@ -79,6 +79,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 		deleteRequest.addEventListener("load", function(){
 			var response = deleteRequest.responseText;
 			console.log(response);
+			resetTable();
 			displayWorkoutsTable();
 		});
 		deleteRequest.send(null);
@@ -86,6 +87,10 @@ function convertWorkoutToTableRow(singleObjectRow){
 	});
 };
 
+function resetTable(){
+	var tableBody = document.getElementById("tableBody");
+	tableBody.removeChild(tableBody);
+}
 /*
 function deleteWorkout(singleObjectRow.id){
 	var deleteRequest = new XMLHttpRequest();
