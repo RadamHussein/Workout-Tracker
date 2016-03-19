@@ -61,10 +61,12 @@ function convertWorkoutToTableRow(singleObjectRow){
 	var cellForButtons = document.createElement("td");
 	newRow.appendChild(cellForButtons);
 	cellForButtons.appendChild(editButton);
+	editButton.textContent = "Edit";
 
 	var deleteButton = document.createElement("button");
 	deleteButton.id = "Delete";
 	cellForButtons.appendChild(deleteButton);
+	deleteButton.textContent = "Delete";
 };
 
 function addTableRowToDOM(newRow, singleTableItem){
