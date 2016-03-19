@@ -1,5 +1,15 @@
-table thead tbody{
+table {
 	text-align: center;
+	border: solid;
+	border-width: thin;
+}
+
+thead {
+	border: solid;
+	border-width: thin;
+}
+
+tbody {
 	border: solid;
 	border-width: thin;
 }
