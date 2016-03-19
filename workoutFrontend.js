@@ -87,6 +87,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 	});
 };
 
+//this function clears the table so that a new one can be built after a change
 function resetTable(){
 	var newTableBody = document.createElement("tbody");
 	var oldTableBody = document.getElementById("tableBody");
@@ -140,11 +141,13 @@ function handleInsert(){
 		var weight = document.getElementById("weight").value;
 		var date = document.getElementById("date").value;
 		var lbs = document.getElementById("lbs").value;
-		insertRequest.open("GET", "http://52.33.123.66:3000/insert", [name, reps, weight, date, lbs], false);
+		insertRequest.open("GET", "http://52.33.123.66:3000/insert", [name, reps, weight, date, lbs], true);
 		insertRequest.addEventListener("load", function(){
 			if (insertRequest.status >= 200 && insertRequest.status < 400){
-				var response = insertRequest.responseText;					
-				document.getElementById("response").textContent = response;
+				var response = insertRequest.responseText;
+				console.log(response);
+				resetTable();
+				displayWorkoutsTable();			
 			} else {
 				console.log("error");
 			}
