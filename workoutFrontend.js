@@ -139,6 +139,6 @@ function displayWorkoutsTable(){
 		req2.send(null);
 		event.preventDefault();
 	});
-	event.preventDefault();
+
 }; //this closes off main()
 
