@@ -126,17 +126,21 @@ function displayWorkoutsTable(){
 	document.getElementById("submit").addEventListener("click", function(event){
 		console.log("click is working");
 		var name = document.getElementById("name").value;
-		var req2 = new XMLHttpRequest();
-		req2.open("GET", "http://52.33.123.66:3000/insert", name, reps, weight, date, lbs, false);
-		req2.addEventListener("load", function(){
-			if (req2.status >= 200 && req.status < 400){
-				var res = req2.response;					
-				document.getElementById("response").textContent = res;
+		var reps = document.getElementById("reps").value;
+		var weight = document.getElementById("weight").value;
+		var date = document.getElementById("date").value;
+		var lbs = document.getElementById("lbs").value;
+		var insertRequest = new XMLHttpRequest();
+		insertRequest.open("GET", "http://52.33.123.66:3000/insert", name, reps, weight, date, lbs, false);
+		insertRequest.addEventListener("load", function(){
+			if (insertRequest.status >= 200 && insertRequest.status < 400){
+				var response = insertRequest.response;					
+				document.getElementById("response").textContent = response;
 			} else {
 				console.log("error");
 			}
 		});
-		req2.send(null);
+		insertRequest.send(null);
 		event.preventDefault();
 	});
 
