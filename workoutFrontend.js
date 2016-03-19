@@ -73,6 +73,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 		deleteRequest.addEventListener("load", function(){
 			var response = deleteRequest.responseText;
 			console.log(response);
+			displayWorkoutsTable();
 		});
 		deleteRequest.send(null);
 		event.preventDefault();
