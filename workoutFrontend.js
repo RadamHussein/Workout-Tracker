@@ -88,8 +88,10 @@ function convertWorkoutToTableRow(singleObjectRow){
 };
 
 function resetTable(){
-	var tableBody = document.getElementById("tableBody");
-	tableBody.removeChild(tableBody);
+	var tableRowToRemove = document.getElementById("tableBody");
+	tableRowToRemove = nextElementChild;
+	tableRowToRemove = nextElementSibling
+	tableRowToRemove.removeChild(tableRowToRemove);
 }
 /*
 function deleteWorkout(singleObjectRow.id){
