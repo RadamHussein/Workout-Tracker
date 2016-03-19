@@ -89,7 +89,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 
 function resetTable(){
 	var newTableBody = document.createElement("tbody");
-	var oldTableBody = documet.getElementById("tableBody");
+	var oldTableBody = document.getElementById("tableBody");
 	oldTableBody.parentNode.replaceChild(newTableBody, oldTableBody);
 	newTableBody.id = "tableBody";
 }
