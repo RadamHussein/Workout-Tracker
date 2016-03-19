@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", main);
 
 function main(){
 	displayWorkoutsTable();
+	handleInsert();
 
 //#1
 function getWorkouts(workouts){
@@ -123,6 +124,7 @@ function displayWorkoutsTable(){
 	});
 };
 
+function handleInsert(){
 	document.getElementById("submit").addEventListener("click", function(event){
 		console.log("click is working");
 		var insertRequest = new XMLHttpRequest();
@@ -131,10 +133,10 @@ function displayWorkoutsTable(){
 		var weight = document.getElementById("weight").value;
 		var date = document.getElementById("date").value;
 		var lbs = document.getElementById("lbs").value;
-		insertRequest.open("GET", "http://52.33.123.66:3000/insert?", name, reps, weight, date, lbs, true);
+		insertRequest.open("GET", "http://52.33.123.66:3000/insert", name, reps, weight, date, lbs, false);
 		insertRequest.addEventListener("load", function(){
 			if (insertRequest.status >= 200 && insertRequest.status < 400){
-				var response = insertRequest.response;					
+				var response = insertRequest.responseText;					
 				document.getElementById("response").textContent = response;
 			} else {
 				console.log("error");
@@ -143,6 +145,7 @@ function displayWorkoutsTable(){
 		insertRequest.send(null);
 		event.preventDefault();
 	});
+};
 
 }; //this closes off main()
 
