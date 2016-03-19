@@ -1,9 +1,10 @@
-table {
+table, th, td {
 	text-align: center;
 	border: solid;
 	border-width: thin;
 }
 
+/*
 thead {
 	border: solid;
 	border-width: thin;
@@ -13,3 +14,4 @@ tbody {
 	border: solid;
 	border-width: thin;
 }
+*/
