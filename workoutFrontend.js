@@ -76,7 +76,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 			displayWorkoutsTable();
 		});
 		deleteRequest.send(null);
-		event.preventDefault();
+		//event.preventDefault();
 	});
 };
 
@@ -100,7 +100,6 @@ function convertWorkoutsToTable(objList){
 //#4
 function displayWorkoutsTable(){
 	//Actually insert all of these construct elements into the DOM
-
 	getWorkouts(function workouts(objectListFromDatabase){
 		console.log("objectListFromDatabase is an " + typeof(objectListFromDatabase));
 		convertWorkoutsToTable(objectListFromDatabase);
