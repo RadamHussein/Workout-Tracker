@@ -88,17 +88,10 @@ function convertWorkoutToTableRow(singleObjectRow){
 };
 
 function resetTable(){
-	var tableRowToRemove = document.getElementById("tableBody");
-	tableRowToRemove = tableRowToRemove.firstChild;
-	console.log(tableRowToRemove.nodeType);
-	tableRowToRemove = tableRowToRemove.nextSibling;
-	console.log(tableRowToRemove.nodeType);
-	tableRowToRemove.removeChild(tableRowToRemove.childNodes[0]);
-	tableRowToRemove.removeChild(tableRowToRemove.childNodes[1]);
-	tableRowToRemove.removeChild(tableRowToRemove.childNodes[2]);
-	tableRowToRemove.removeChild(tableRowToRemove.childNodes[3]);
-	tableRowToRemove.removeChild(tableRowToRemove.childNodes[4]);
-	tableRowToRemove.removeChild(tableRowToRemove.childNodes[5]);
+	var newTableBody = document.createElement("tbody");
+	var oldTableBody = documet.getElementById("tableBody");
+	oldTableBody.parentNode.replaceChild(newTableBody, oldTableBody);
+	newTableBody.id = "tableBody";
 }
 /*
 function deleteWorkout(singleObjectRow.id){
