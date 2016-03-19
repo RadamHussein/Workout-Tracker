@@ -72,8 +72,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 	cellForButtons.appendChild(deleteButton);
 	deleteButton.textContent = "Delete";
 	deleteButton.addEventListener("click", function(event){
-		deleteWorkout(singleObjectRow.id);
-		/*
+		//deleteWorkout(singleObjectRow.id);
 		var deleteRequest = new XMLHttpRequest();
 		deleteRequest.open("GET", "http://52.33.123.66:3000/delete?id=" + singleObjectRow.id, true);
 		deleteRequest.addEventListener("load", function(){
@@ -81,12 +80,12 @@ function convertWorkoutToTableRow(singleObjectRow){
 			console.log(response);
 			displayWorkoutsTable();
 		});
-		*/
 		deleteRequest.send(null);
 		event.preventDefault();
 	});
 };
 
+/*
 function deleteWorkout(singleObjectRow.id){
 	var deleteRequest = new XMLHttpRequest();
 		deleteRequest.open("GET", "http://52.33.123.66:3000/delete?id=" + singleObjectRow.id, true);
@@ -96,6 +95,7 @@ function deleteWorkout(singleObjectRow.id){
 			displayWorkoutsTable();
 		});
 };
+*/
 
 //takes a single cell of table data and adds it to the current row
 function addTableRowToDOM(newRow, singleTableItem){
