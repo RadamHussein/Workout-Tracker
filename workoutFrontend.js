@@ -89,7 +89,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 
 function resetTable(){
 	var tableRowToRemove = document.getElementById("tableBody");
-	tableRowToRemove = firstElementChild;
+	tableRowToRemove = firstChild;
 	tableRowToRemove = nextElementSibling
 	tableRowToRemove.removeChild(tableRowToRemove);
 }
