@@ -4,3 +4,11 @@ table, th, td {
 	border-width: thin;
 	border-collapse: collapse;
 }
+
+#edit {
+	background-color: blue;
+}
+
+#delete {
+	background-color: red;
+}
