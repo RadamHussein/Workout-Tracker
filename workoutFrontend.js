@@ -114,8 +114,9 @@ function handleInsert(){
 		var name = document.getElementById("name").value;
 		var reps = document.getElementById("reps").value;
 		var weight = document.getElementById("weight").value;
-		var date = "2016-3-5";
-		var lbs = 1;
+		//var date = "2016-3-5";
+		//var lbs = 1;
+		var lbs = document.getElementById("lbs").value;
 		var date = document.getElementById("date").value;
 /*
 		if(document.getElementById("lbs").value == "lbs"){
