@@ -32,12 +32,8 @@ function convertWorkoutToTableRow(singleObjectRow){
 	var newRow = document.createElement("tr");
 	document.getElementById("tableBody").appendChild(newRow);
 	
-	addTableRowToDOM(newRow, singleObjectRow.name);
-	addTableRowToDOM(newRow, singleObjectRow.reps);
-	addTableRowToDOM(newRow, singleObjectRow.weight);
-	addTableRowToDOM(newRow, singleObjectRow.date);
-	//addTableRowToDOM(newRow, singleObjectRow.lbs);
-
+	var dateFormatted = singleObjectRow.date.slice(0, 9);
+	//check value of lbs and convert to string to display in table
 	if (singleObjectRow.lbs === 1){
 		var lbs = "lbs";
 	}
@@ -45,6 +41,11 @@ function convertWorkoutToTableRow(singleObjectRow){
 		var lbs = "kg";
 	}
 
+	addTableRowToDOM(newRow, singleObjectRow.name);
+	addTableRowToDOM(newRow, singleObjectRow.reps);
+	addTableRowToDOM(newRow, singleObjectRow.weight);
+	//addTableRowToDOM(newRow, singleObjectRow.date);
+	addTableRowToDOM(newRow, dateFormatted);
 	addTableRowToDOM(newRow, lbs);
 
 	//create buttons
@@ -123,8 +124,6 @@ function handleInsert(){
 		var name = document.getElementById("name").value;
 		var reps = document.getElementById("reps").value;
 		var weight = document.getElementById("weight").value;
-		//var date = "2016-3-5";
-		//var lbs = 1;
 		var lbs = document.getElementById("lbs").value;
 		var date = document.getElementById("date").value;
 
