@@ -36,9 +36,11 @@ h1 {
     transition-delay: initial;
     margin-left: 10px;
     margin-right: 10px;
-    padding-right: 5px;
 }
 
+#table-container {
+	padding-right: 5px;
+}
 #Delete {
 	margin-left: 5px;
 }
