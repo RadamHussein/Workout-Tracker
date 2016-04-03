@@ -115,13 +115,15 @@ function handleInsert(){
 		var reps = document.getElementById("reps").value;
 		var weight = document.getElementById("weight").value;
 		var date = "2016-3-5";
-		//var lbs = 1;
-		//var date = document.getElementById("date").value;
+		var lbs = 1;
+		var date = document.getElementById("date").value;
+/*
 		if(document.getElementById("lbs").value == "lbs"){
 			var lbs = 1;
 		}else{
 			var lbs = 0;
 		}
+*/
 		insertRequest.open("GET", "http://52.33.123.66:3000/insert?name=" + name + "&reps=" + reps + "&weight=" + weight + "&date=" + date + "&lbs=" + lbs, true);
 		insertRequest.addEventListener("load", function(event){
 			if (insertRequest.status >= 200 && insertRequest.status < 400){
