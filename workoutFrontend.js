@@ -32,7 +32,9 @@ function convertWorkoutToTableRow(singleObjectRow){
 	var newRow = document.createElement("tr");
 	document.getElementById("tableBody").appendChild(newRow);
 	
-	var dateFormatted = singleObjectRow.date.slice(0, 10);
+	//cut the time off the end of the date
+	var formattedDate = singleObjectRow.date.slice(0, 10);
+
 	//check value of lbs and convert to string to display in table
 	if (singleObjectRow.lbs === 1){
 		var lbs = "lbs";
@@ -44,8 +46,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 	addTableRowToDOM(newRow, singleObjectRow.name);
 	addTableRowToDOM(newRow, singleObjectRow.reps);
 	addTableRowToDOM(newRow, singleObjectRow.weight);
-	//addTableRowToDOM(newRow, singleObjectRow.date);
-	addTableRowToDOM(newRow, dateFormatted);
+	addTableRowToDOM(newRow, formattedDate);
 	addTableRowToDOM(newRow, lbs);
 
 	//create buttons
