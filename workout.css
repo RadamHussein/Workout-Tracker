@@ -1,9 +1,11 @@
+/*
 table, th, td {
 	text-align: center;
 	border: solid;
 	border-width: thin;
 	border-collapse: collapse;
 }
+*/
 
 #Edit {
 	background-color: blue;
