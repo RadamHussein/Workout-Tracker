@@ -52,7 +52,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 	//create buttons
 	var editButton = document.createElement("button");
 	editButton.id = "Edit";
-	editButton.className = "btn btn-default";
+	editButton.className = "btn btn-info";
 	var cellForButtons = document.createElement("td");
 	newRow.appendChild(cellForButtons);
 	cellForButtons.appendChild(editButton);
@@ -60,7 +60,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 
 	var deleteButton = document.createElement("button");
 	deleteButton.id = "Delete";
-	deleteButton.className = "btn btn-default";
+	deleteButton.className = "btn btn-danger";
 	cellForButtons.appendChild(deleteButton);
 	deleteButton.textContent = "Delete";
 	deleteButton.addEventListener("click", function(event){
