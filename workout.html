@@ -19,42 +19,43 @@ CS290 - Winter 2016-->
 			</div>
 			<div class="col-md-3">
 				<div class="card-style">
-				<form role="form" id="workouts">
-					<div class="form-group">
-						<label for="name">Name:</label>
-						<input type="text" name="name" id="name" class="form-control"></br>
-						<label for="reps">Reps:</label>
-						<input type="number" name="reps" id="reps" class="form-control"></br>
-						<label for="weight">Weight:</label>
-						<input type="number" name="weight" id="weight" class="form-control"></br>
-						<label for="date">Date:</label>
-						<input type="date" name="date" id="date" class="form-control"></br>
-						<select name="lbs" id="lbs">
-							<option value="1">lbs</option>
-							<option value="0">kg</option>
-						</select>
-						<button type="submit" id="submit" class="btn btn-primary">Submit</button></br>
-					</div>
-				</form>
+					<form role="form" id="workouts">
+						<div class="form-group">
+							<title>Enter Workout</title>
+							<label for="name">Name:</label>
+							<input type="text" name="name" id="name" class="form-control"></br>
+							<label for="reps">Reps:</label>
+							<input type="number" name="reps" id="reps" class="form-control"></br>
+							<label for="weight">Weight:</label>
+							<input type="number" name="weight" id="weight" class="form-control"></br>
+							<label for="date">Date:</label>
+							<input type="date" name="date" id="date" class="form-control"></br>
+							<select name="lbs" id="lbs">
+								<option value="1">lbs</option>
+								<option value="0">kg</option>
+							</select>
+							<button type="submit" id="submit" class="btn btn-primary">Submit</button></br>
+						</div>
+					</form>
 				</div>
 			</div>
 			<div class="col-md-9">
 				<div class="card-style" id="table-container">
-				<table class="table">
-					<thead>
-						<tr>
-							<th colspan="8">Workout Log</th>
-						<tr>
-							<th>Name
-							<th>Reps
-							<th>Weight
-							<th>Date
-							<th>lbs/kg
-						<th>
-					</thead>
-					<tbody id="tableBody">
-					</tbody>
-				</table>
+					<table class="table">
+						<thead>
+							<tr>
+								<th colspan="8">Workout Log</th>
+							<tr>
+								<th>Name
+								<th>Reps
+								<th>Weight
+								<th>Date
+								<th>lbs/kg
+								<th>
+						</thead>
+						<tbody id="tableBody">
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
