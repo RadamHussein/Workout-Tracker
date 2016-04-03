@@ -36,7 +36,16 @@ function convertWorkoutToTableRow(singleObjectRow){
 	addTableRowToDOM(newRow, singleObjectRow.reps);
 	addTableRowToDOM(newRow, singleObjectRow.weight);
 	addTableRowToDOM(newRow, singleObjectRow.date);
-	addTableRowToDOM(newRow, singleObjectRow.lbs);
+	//addTableRowToDOM(newRow, singleObjectRow.lbs);
+
+	if (singleObjectRow.lbs === 1){
+		var lbs = "lbs";
+	}
+	else {
+		var lbs = "kg";
+	}
+
+	addTableRowToDOM(newRow, lbs);
 
 	//create buttons
 	var editButton = document.createElement("button");
@@ -118,13 +127,7 @@ function handleInsert(){
 		//var lbs = 1;
 		var lbs = document.getElementById("lbs").value;
 		var date = document.getElementById("date").value;
-/*
-		if(document.getElementById("lbs").value == "lbs"){
-			var lbs = 1;
-		}else{
-			var lbs = 0;
-		}
-*/
+
 		insertRequest.open("GET", "http://52.33.123.66:3000/insert?name=" + name + "&reps=" + reps + "&weight=" + weight + "&date=" + date + "&lbs=" + lbs, true);
 		insertRequest.addEventListener("load", function(event){
 			if (insertRequest.status >= 200 && insertRequest.status < 400){
