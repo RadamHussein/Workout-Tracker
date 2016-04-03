@@ -19,19 +19,21 @@ CS290 - Winter 2016-->
 			</div>
 			<div class="col-md-3">
 				<form role="form" id="workouts">
-					<label for="name">Name:</label>
-					<input type="text" name="name" id="name"></br>
-					<label for="reps">Reps:</label>
-					<input type="number" name="reps" id="reps"></br>
-					<label for="weight">Weight:</label>
-					<input type="number" name="weight" id="weight"></br>
-					<label for="date">Date:</label>
-					<input type="date" name="date" id="date"></br>
-					<select name="lbs" id="lbs">
-						<option value="1">lbs</option>
-						<option value="0">kg</option>
-					</select>
-					<input type="submit" value="submit" id="submit"></br>
+					<div class="form-group">
+						<label for="name">Name:</label>
+						<input type="text" name="name" id="name" class="form-control"></br>
+						<label for="reps">Reps:</label>
+						<input type="number" name="reps" id="reps" class="form-control"></br>
+						<label for="weight">Weight:</label>
+						<input type="number" name="weight" id="weight" class="form-control"></br>
+						<label for="date">Date:</label>
+						<input type="date" name="date" id="date" class="form-control"></br>
+						<select name="lbs" id="lbs">
+							<option value="1">lbs</option>
+							<option value="0">kg</option>
+						</select>
+						<button type="submit" id="submit" class="btn btn-default">Submit</button></br>
+					</div>
 				</form>
 			</div>
 			<div class="col-md-9">
