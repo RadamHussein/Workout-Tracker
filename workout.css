@@ -19,6 +19,7 @@ h1 {
 	margin-left: 10px;
 }
 
+/*
 #card-table {
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
     min-height: 56px;
@@ -31,6 +32,18 @@ h1 {
 }
 
 #card-form {
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+    min-height: 56px;
+    transition: min-height 0.3s;
+    transition-property: min-height;
+    transition-duration: 0.3s;
+    transition-timing-function: initial;
+    transition-delay: initial;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+*/
+.card-style {
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
     min-height: 56px;
     transition: min-height 0.3s;
