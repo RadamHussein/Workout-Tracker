@@ -124,7 +124,7 @@ function handleInsert(){
 			var lbs = 0;
 		}
 */
-		insertRequest.open("GET", "http://52.33.123.66:3000/insert?name=" + name + "reps=" + reps + "weight=" + weight + "date=" + date + "lbs=" + lbs, true);
+		insertRequest.open("GET", "http://52.33.123.66:3000/insert?name=" + name + "&reps=" + reps + "&weight=" + weight + "&date=" + date + "&lbs=" + lbs, true);
 		insertRequest.addEventListener("load", function(event){
 			if (insertRequest.status >= 200 && insertRequest.status < 400){
 				var response = insertRequest.responseText;
