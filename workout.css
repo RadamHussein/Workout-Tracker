@@ -44,6 +44,7 @@ h1 {
 	padding-right: 15px;
 	margin-left: 5px;
 	margin-right: 10px;
+	max-height: 80%;
 }
 
 #form-container {
