@@ -60,18 +60,16 @@ function convertWorkoutToTableRow(singleObjectRow){
 	//var editButton = document.getElementById("Edit");
 	var editButton = cellForButtons.firstElementChild;
 	console.log("edit button is: " + editButton);
-/*
 	editButton.addEventListener("click", function(event){
 		console.log("edit button working");
 		console.log(singleObjectRow.name);
 		console.log(singleObjectRow.reps);
 		console.log(singleObjectRow.weight);
-		document.getElementById("name-modal").textContent = singleObjectRow.name;
-		document.getElementById("reps-modal").textContent = singleObjectRow.reps;
-		document.getElementById("weight-modal").textContent = singleObjectRow.weight;
+		//document.getElementById("name-modal").textContent = singleObjectRow.name;
+		//document.getElementById("reps-modal").textContent = singleObjectRow.reps;
+		//document.getElementById("weight-modal").textContent = singleObjectRow.weight;
 		event.preventDefault();
 	});
-*/
 
 	var deleteButton = document.createElement("button");
 	deleteButton.id = "Delete";
