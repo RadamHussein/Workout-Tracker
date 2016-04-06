@@ -53,13 +53,11 @@ function convertWorkoutToTableRow(singleObjectRow){
 	//create buttons
 	var cellForButtons = document.createElement("td");
 	newRow.appendChild(cellForButtons);
-	//add id="edit" if no other way to isolate button
 	var buttonForModal = '<button type="button" class="btn btn-info" data-toggle="modal" data-target=".bs-example-modal-lg">Edit</button>';
 	cellForButtons.innerHTML = buttonForModal;
 
 	//var editButton = document.getElementById("Edit");
 	var editButton = cellForButtons.firstElementChild;
-	console.log("edit button is: " + editButton);
 	editButton.addEventListener("click", function(event){
 		console.log("edit button working");
 		console.log(singleObjectRow.name);
@@ -69,6 +67,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 		document.getElementById("reps-modal").value = singleObjectRow.reps;
 		document.getElementById("weight-modal").value = singleObjectRow.weight;
 		document.getElementById("date-modal").value	= formattedDate;
+		document.getElementById("lbs").value = singleObjectRow.lbs;
 		event.preventDefault();
 	});
 
