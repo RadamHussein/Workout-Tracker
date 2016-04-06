@@ -50,15 +50,17 @@ function convertWorkoutToTableRow(singleObjectRow){
 	addTableRowToDOM(newRow, lbs);
 
 	//create buttons
-	//var editButton = document.createElement("button");
-	//editButton.id = "Edit";
-	//editButton.className = "btn btn-info";
 	var cellForButtons = document.createElement("td");
 	newRow.appendChild(cellForButtons);
-	//cellForButtons.appendChild(editButton);
-	//editButton.textContent = "Edit";
 	var buttonForModal = '<button type="button" class="btn btn-info" data-toggle="modal" data-target=".bs-example-modal-lg">Edit</button>';
 	cellForButtons.innerHTML= buttonForModal;
+
+	buttonForModal.addEventListener("click", function(event){
+		document.getElementById("name-modal").textContent = singleObjectRow.name;
+		document.getElementById("reps-modal").textContent = singleObjectRow.reps;
+		document.getElementById("weight-modal").textContent = singleObjectRow.weight;
+		event.preventDefault();
+	});
 
 	var deleteButton = document.createElement("button");
 	deleteButton.id = "Delete";
