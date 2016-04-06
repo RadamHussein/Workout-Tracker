@@ -53,11 +53,12 @@ function convertWorkoutToTableRow(singleObjectRow){
 	//create buttons
 	var cellForButtons = document.createElement("td");
 	newRow.appendChild(cellForButtons);
-	//add back type="button" if it doesn't work
-	var buttonForModal = '<button id="Edit" class="btn btn-info" data-toggle="modal" data-target=".bs-example-modal-lg">Edit</button>';
+	//add id="edit" if no other way to isolate button
+	var buttonForModal = '<button type="button" class="btn btn-info" data-toggle="modal" data-target=".bs-example-modal-lg">Edit</button>';
 	cellForButtons.innerHTML = buttonForModal;
 
-	var editButton = document.getElementById("Edit");
+	//var editButton = document.getElementById("Edit");
+	var editButton = cellForButtons.firstElementChild;
 	editButton.addEventListener("click", function(event){
 		console.log("edit button working");
 		console.log(singleObjectRow.name);
