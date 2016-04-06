@@ -58,6 +58,9 @@ function convertWorkoutToTableRow(singleObjectRow){
 	var editButton = document.getElementById("edit");
 	editButton.addEventListener("click", function(event){
 		console.log("edit button working");
+		console.log(singleObjectRow.name);
+		console.log(singleObjectRow.reps);
+		console.log(singleObjectRow.weight);
 		document.getElementById("name-modal").textContent = singleObjectRow.name;
 		document.getElementById("reps-modal").textContent = singleObjectRow.reps;
 		document.getElementById("weight-modal").textContent = singleObjectRow.weight;
