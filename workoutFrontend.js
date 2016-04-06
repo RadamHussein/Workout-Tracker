@@ -73,6 +73,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 	cellForButtons.appendChild(deleteButton);
 	deleteButton.textContent = "Delete";
 	deleteButton.addEventListener("click", function(event){
+		console.log("delete button clicked");
 		var deleteRequest = new XMLHttpRequest();
 		deleteRequest.open("GET", "http://52.33.123.66:3000/delete?id=" + singleObjectRow.id, true);
 		deleteRequest.addEventListener("load", function(){
