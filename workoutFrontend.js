@@ -65,9 +65,9 @@ function convertWorkoutToTableRow(singleObjectRow){
 		console.log(singleObjectRow.name);
 		console.log(singleObjectRow.reps);
 		console.log(singleObjectRow.weight);
-		//document.getElementById("name-modal").textContent = singleObjectRow.name;
-		//document.getElementById("reps-modal").textContent = singleObjectRow.reps;
-		//document.getElementById("weight-modal").textContent = singleObjectRow.weight;
+		document.getElementById("name-modal").textContent = singleObjectRow.name;
+		document.getElementById("reps-modal").textContent = singleObjectRow.reps;
+		document.getElementById("weight-modal").textContent = singleObjectRow.weight;
 		event.preventDefault();
 	});
 
