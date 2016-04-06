@@ -36,7 +36,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 	var formattedDate = singleObjectRow.date.slice(0, 10);
 
 	//check value of lbs and convert to string to display in table
-	if (singleObjectRow.lbs === 1){
+	if (singleObjectRow.lbs == 1){
 		var lbs = "lbs";
 	}
 	else {
