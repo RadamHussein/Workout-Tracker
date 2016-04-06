@@ -50,15 +50,15 @@ function convertWorkoutToTableRow(singleObjectRow){
 	addTableRowToDOM(newRow, lbs);
 
 	//create buttons
-	var editButton = document.createElement("button");
-	editButton.id = "Edit";
-	editButton.className = "btn btn-info";
+	//var editButton = document.createElement("button");
+	//editButton.id = "Edit";
+	//editButton.className = "btn btn-info";
 	var cellForButtons = document.createElement("td");
 	newRow.appendChild(cellForButtons);
-	cellForButtons.appendChild(editButton);
-	editButton.textContent = "Edit";
+	//cellForButtons.appendChild(editButton);
+	//editButton.textContent = "Edit";
 	//var buttonForModal = '<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>';
-	//cellForButtons.appendChild(buttonForModal);
+	cellForButtons.innerHTML= buttonForModal;
 
 	var deleteButton = document.createElement("button");
 	deleteButton.id = "Delete";
