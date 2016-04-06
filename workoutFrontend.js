@@ -68,6 +68,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 		document.getElementById("name-modal").value = singleObjectRow.name;
 		document.getElementById("reps-modal").value = singleObjectRow.reps;
 		document.getElementById("weight-modal").value = singleObjectRow.weight;
+		document.getElementById("date-modal").value	= formattedDate;
 		event.preventDefault();
 	});
 
