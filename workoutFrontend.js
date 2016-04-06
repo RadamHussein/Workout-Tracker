@@ -53,17 +53,17 @@ function convertWorkoutToTableRow(singleObjectRow){
 	var cellForButtons = document.createElement("td");
 	newRow.appendChild(cellForButtons);
 	var buttonForModal = '<button type="button" class="btn btn-info" data-toggle="modal" data-target=".bs-example-modal-lg">Edit</button>';
-	cellForButtons.innerHTML= buttonForModal;
+	cellForButtons.innerHTML = buttonForModal;
 
-
+/*
 	buttonForModal.addEventListener("click", function(event){
 		console.log("edit button working");
-		//document.getElementById("name-modal").textContent = singleObjectRow.name;
-		//document.getElementById("reps-modal").textContent = singleObjectRow.reps;
-		//document.getElementById("weight-modal").textContent = singleObjectRow.weight;
+		document.getElementById("name-modal").textContent = singleObjectRow.name;
+		document.getElementById("reps-modal").textContent = singleObjectRow.reps;
+		document.getElementById("weight-modal").textContent = singleObjectRow.weight;
 		event.preventDefault();
 	});
-
+*/
 	var deleteButton = document.createElement("button");
 	deleteButton.id = "Delete";
 	deleteButton.className = "btn btn-danger";
