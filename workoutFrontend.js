@@ -57,7 +57,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 	newRow.appendChild(cellForButtons);
 	//cellForButtons.appendChild(editButton);
 	//editButton.textContent = "Edit";
-	var buttonForModal = '<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>';
+	var buttonForModal = '<button type="button" class="btn btn-info" data-toggle="modal" data-target=".bs-example-modal-lg">Edit</button>';
 	cellForButtons.innerHTML= buttonForModal;
 
 	var deleteButton = document.createElement("button");
