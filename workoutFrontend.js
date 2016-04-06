@@ -43,6 +43,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 		var lbs = "kg";
 	}
 
+	//send to function to add entry to table
 	addTableRowToDOM(newRow, singleObjectRow.name);
 	addTableRowToDOM(newRow, singleObjectRow.reps);
 	addTableRowToDOM(newRow, singleObjectRow.weight);
@@ -52,10 +53,11 @@ function convertWorkoutToTableRow(singleObjectRow){
 	//create buttons
 	var cellForButtons = document.createElement("td");
 	newRow.appendChild(cellForButtons);
-	var buttonForModal = '<button type="button" id="edit" class="btn btn-info" data-toggle="modal" data-target=".bs-example-modal-lg">Edit</button>';
+	//add back type="button" if it doesn't work
+	var buttonForModal = '<button id="Edit" class="btn btn-info" data-toggle="modal" data-target=".bs-example-modal-lg">Edit</button>';
 	cellForButtons.innerHTML = buttonForModal;
 
-	var editButton = document.getElementById("edit");
+	var editButton = document.getElementById("Edit");
 	editButton.addEventListener("click", function(event){
 		console.log("edit button working");
 		console.log(singleObjectRow.name);
@@ -74,7 +76,6 @@ function convertWorkoutToTableRow(singleObjectRow){
 	deleteButton.textContent = "Delete";
 	deleteButton.addEventListener("click", function(event){
 		console.log("delete button clicked");
-	/*
 		var deleteRequest = new XMLHttpRequest();
 		deleteRequest.open("GET", "http://52.33.123.66:3000/delete?id=" + singleObjectRow.id, true);
 		deleteRequest.addEventListener("load", function(){
@@ -84,7 +85,6 @@ function convertWorkoutToTableRow(singleObjectRow){
 			displayWorkoutsTable();
 		});
 		deleteRequest.send(null);
-	*/
 		event.preventDefault();
 	});
 };
