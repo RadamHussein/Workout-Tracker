@@ -55,8 +55,10 @@ h1 {
 	margin-left: 5px;
 	margin-right: 10px;
 	margin-top: 20px;
+/*
 	max-height: 500px;
 	overflow-y: auto;
+*/
 }
 
 #form-container {
@@ -69,7 +71,6 @@ h1 {
 	margin-left: 5px;
 }
 
-
 .col-md-12 {
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
 	background: #FFEB3B; /* For browsers that do not support gradients */
@@ -77,5 +78,12 @@ h1 {
   	background: -o-linear-gradient(right, #FFEB3B, #FFF59D); /* For Opera 11.1 to 12.0 */
   	background: -moz-linear-gradient(right, #FFEB3B, #FFF59D); /* For Firefox 3.6 to 15 */
   	background: linear-gradient(to right, #FFEB3B, #FFF59D); /* Standard syntax */
+}
+
+@media only screen and (min-width: 1000px){
+	#table-container{
+		max-height: 500px;
+		overflow-y: auto;
+	}
 }
 
