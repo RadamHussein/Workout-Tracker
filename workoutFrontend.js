@@ -170,7 +170,7 @@ function handleUpdate(){
 			}
 		});
 		updateRequest.send(null);
-		event.preventDefault();
+		//event.preventDefault();
 	});
 };
 
