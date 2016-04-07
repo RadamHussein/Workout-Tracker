@@ -59,6 +59,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 	//adds event listener to edit button
 	var editButton = cellForButtons.firstElementChild;
 	editButton.addEventListener("click", function(event){
+		document.getElementById("id-modal").value = singleObjectRow.id;
 		document.getElementById("name-modal").value = singleObjectRow.name;
 		document.getElementById("reps-modal").value = singleObjectRow.reps;
 		document.getElementById("weight-modal").value = singleObjectRow.weight;
@@ -152,13 +153,14 @@ function handleUpdate(){
 	document.getElementById("submit-modal").addEventListener("click", function(event){
 		console.log("modal click is working");
 		var updateRequest = new XMLHttpRequest();
+		var id = document.getElementById("id-modal").value;
 		var name = document.getElementById("name-modal").value;
 		var reps = document.getElementById("reps-modal").value;
 		var weight = document.getElementById("weight-modal").value;
 		var lbs = document.getElementById("lbs-modal").value;
 		var date = document.getElementById("date-modal").value;
 
-		updateRequest.open("GET", "http://52.33.123.66:3000/insert?name=" + name + "&reps=" + reps + "&weight=" + weight + "&date=" + date + "&lbs=" + lbs, true);
+		updateRequest.open("GET", "http://52.33.123.66:3000/update?id=" + name + "&reps=" + reps + "&weight=" + weight + "&date=" + date + "&lbs=" + lbs, true);
 		updateRequest.addEventListener("load", function(event){
 			if (updateRequest.status >= 200 && updateRequest.status < 400){
 				var response = updateRequest.responseText;
