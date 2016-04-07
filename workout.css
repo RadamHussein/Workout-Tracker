@@ -23,13 +23,18 @@ table {
 	margin-right: 5px;
 	margin-bottom: 5px;
 	margin-left: 5px;
+	display: block;
+	max-height: 400px;
+	overflow: scroll;
 }
 
+/*
 tbody {
 	display: block;
 	max-height: 400px;
 	overflow: scroll;
 }
+*/
 
 h1 {
 	margin-left: 10px;
