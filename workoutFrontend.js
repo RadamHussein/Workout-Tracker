@@ -50,32 +50,31 @@ function convertWorkoutToTableRow(singleObjectRow){
 	addTableRowToDOM(newRow, formattedDate);
 	addTableRowToDOM(newRow, lbs);
 
-	//create buttons
+	//create edit button
 	var cellForButtons = document.createElement("td");
 	newRow.appendChild(cellForButtons);
 	var buttonForModal = '<button type="button" class="btn btn-info" data-toggle="modal" data-target=".bs-example-modal-lg">Edit</button>';
 	cellForButtons.innerHTML = buttonForModal;
 
-	//var editButton = document.getElementById("Edit");
+	//adds event listener to edit button
 	var editButton = cellForButtons.firstElementChild;
 	editButton.addEventListener("click", function(event){
-		console.log("edit button working");
-		console.log(singleObjectRow.name);
-		console.log(singleObjectRow.reps);
-		console.log(singleObjectRow.weight);
 		document.getElementById("name-modal").value = singleObjectRow.name;
 		document.getElementById("reps-modal").value = singleObjectRow.reps;
 		document.getElementById("weight-modal").value = singleObjectRow.weight;
 		document.getElementById("date-modal").value	= formattedDate;
-		document.getElementById("lbs").value = singleObjectRow.lbs;
+		document.getElementById("lbs-modal").value = singleObjectRow.lbs;
 		event.preventDefault();
 	});
 
+	//create delete button
 	var deleteButton = document.createElement("button");
 	deleteButton.id = "Delete";
 	deleteButton.className = "btn btn-danger";
 	cellForButtons.appendChild(deleteButton);
 	deleteButton.textContent = "Delete";
+
+	//add event listener to delete button
 	deleteButton.addEventListener("click", function(event){
 		console.log("delete button clicked");
 		var deleteRequest = new XMLHttpRequest();
@@ -145,6 +144,32 @@ function handleInsert(){
 			}
 		});
 		insertRequest.send(null);
+		event.preventDefault();
+	});
+};
+
+function handleUpdate(){
+	document.getElementById("submit-modal").addEventListener("click", function(event){
+		console.log("modal click is working");
+		var updateRequest = new XMLHttpRequest();
+		var name = document.getElementById("name-modal").value;
+		var reps = document.getElementById("reps-modal").value;
+		var weight = document.getElementById("weight-modal").value;
+		var lbs = document.getElementById("lbs-modal").value;
+		var date = document.getElementById("date-modal").value;
+
+		updateRequest.open("GET", "http://52.33.123.66:3000/insert?name=" + name + "&reps=" + reps + "&weight=" + weight + "&date=" + date + "&lbs=" + lbs, true);
+		updateRequest.addEventListener("load", function(event){
+			if (updateRequest.status >= 200 && updateRequest.status < 400){
+				var response = updateRequest.responseText;
+				console.log(response);
+				resetTable();
+				displayWorkoutsTable();
+			} else {
+				console.log("error");
+			}
+		});
+		updateRequest.send(null);
 		event.preventDefault();
 	});
 };
