@@ -160,7 +160,7 @@ function handleUpdate(){
 		var lbs = document.getElementById("lbs-modal").value;
 		var date = document.getElementById("date-modal").value;
 
-		updateRequest.open("GET", "http://52.33.123.66:3000/update?id=" + name + "&reps=" + reps + "&weight=" + weight + "&date=" + date + "&lbs=" + lbs, true);
+		updateRequest.open("GET", "http://52.33.123.66:3000/update?id=" + id + "&name=" + name + "&reps=" + reps + "&weight=" + weight + "&date=" + date + "&lbs=" + lbs, true);
 		updateRequest.addEventListener("load", function(event){
 			if (updateRequest.status >= 200 && updateRequest.status < 400){
 				var response = updateRequest.responseText;
