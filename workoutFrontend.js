@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", main);
 function main(){
 	displayWorkoutsTable();
 	handleInsert();
+};
 
 //gets any table data from database 
 function getWorkouts(workouts){
@@ -150,7 +151,7 @@ function handleInsert(){
 	});
 };
 
-}; //this closes off main()
+//}; //this closes off main()
 
 function handleUpdate(){
 	document.getElementById("submit-modal").addEventListener("click", function(event){
