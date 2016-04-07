@@ -65,6 +65,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 		document.getElementById("weight-modal").value = singleObjectRow.weight;
 		document.getElementById("date-modal").value	= formattedDate;
 		document.getElementById("lbs-modal").value = singleObjectRow.lbs;
+		handleUpdate();
 		event.preventDefault();
 	});
 
@@ -149,6 +150,8 @@ function handleInsert(){
 	});
 };
 
+}; //this closes off main()
+
 function handleUpdate(){
 	document.getElementById("submit-modal").addEventListener("click", function(event){
 		console.log("modal click is working");
@@ -177,6 +180,4 @@ function handleUpdate(){
 	*/
 	});
 };
-
-}; //this closes off main()
 
