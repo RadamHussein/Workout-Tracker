@@ -6,7 +6,9 @@ table, th, td {
 	border-collapse: collapse;
 }
 */
-
+.row {
+	background-color: #FAFAFA;
+}
 
 form {
 	margin-top: 5px;
@@ -39,6 +41,7 @@ h1 {
     padding-right: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
+    background-color: initial;
 }
 
 #table-container {
@@ -60,9 +63,6 @@ h1 {
 
 
 .col-md-12 {
-/*
-	background-color: #FFEB3B;
-*/
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
 	background: #FFEB3B; /* For browsers that do not support gradients */
   	background: -webkit-linear-gradient(left, #FFEB3B, white); /* For Safari 5.1 to 6.0 */
