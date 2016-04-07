@@ -1,11 +1,4 @@
-/*
-table, th, td {
-	text-align: center;
-	border: solid;
-	border-width: thin;
-	border-collapse: collapse;
-}
-*/
+
 .row {
 	background-color: #EEEEEE;
 	height: 100vh;
@@ -55,10 +48,6 @@ h1 {
 	margin-left: 5px;
 	margin-right: 10px;
 	margin-top: 20px;
-/*
-	max-height: 500px;
-	overflow-y: auto;
-*/
 }
 
 #form-container {
@@ -84,6 +73,12 @@ h1 {
 	#table-container{
 		max-height: 500px;
 		overflow-y: auto;
+	}
+}
+
+@media only screen and (max-width: 500px){
+	#table-container{
+		overflow-x: auto;
 	}
 }
 
