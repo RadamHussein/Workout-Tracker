@@ -26,7 +26,7 @@ table {
 }
 
 tbody {
-	display: block;
+	display: inline-block;
 	width: 100%;
 	max-height: 400px;
 	overflow-y: scroll;
