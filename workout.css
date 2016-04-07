@@ -56,6 +56,6 @@ h1 {
 	margin-left: 5px;
 }
 
-#left-sidebar {
+.col-md-12 {
 	background-color: #FFEB3B
 }
