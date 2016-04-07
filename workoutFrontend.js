@@ -152,6 +152,7 @@ function handleInsert(){
 function handleUpdate(){
 	document.getElementById("submit-modal").addEventListener("click", function(event){
 		console.log("modal click is working");
+	/*
 		var updateRequest = new XMLHttpRequest();
 		var id = document.getElementById("id-modal").value;
 		var name = document.getElementById("name-modal").value;
@@ -173,6 +174,7 @@ function handleUpdate(){
 		});
 		updateRequest.send(null);
 		//event.preventDefault();
+	*/
 	});
 };
 
