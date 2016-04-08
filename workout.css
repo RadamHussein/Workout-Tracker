@@ -1,3 +1,17 @@
+.col-md-12 {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.col-md-3 {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.col-md-9 {
+	padding-right: 0px;
+	padding-left: 0px;
+}
 
 .row {
 	background-color: #EEEEEE;
