@@ -1,23 +1,9 @@
-.col-md-12 {
-	padding-right: 0px;
-	padding-left: 0px;
-}
-
-.col-md-3 {
-	padding-right: 0px;
-	padding-left: 0px;
-}
-
-.col-md-9 {
-	padding-right: 0px;
-	padding-left: 0px;
-}
 
 .row {
 	background-color: #EEEEEE;
 	height: 100vh;
 }
-
+/*
 form {
 	margin-top: 5px;
 	margin-right: 5px;
@@ -32,15 +18,7 @@ table {
 	margin-left: 5px;
 }
 
-/*
-tbody {
-	max-height: 400px;
-	overflow-y: scroll;
-}
-*/
-
 h1 {
-	/*margin-left: 10px;*/
 	position: relative;
 	left: 10px;
 }
@@ -79,13 +57,13 @@ h1 {
 
 .col-md-12 {
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
-	background: #FFEB3B; /* For browsers that do not support gradients */
-  	background: -webkit-linear-gradient(left, #FFEB3B, #FFF59D); /* For Safari 5.1 to 6.0 */
-  	background: -o-linear-gradient(right, #FFEB3B, #FFF59D); /* For Opera 11.1 to 12.0 */
-  	background: -moz-linear-gradient(right, #FFEB3B, #FFF59D); /* For Firefox 3.6 to 15 */
-  	background: linear-gradient(to right, #FFEB3B, #FFF59D); /* Standard syntax */
+	background: #FFEB3B; 
+  	background: -webkit-linear-gradient(left, #FFEB3B, #FFF59D);
+  	background: -o-linear-gradient(right, #FFEB3B, #FFF59D);
+  	background: -moz-linear-gradient(right, #FFEB3B, #FFF59D);
+  	background: linear-gradient(to right, #FFEB3B, #FFF59D);
 }
-
+*/
 @media only screen and (min-width: 1000px){
 	#table-container{
 		max-height: 500px;
