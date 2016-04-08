@@ -69,7 +69,11 @@ h1 {
 	}
 }
 
-@media only screen and (min-width: 501px and max-width: 999px){
+@media only screen and (min-width: 501px) and (max-width: 999px){
+	#Delete {
+		margin-left: 0px;
+		margin-top: 5px;
+	}
 	#form-container {
 		margin-left: 0px;
 		margin-right: 0px;
