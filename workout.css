@@ -3,7 +3,7 @@
 	background-color: #EEEEEE;
 	height: 100vh;
 }
-/*
+
 form {
 	margin-top: 5px;
 	margin-right: 5px;
@@ -63,7 +63,7 @@ h1 {
   	background: -moz-linear-gradient(right, #FFEB3B, #FFF59D);
   	background: linear-gradient(to right, #FFEB3B, #FFF59D);
 }
-*/
+
 @media only screen and (min-width: 1000px){
 	#table-container{
 		max-height: 500px;
