@@ -27,7 +27,7 @@ tbody {
 
 h1 {
 	/*margin-left: 10px;*/
-	position: absolute;
+	position: relative;
 	left: 10px;
 }
 
