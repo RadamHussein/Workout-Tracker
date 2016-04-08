@@ -80,5 +80,8 @@ h1 {
 	#table-container{
 		overflow-x: auto;
 	}
+	#Delete {
+		margin-left: 0px;
+	}
 }
 
