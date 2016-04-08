@@ -18,14 +18,17 @@ table {
 	margin-left: 5px;
 }
 
+/*
 tbody {
 	max-height: 400px;
 	overflow-y: scroll;
 }
-
+*/
 
 h1 {
-	margin-left: 10px;
+	/*margin-left: 10px;*/
+	position: absolute;
+	left: 10px;
 }
 
 .card-style {
