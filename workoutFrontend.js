@@ -10,7 +10,6 @@ function main(){
 	displayWorkoutsTable();
 	handleInsert();
 };
-
 //gets any table data from database 
 function getWorkouts(workouts){
 	//calls get and returns a list of objects
@@ -59,13 +58,13 @@ function convertWorkoutToTableRow(singleObjectRow){
 
 	//adds event listener to edit button
 	var editButton = cellForButtons.firstElementChild;
-	editButton.addEventListener("click", function(event){
-		document.getElementById("id-modal").value = singleObjectRow.id;
-		document.getElementById("name-modal").value = singleObjectRow.name;
-		document.getElementById("reps-modal").value = singleObjectRow.reps;
-		document.getElementById("weight-modal").value = singleObjectRow.weight;
-		document.getElementById("date-modal").value	= formattedDate;
-		document.getElementById("lbs-modal").value = singleObjectRow.lbs;
+	this.editButton.addEventListener("click", function(event){
+		document.getElementById("id-modal").this.value = singleObjectRow.id;
+		document.getElementById("name-modal").this.value = singleObjectRow.name;
+		document.getElementById("reps-modal").this.value = singleObjectRow.reps;
+		document.getElementById("weight-modal").this.value = singleObjectRow.weight;
+		document.getElementById("date-modal").this.value	= formattedDate;
+		document.getElementById("lbs-modal").this.value = singleObjectRow.lbs;
 		handleUpdate();
 		event.preventDefault();
 	});
