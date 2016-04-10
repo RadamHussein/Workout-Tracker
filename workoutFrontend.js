@@ -117,6 +117,7 @@ function convertWorkoutsToTable(objList){
 //gets called first. Calls getWorkouts and calls converWorkoutsToTable with results;
 function displayWorkoutsTable(){
 	//Actually insert all of these construct elements into the DOM
+	console.log("Displaying workouts...");
 	getWorkouts(function workouts(objectListFromDatabase){
 		console.log("objectListFromDatabase is an " + typeof(objectListFromDatabase));
 		convertWorkoutsToTable(objectListFromDatabase);
@@ -154,7 +155,7 @@ function handleInsert(){
 
 function handleUpdate(){
 	document.getElementById("submit-modal").addEventListener("click", function(event){
-		console.log("modal click is working");
+		console.log("Modal click: submit");
 		var updateRequest = new XMLHttpRequest();
 		var id = document.getElementById("id-modal").value;
 		var name = document.getElementById("name-modal").value;
