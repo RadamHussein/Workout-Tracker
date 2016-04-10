@@ -125,9 +125,7 @@ function displayWorkoutsTable(){
 
 //This is a function to seperate the handling of Insert. It 
 function handleInsert(){
-	var submitButton = document.getElementById("submit");
-	//document.getElementById("submit").addEventListener("click", function(event){
-	this.submitButton.addEventListener("click", function(event){
+	document.getElementById("submit").addEventListener("click", function(event){
 		console.log("click is working");
 		var insertRequest = new XMLHttpRequest();
 		var name = document.getElementById("name").value;
