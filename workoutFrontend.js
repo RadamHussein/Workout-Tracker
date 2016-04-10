@@ -19,7 +19,6 @@ function getWorkouts(workouts){
 	request.addEventListener("load", function(){
 		var response = request.responseText;
 		var objectListFromDatabase = JSON.parse(response); //change it to an object
-		console.log(typeof(objectListFromDatabase)); //did it change to an object?
 		workouts(objectListFromDatabase); // Call the callback provided by the caller
 	});
 	request.send(null);
@@ -126,7 +125,9 @@ function displayWorkoutsTable(){
 
 //This is a function to seperate the handling of Insert. It 
 function handleInsert(){
-	document.getElementById("submit").addEventListener("click", function(event){
+	var submitButton = document.getElementById("submit");
+	//document.getElementById("submit").addEventListener("click", function(event){
+	this.submitButton.addEventListener("click", function(event){
 		console.log("click is working");
 		var insertRequest = new XMLHttpRequest();
 		var name = document.getElementById("name").value;
