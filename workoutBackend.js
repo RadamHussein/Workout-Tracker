@@ -37,7 +37,6 @@ app.get('/reset-table',function(req,res,next){
 
 //insert into database
 app.get('/insert',function(req,res,next){
-  console.log("/insert has been called");
   var context = {};
   pool.query("INSERT INTO workouts (`name`, `reps`, `weight`, `date`, `lbs`) VALUES (?, ?, ?, ?, ?)", [req.query.name, req.query.reps, req.query.weight, req.query.date, req.query.lbs], function(err, result){
     if(err){
@@ -46,7 +45,6 @@ app.get('/insert',function(req,res,next){
     }
     context.results = "Inserted id " + result.insertId;
     res.type('text/plain'); //delete this once done testing
-    res.send('An entry has been added to the table');
   });
 });
 
@@ -61,7 +59,6 @@ app.get('/',function(req, res, next){
     context.results = rows;
     res.setHeader('Content-Type', 'application/json');
     res.send(context);
-    console.log("I have just been called");
   });
 });
 
@@ -83,7 +80,6 @@ app.get('/update',function(req,res,next){
           return;
         }
         context.results = "Updated " + result.changedRows + " rows.";
-        //res.render('home',context);
         res.send("Entry has been updated");
       });
     }
@@ -100,7 +96,6 @@ app.get('/delete', function(req, res, next){
       return;
     }
     context.results = "Deleted" + result.changedRows + " rows.";
-    res.send("Delete successful");
   });
 });
 
