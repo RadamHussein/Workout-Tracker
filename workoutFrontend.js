@@ -118,7 +118,6 @@ function displayWorkoutsTable(){
 	//Actually insert all of these construct elements into the DOM
 	console.log("Displaying workouts...");
 	getWorkouts(function workouts(objectListFromDatabase){
-		console.log("objectListFromDatabase is an " + typeof(objectListFromDatabase));
 		convertWorkoutsToTable(objectListFromDatabase);
 	});
 };
