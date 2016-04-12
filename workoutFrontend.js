@@ -179,7 +179,7 @@ function handleUpdate(){
 
 $('#edit-modal').on("show-bs-modal", function(event){
 	var modal = $(this);
-	console.lgo("Modal is shown");
+	console.log("Modal is shown");
 	modal.find('#id-modal').val(singleObjectRow.id);
 	modal.find('#name-modal').val(singleObjectRow.name);
 	modal.find('#reps-modal').val(singleObjectRow.reps);
