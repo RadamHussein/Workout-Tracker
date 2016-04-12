@@ -213,7 +213,7 @@ function handleUpdate(){
 		});
 		updateRequest.send(null);
 		//event.preventDefault();
-	});
+	//});
 };
 
 
