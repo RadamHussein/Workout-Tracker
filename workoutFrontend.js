@@ -9,6 +9,19 @@ document.addEventListener("DOMContentLoaded", main);
 function main(){
 	displayWorkoutsTable();
 	handleInsert();
+
+	$('#edit-modal').on('show.bs.modal', function(event){
+	//var modal = $(this);
+	console.log('Modal is shown');
+	/*
+	modal.find('#id-modal').val(singleObjectRow.id);
+	modal.find('#name-modal').val(singleObjectRow.name);
+	modal.find('#reps-modal').val(singleObjectRow.reps);
+	modal.find('#weight-modal').val(singleObjectRow.weight);
+	modal.find('#date-modal').val(formattedDate);
+	modal.find('#lbs-modal').val(singleObjectRow.lbs);
+	*/
+	});
 };
 //gets any table data from database 
 function getWorkouts(workouts){
@@ -177,16 +190,5 @@ function handleUpdate(){
 	});
 };
 
-$('#edit-modal').on('show.bs.modal', function(event){
-	//var modal = $(this);
-	console.log('Modal is shown');
-	/*
-	modal.find('#id-modal').val(singleObjectRow.id);
-	modal.find('#name-modal').val(singleObjectRow.name);
-	modal.find('#reps-modal').val(singleObjectRow.reps);
-	modal.find('#weight-modal').val(singleObjectRow.weight);
-	modal.find('#date-modal').val(formattedDate);
-	modal.find('#lbs-modal').val(singleObjectRow.lbs);
-	*/
-});
+
 
