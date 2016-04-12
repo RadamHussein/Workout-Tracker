@@ -166,7 +166,7 @@ function handleInsert(){
 	});
 };
 
-
+/*
 function handleUpdate(){
 	document.getElementById("submit-modal").addEventListener("click", function(event){
 		console.log("Modal click: submit");
@@ -193,6 +193,7 @@ function handleUpdate(){
 		//event.preventDefault();
 	});
 };
+*/
 
 
 
