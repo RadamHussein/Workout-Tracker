@@ -11,8 +11,11 @@ function main(){
 	handleInsert();
 
 	$('#edit-modal').on('show.bs.modal', function(event){
-	//var modal = $(this);
+	var modal = $(this);
 	console.log('Modal is shown');
+	modal.find("submit-modal").on('click', function(event){
+		console.log("Submit clicked");
+	});
 	/*
 	modal.find('#id-modal').val(singleObjectRow.id);
 	modal.find('#name-modal').val(singleObjectRow.name);
@@ -23,6 +26,7 @@ function main(){
 	*/
 	});
 };
+
 //gets any table data from database 
 function getWorkouts(workouts){
 	//calls get and returns a list of objects
