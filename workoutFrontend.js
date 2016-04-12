@@ -15,6 +15,8 @@ function main(){
 		var modal = $(this);
 		console.log('Modal is shown');
 		modal.find("#submit-modal").on('click', function(event){
+			handleUpdate();
+		/*
 			var updateRequest = new XMLHttpRequest();
 			var id = modal.find('#id-modal').val();
 			var name = modal.find('#name-modal').val();
@@ -35,17 +37,19 @@ function main(){
 				}
 			});
 			updateRequest.send(null);
+		*/
 			console.log("Submit Clicked");
 		});
 	});
 
+	//removes event listener from modal once modal is hidden
 	$('#edit-modal').on('hide.bs.modal', function(event){
 		$('#submit-modal').off();
 	});
 
 };
 
-//gets any table data from database 
+//gets table data from database 
 function getWorkouts(workouts){
 	//calls get and returns a list of objects
 	var request = new XMLHttpRequest();
@@ -184,10 +188,10 @@ function handleInsert(){
 	});
 };
 
-/*
+
 function handleUpdate(){
-	document.getElementById("submit-modal").addEventListener("click", function(event){
-		console.log("Modal click: submit");
+	//document.getElementById("submit-modal").addEventListener("click", function(event){
+		//console.log("Modal click: submit");
 		var updateRequest = new XMLHttpRequest();
 		var id = document.getElementById("id-modal").value;
 		var name = document.getElementById("name-modal").value;
@@ -211,7 +215,7 @@ function handleUpdate(){
 		//event.preventDefault();
 	});
 };
-*/
+
 
 
 
