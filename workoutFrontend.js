@@ -178,13 +178,15 @@ function handleUpdate(){
 };
 
 $('#edit-modal').on("show.bs.modal", function(event){
-	var modal = $(this);
+	//var modal = $(this);
 	console.log("Modal is shown");
+	/*
 	modal.find('#id-modal').val(singleObjectRow.id);
 	modal.find('#name-modal').val(singleObjectRow.name);
 	modal.find('#reps-modal').val(singleObjectRow.reps);
 	modal.find('#weight-modal').val(singleObjectRow.weight);
 	modal.find('#date-modal').val(formattedDate);
 	modal.find('#lbs-modal').val(singleObjectRow.lbs);
+	*/
 });
 
