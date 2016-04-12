@@ -177,9 +177,9 @@ function handleUpdate(){
 	});
 };
 
-$('#edit-modal').on("show.bs.modal", function(event){
+$('#edit-modal').on('show.bs.modal', function(event){
 	//var modal = $(this);
-	console.log("Modal is shown");
+	console.log('Modal is shown');
 	/*
 	modal.find('#id-modal').val(singleObjectRow.id);
 	modal.find('#name-modal').val(singleObjectRow.name);
