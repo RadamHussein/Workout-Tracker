@@ -17,7 +17,7 @@ function main(){
 			var updateRequest = new XMLHttpRequest();
 			var id = modal.find('#id-modal').val();
 			var name = modal.find('#name-modal').val();
-			var reps = modal.find('#reps-modal').val();d
+			var reps = modal.find('#reps-modal').val();
 			var weight = modal.find('#weight-modal').val();
 			var lbs = modal.find('#lbs-modal').val();
 			var date = modal.find('#date-modal').val();
