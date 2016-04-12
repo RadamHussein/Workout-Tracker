@@ -10,6 +10,7 @@ function main(){
 	displayWorkoutsTable();
 	handleInsert();
 
+	//this function executes code for updating an entry when a modal is shown
 	$('#edit-modal').on('show.bs.modal', function(event){
 		var modal = $(this);
 		console.log('Modal is shown');
@@ -35,8 +36,13 @@ function main(){
 			});
 			updateRequest.send(null);
 			console.log("Submit Clicked");
-			});
+		});
 	});
+
+	$('#edit-modal').on('hide.bs.modal', function(event){
+		$('#submit-modal').off();
+	});
+
 };
 
 //gets any table data from database 
