@@ -16,28 +16,6 @@ function main(){
 		console.log('Modal is shown');
 		modal.find("#submit-modal").on('click', function(event){
 			handleUpdate();
-		/*
-			var updateRequest = new XMLHttpRequest();
-			var id = modal.find('#id-modal').val();
-			var name = modal.find('#name-modal').val();
-			var reps = modal.find('#reps-modal').val();
-			var weight = modal.find('#weight-modal').val();
-			var lbs = modal.find('#lbs-modal').val();
-			var date = modal.find('#date-modal').val();
-
-			updateRequest.open("GET", "http://52.33.123.66:3000/update?id=" + id + "&name=" + name + "&reps=" + reps + "&weight=" + weight + "&date=" + date + "&lbs=" + lbs, true);
-				updateRequest.addEventListener("load", function(event){
-				if (updateRequest.status >= 200 && updateRequest.status < 400){
-					var response = updateRequest.responseText;
-					console.log(response);
-					resetTable();
-					displayWorkoutsTable();
-				} else {
-					console.log("error");
-				}
-			});
-			updateRequest.send(null);
-		*/
 			console.log("Submit Clicked");
 		});
 	});
@@ -103,7 +81,6 @@ function convertWorkoutToTableRow(singleObjectRow){
 		document.getElementById("weight-modal").value = singleObjectRow.weight;
 		document.getElementById("date-modal").value	= formattedDate;
 		document.getElementById("lbs-modal").value = singleObjectRow.lbs;
-		//handleUpdate();
 		event.preventDefault();
 	});
 
@@ -120,8 +97,8 @@ function convertWorkoutToTableRow(singleObjectRow){
 		var deleteRequest = new XMLHttpRequest();
 		deleteRequest.open("GET", "http://52.33.123.66:3000/delete?id=" + singleObjectRow.id, true);
 		deleteRequest.addEventListener("load", function(){
-			var response = deleteRequest.responseText;
-			console.log(response);
+			//var response = deleteRequest.responseText;
+			console.log("delete event has loaded");
 			resetTable();
 			displayWorkoutsTable();
 		});
@@ -190,8 +167,6 @@ function handleInsert(){
 
 
 function handleUpdate(){
-	//document.getElementById("submit-modal").addEventListener("click", function(event){
-		//console.log("Modal click: submit");
 		var updateRequest = new XMLHttpRequest();
 		var id = document.getElementById("id-modal").value;
 		var name = document.getElementById("name-modal").value;
@@ -212,8 +187,6 @@ function handleUpdate(){
 			}
 		});
 		updateRequest.send(null);
-		//event.preventDefault();
-	//});
 };
 
 
