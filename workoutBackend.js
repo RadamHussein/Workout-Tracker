@@ -80,6 +80,7 @@ app.get('/update',function(req,res,next){
           return;
         }
         context.results = "Updated " + result.changedRows + " rows.";
+        //res.render('home',context);
         res.send("Entry has been updated");
       });
     }
@@ -96,6 +97,7 @@ app.get('/delete', function(req, res, next){
       return;
     }
     context.results = "Deleted" + result.changedRows + " rows.";
+    res.send("Delete successful");
   });
 });
 

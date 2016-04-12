@@ -97,8 +97,6 @@ function convertWorkoutToTableRow(singleObjectRow){
 		var deleteRequest = new XMLHttpRequest();
 		deleteRequest.open("GET", "http://52.33.123.66:3000/delete?id=" + singleObjectRow.id, true);
 		deleteRequest.addEventListener("load", function(){
-			//var response = deleteRequest.responseText;
-			console.log("delete event has loaded");
 			resetTable();
 			displayWorkoutsTable();
 		});
