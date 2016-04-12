@@ -56,7 +56,6 @@ function convertWorkoutToTableRow(singleObjectRow){
 	cellForButtons.innerHTML = buttonForModal;
 
 	//adds event listener to edit button
-	/*
 	var editButton = cellForButtons.firstElementChild;
 	editButton.addEventListener("click", function(event){
 		document.getElementById("id-modal").value = singleObjectRow.id;
@@ -68,7 +67,6 @@ function convertWorkoutToTableRow(singleObjectRow){
 		handleUpdate();
 		event.preventDefault();
 	});
-	*/
 
 	//create delete button
 	var deleteButton = document.createElement("button");
@@ -181,6 +179,7 @@ function handleUpdate(){
 
 $('#edit-modal').on("show-bs-modal", function(event){
 	var modal = $(this);
+	console.lgo("Modal is shown");
 	modal.find('#id-modal').val(singleObjectRow.id);
 	modal.find('#name-modal').val(singleObjectRow.name);
 	modal.find('#reps-modal').val(singleObjectRow.reps);
