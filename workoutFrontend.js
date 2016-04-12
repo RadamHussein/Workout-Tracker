@@ -56,6 +56,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 	cellForButtons.innerHTML = buttonForModal;
 
 	//adds event listener to edit button
+	/*
 	var editButton = cellForButtons.firstElementChild;
 	editButton.addEventListener("click", function(event){
 		document.getElementById("id-modal").value = singleObjectRow.id;
@@ -67,6 +68,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 		handleUpdate();
 		event.preventDefault();
 	});
+	*/
 
 	//create delete button
 	var deleteButton = document.createElement("button");
@@ -149,7 +151,6 @@ function handleInsert(){
 	});
 };
 
-//}; //this closes off main()
 
 function handleUpdate(){
 	document.getElementById("submit-modal").addEventListener("click", function(event){
@@ -177,4 +178,14 @@ function handleUpdate(){
 		//event.preventDefault();
 	});
 };
+
+$('#edit-modal').on("show-bs-modal", function(event){
+	var modal = $(this);
+	modal.find('#id-modal').val(singleObjectRow.id);
+	modal.find('#name-modal').val(singleObjectRow.name);
+	modal.find('#reps-modal').val(singleObjectRow.reps);
+	modal.find('#weight-modal').val(singleObjectRow.weight);
+	modal.find('#date-modal').val(formattedDate);
+	modal.find('#lbs-modal').val(singleObjectRow.lbs);
+});
 
