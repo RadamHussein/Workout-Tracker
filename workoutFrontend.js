@@ -11,19 +11,11 @@ function main(){
 	handleInsert();
 
 	$('#edit-modal').on('show.bs.modal', function(event){
-	var modal = $(this);
-	console.log('Modal is shown');
-	modal.find("submit-modal").on('click', function(event){
-		console.log("Submit clicked");
-	});
-	/*
-	modal.find('#id-modal').val(singleObjectRow.id);
-	modal.find('#name-modal').val(singleObjectRow.name);
-	modal.find('#reps-modal').val(singleObjectRow.reps);
-	modal.find('#weight-modal').val(singleObjectRow.weight);
-	modal.find('#date-modal').val(formattedDate);
-	modal.find('#lbs-modal').val(singleObjectRow.lbs);
-	*/
+		var modal = $(this);
+		console.log('Modal is shown');
+		modal.find("#submit-modal").on('click', function(event){
+			console.log("Submit clicked");
+		});
 	});
 };
 
@@ -81,7 +73,7 @@ function convertWorkoutToTableRow(singleObjectRow){
 		document.getElementById("weight-modal").value = singleObjectRow.weight;
 		document.getElementById("date-modal").value	= formattedDate;
 		document.getElementById("lbs-modal").value = singleObjectRow.lbs;
-		handleUpdate();
+		//handleUpdate();
 		event.preventDefault();
 	});
 
