@@ -24,7 +24,22 @@ app.get('/createUsers', function(req, res, next){
 		"PRIMARY KEY ('id'),"+
 		"UNIQUE KEY 'password' ('password'))";
 		pool.query(createString, function(err){
-    	context.results = "Table users reset or created";
+    	context.results = "Table 'users' reset or created";
+    	res.send(context.results);
+    	})
+	});
+});
+
+app.get('/createWorkouts', function(req, res, next){
+	var context = {};
+	pool.query("DROP TABLE IF EXISTS workouts", function(err){
+		var createString = "CREATE TABLE workouts("+
+		"id INT(11) NOT NULL AUTO INCREMENT,"+
+		"name varchar(255),"+
+		"date date,"+
+		"PRIMARY KEY ('id))";
+		pool.query(createString, function(err){
+    	context.results = "Table 'workouts' reset or created";
     	res.send(context.results);
     	})
 	});
