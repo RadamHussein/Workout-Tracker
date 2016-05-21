@@ -126,13 +126,13 @@ app.get('/createUsers', function(req, res, next){
   var context = {};
   pool.query("DROP TABLE IF EXISTS users", function(err){
     var createString = "CREATE TABLE users("+
-    "id INT(11) AUTO_INCREMENT,"+
-    "first_name varchar(255) NOT NULL,"+
-    "last_name varchar(255) NOT NULL,"+
-    "user_name varchar(255) NOT NULL,"+
-    "password varchar(255) NOT NULL,"+
-    "PRIMARY KEY ('id'),"+
-    "UNIQUE KEY 'password' ('password'))";
+    "id INT(11) PRIMARY KEY AUTO_INCREMENT,"+
+    "first_name VARCHAR(255) NOT NULL,"+
+    "last_name VARCHAR(255) NOT NULL,"+
+    "user_name VARCHAR(255) NOT NULL,"+
+    "password VARCHAR(255) NOT NULL)"+
+    //"PRIMARY KEY ('id'),"+
+    //"UNIQUE KEY 'password' ('password'))";
     pool.query(createString, function(err){
       context.results = "Table 'users' reset or created";
       res.send(context.results);
