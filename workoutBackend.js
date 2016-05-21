@@ -69,6 +69,19 @@ app.get('/getUsers', function(req, res, next){
   });
 });
 
+app.get('/getWorkouts', function(req, res, next){
+  var context = {};
+  pool.query('SELECT * FROM workouts', function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = rows;
+    res.setHeader('Content-Type', 'application/json');
+    res.send(context);
+  });
+});
+
 //get database
 app.get('/',function(req, res, next){
   var context = {};
@@ -146,7 +159,7 @@ app.get('/createWorkouts', function(req, res, next){
     var createString = "CREATE TABLE workouts("+
     "id INT(11) NOT NULL AUTO_INCREMENT,"+
     "name varchar(255),"+
-    "PRIMARY KEY ('id))";
+    "PRIMARY KEY ('id'))";
     pool.query(createString, function(err){
       context.results = "Table 'workouts' reset or created";
       res.send(context.results);
