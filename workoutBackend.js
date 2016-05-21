@@ -56,6 +56,18 @@ app.get('/insertUsers', function(req, res, next){
   });
 });
 
+app.get('/insertWorkouts', function(req, res, next){
+  var context = {};
+  pool.query("INSERT INTO workouts (`name`) VALUES ('Buns of Steel'), ('Sword Fighting Shoulders'), ('Legs'), ('Arms')", function(err, results){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = "Inserted id " + result.insertId;
+    res.type('text/plain');
+  });
+});
+
 app.get('/getUsers', function(req, res, next){
   var context = {};
   pool.query('SELECT * FROM users', function(err, rows, fields){
