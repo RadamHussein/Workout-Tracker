@@ -91,6 +91,40 @@ app.get('/createUser_Workouts', function(req, res, next){
 	});
 });
 
+app.get('/createWorkout_Exercises', function(req, res, next){
+	var context = {};
+	pool.query("DROP TABLE IF EXISTS workouts_exercises", function(err){
+		var createString = "CREATE TABLE workouts_exercises("+
+		"wid INT(11) NOT NULL DEFAULT '0',"+
+		"eid INT(11) NOT NULL DEFAULT '0',"+
+		"PRIMARY KEY ('wid', 'eid'),"+
+		"KEY 'wid' ('wid'),"+
+		"FOREIGN KEY (`wid`) REFERENCES `workouts` (`id`),"+
+		"FOREIGN KEY (`eid`) REFERENCES `exercises` (`id`))";
+		pool.query(createString, function(err){
+			context.results = "Tabel 'workouts_exercises' reset or created";
+			res.send(context.results);
+		})
+	});
+});
+
+app.get('/createExercise_Sets', function(req, res, next){
+	var context = {};
+	pool.query("DROP TABLE IF EXISTS exercise_sets", function(err){
+		var createString = "CREATE TABLE exercise_sets("+
+		"eid INT(11) NOT NULL DEFAULT '0',"+
+		"sid INT(11) NOT NULL DEFAULT '0',"+
+		"PRIMARY KEY ('eid', 'sid'),"+
+		"KEY 'eid' ('eid'),"+
+		"FOREIGN KEY (`eid`) REFERENCES `exercises` (`id`),"+
+		"FOREIGN KEY (`sid`) REFERENCES `sets` (`id`))";
+		pool.query(createString, function(err){
+			context.results = "Table 'exercise_sets' reset or created";
+			res.send(context.results);
+		})
+	});
+});
+
 
 app.use(function(req,res){
   res.type('text/plain');
