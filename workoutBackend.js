@@ -46,7 +46,7 @@ app.get('/insert',function(req,res,next){
 app.get('/insertUsers', function(req, res, next){
   var context = {};
   //pool.query("INSERT INTO users (`first_name`, `last_name`, `user_name`, `password`) VALUES (?, ?, ?, ?)", [req.query.first_name, req.query.last_name, req.query.user_name, req.query.password], function(err, result){
-  pool.query("INSERT INTO users (`first_name`, `last_name`, `user_name`, `password`) VALUES ('Jon', 'Snow', 'Jsnow1@gmail.com', 'winterfell2')", function(err, results){
+  pool.query("INSERT INTO users (`id`, `first_name`, `last_name`, `user_name`, `password`) VALUES ('1', Jon', 'Snow', 'Jsnow1@gmail.com', 'winterfell2')", function(err, results){
     if(err){
       next(err);
       return;
@@ -126,7 +126,7 @@ app.get('/createUsers', function(req, res, next){
   var context = {};
   pool.query("DROP TABLE IF EXISTS users", function(err){
     var createString = "CREATE TABLE users("+
-    "id INT(11) NOT NULL AUTO_INCREMENT,"+
+    "id INT(11) AUTO_INCREMENT,"+
     "first_name varchar(255) NOT NULL,"+
     "last_name varchar(255) NOT NULL,"+
     "user_name varchar(255) NOT NULL,"+
