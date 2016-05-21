@@ -94,6 +94,19 @@ app.get('/getWorkouts', function(req, res, next){
   });
 });
 
+app.get('/getExercises', function(req, res, next){
+  var context = {};
+  pool.query('SELECT * FROM exercises', function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = rows;
+    res.setHeader('Content-Type', 'application/json');
+    res.send(context);
+  });
+});
+
 //get database
 app.get('/',function(req, res, next){
   var context = {};
