@@ -1,11 +1,6 @@
-/*Workout Tracker
-Adam Smith
-CS290 - Winter 2016
-*/
-
 var express = require('express');
 var app = express();
-app.set('port', 3000);
+app.set('port', 2000);
 app.use(express.static('public'));
 
 //connects to the database
@@ -45,6 +40,31 @@ app.get('/insert',function(req,res,next){
     }
     context.results = "Inserted id " + result.insertId;
     res.type('text/plain'); //delete this once done testing
+  });
+});
+
+app.get('insertUsers', function(req, res, next){
+  var context = {};
+  pool.query("INSERT INTO users (`first_name`, `last_name`, `user_name`, `password`) VALUES (?, ?, ?, ?)", [req.query.first_name, req.query.last_name, req.query.user_name, req.query.password], function(err, result){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = "Inserted id " + result.insertId;
+    res.type('text/plain');
+  });
+});
+
+app.get('/getUsers', function(req, res, next){
+  var context = {};
+  pool.query('SELECT * FROM users', function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = rows;
+    res.setHeader('Content-Type', 'application/json');
+    res.send(context);
   });
 });
 
