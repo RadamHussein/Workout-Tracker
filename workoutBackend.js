@@ -9,7 +9,7 @@ var pool = mysql.createPool({
   host  : 'localhost',
   user  : 'student',
   password: 'default',
-  database: 'student'
+  database: 'workout_tracker'
 });
 
 //sets up empty database
