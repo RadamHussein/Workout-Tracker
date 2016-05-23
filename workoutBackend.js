@@ -45,8 +45,8 @@ app.get('/insert',function(req,res,next){
 
 app.get('/insertUsers', function(req, res, next){
   var context = {};
-  //pool.query("INSERT INTO users (`first_name`, `last_name`, `user_name`, `password`) VALUES (?, ?, ?, ?)", [req.query.first_name, req.query.last_name, req.query.user_name, req.query.password], function(err, result){
-  pool.query("INSERT INTO users (`id`, `first_name`, `last_name`, `user_name`, `password`) VALUES ('1', Jon', 'Snow', 'Jsnow1@gmail.com', 'winterfell2')", function(err, results){
+  pool.query("INSERT INTO users (`first_name`, `last_name`, `user_name`, `password`) VALUES (?, ?, ?, ?)", [req.query.first_name, req.query.last_name, req.query.user_name, req.query.password], function(err, result){
+  //pool.query("INSERT INTO users (`id`, `first_name`, `last_name`, `user_name`, `password`) VALUES ('1', Jon', 'Snow', 'Jsnow1@gmail.com', 'winterfell2')", function(err, results){
     if(err){
       next(err);
       return;
@@ -67,6 +67,10 @@ app.get('/insertWorkouts', function(req, res, next){
     res.type('text/plain');
   });
 });
+
+/*********************************************
+Get contents from each table
+**********************************************/
 
 app.get('/getUsers', function(req, res, next){
   var context = {};
