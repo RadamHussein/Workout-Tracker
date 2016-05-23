@@ -46,7 +46,6 @@ app.get('/insert',function(req,res,next){
 app.get('/insertUsers', function(req, res, next){
   var context = {};
   pool.query("INSERT INTO users (`first_name`, `last_name`, `user_name`, `password`) VALUES (?, ?, ?, ?)", [req.query.first_name, req.query.last_name, req.query.user_name, req.query.password], function(err, result){
-  //pool.query("INSERT INTO users (`id`, `first_name`, `last_name`, `user_name`, `password`) VALUES ('1', Jon', 'Snow', 'Jsnow1@gmail.com', 'winterfell2')", function(err, results){
     if(err){
       next(err);
       return;
@@ -58,7 +57,19 @@ app.get('/insertUsers', function(req, res, next){
 
 app.get('/insertWorkouts', function(req, res, next){
   var context = {};
-  pool.query("INSERT INTO workouts (`name`) VALUES ('Buns of Steel'), ('Sword Fighting Shoulders'), ('Legs'), ('Arms')", function(err, results){
+  pool.query("INSERT INTO workouts (`name`) VALUES (?)", [req.query.name], function(err, result){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = "Inserted id " + result.insertId;
+    res.type('text/plain');
+  });
+});
+
+app.get('/insertUser_Workouts', fucntion(req, res, next){
+  var context = {};
+  pool.query("INSERT INTO user_workouts (`uid`, `wid`) VALUES (?, ?)", [req.query.uid, req.query.wid], function(err, result){
     if(err){
       next(err);
       return;
@@ -71,6 +82,19 @@ app.get('/insertWorkouts', function(req, res, next){
 /*********************************************
 Get contents from each table
 **********************************************/
+
+app.get('/getWorkoutsForUser', function(req, res, next){
+  var context = {};
+  pool.query('SELECT users.first_name, users.last_name, workouts.name FROM users INNER JOIN user_workouts ON users.id = user_workouts.uid INNER JOIN workouts ON user_workouts.wid = workouts.id', function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = rows;
+    res.setHeader('Content-Type', 'application/json');
+    res.send(context);
+  });
+});
 
 app.get('/getUsers', function(req, res, next){
   var context = {};
