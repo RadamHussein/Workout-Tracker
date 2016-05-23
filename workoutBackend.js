@@ -67,7 +67,7 @@ app.get('/insertWorkouts', function(req, res, next){
   });
 });
 
-app.get('/insertUser_Workouts', fucntion(req, res, next){
+app.get('/insertUser_Workouts', function(req, res, next){
   var context = {};
   pool.query("INSERT INTO user_workouts (`uid`, `wid`) VALUES (?, ?)", [req.query.uid, req.query.wid], function(err, result){
     if(err){
