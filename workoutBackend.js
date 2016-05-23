@@ -107,6 +107,58 @@ app.get('/getExercises', function(req, res, next){
   });
 });
 
+app.get('/getSets', function(req, res, next){
+  var context = {};
+  pool.query('SELECT * FROM sets', function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = rows;
+    res.setHeader('Content-Type', 'application/json');
+    res.send(context);
+  });
+});
+
+app.get('/getUser_Workouts', function(req, res, next){
+  var context = {};
+  pool.query('SELECT * FROM user_workouts', function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = rows;
+    res.setHeader('Content-Type', 'application/json');
+    res.send(context);
+  });
+});
+
+app.get('/getWorkouts_Exercises', function(req, res, next){
+  var context = {};
+  pool.query('SELECT * FROM workouts_exercises', function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = rows;
+    res.setHeader('Content-Type', 'application/json');
+    res.send(context);
+  });
+});
+
+app.get('/getExercise_Sets', function(req, res, next){
+  var context = {};
+  pool.query('SELECT * FROM exercise_sets', function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = rows;
+    res.setHeader('Content-Type', 'application/json');
+    res.send(context);
+  });
+});
+
 //get database
 app.get('/',function(req, res, next){
   var context = {};
