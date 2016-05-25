@@ -91,7 +91,7 @@ app.get('/createUser_Workouts', function(req, res, next){
 	});
 });
 
-app.get('/createWorkout_Exercises', function(req, res, next){
+app.get('/createWorkouts_Exercises', function(req, res, next){
 	var context = {};
 	pool.query("DROP TABLE IF EXISTS workouts_exercises", function(err){
 		var createString = "CREATE TABLE workouts_exercises("+
