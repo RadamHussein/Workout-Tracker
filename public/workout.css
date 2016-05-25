@@ -31,8 +31,7 @@ h1 {
 }
 
 #login_box {
-	position: absolute;
-	top: 20%;
+	margin-top: 20%;
 }
 
 .card-style {
