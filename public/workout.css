@@ -30,11 +30,6 @@ h1 {
 	text-align: center;
 }
 
-#login_button {
-	margin-left: auto;
-	margin-right: auto;
-}
-
 .card-style {
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
     min-height: 56px;
