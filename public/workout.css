@@ -30,8 +30,11 @@ h1 {
 	text-align: center;
 }
 
-#login_box {
-	margin-top: 20%;
+#login_button {
+	display: block;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .card-style {
