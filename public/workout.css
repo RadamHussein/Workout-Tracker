@@ -26,6 +26,10 @@ h1 {
 	left: 10px;
 }
 
+#user_login {
+	text-align: center;
+}
+
 .card-style {
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
     min-height: 56px;
