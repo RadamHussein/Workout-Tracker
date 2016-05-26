@@ -50,11 +50,11 @@ app.post('/logIn', urlencodedParser, function(req, res, next){
     console.log(rows[0].user_name);
     console.log(rows[0].password);
     var isEqual = true;
-    if(rows[0].user_name == username && rows[0].password == password){
+    if(rows[0] === undefined || rows[0] === null){
+      isEqual = false;
       context.results = isEqual;
     }
     else{
-      isEqual = false;
       context.results = isEqual;
     }
     res.type('text/plain');
