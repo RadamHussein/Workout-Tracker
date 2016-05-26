@@ -49,6 +49,7 @@ app.post('/logIn', urlencodedParser, function(req, res, next){
     console.log(typeof(rows));
     JSON.stringify(rows);
     console.log(rows);
+    console.log(rows[0]);
     console.log(rows[3]);
     console.log(rows[4]);
     res.send(context);
