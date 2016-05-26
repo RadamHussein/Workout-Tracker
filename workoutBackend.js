@@ -32,6 +32,7 @@ app.get('/reset-table',function(req,res,next){
 
 //handle login request
 app.post('/logIn', function(req, res, next){
+  console.log("request recieved");
   res.send('Post request recieved');
 });
 
