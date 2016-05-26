@@ -1,8 +1,9 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var app = express();
+var urlencodedParser = bodyParser.urlencoded({extended: false});
 app.set('port', 2000);
 app.use(express.static('public'));
-//app.use(express.urlencoded()); //to support url encoded bodies
 
 //connects to the database
 var mysql = require('mysql');
@@ -32,7 +33,7 @@ app.get('/reset-table',function(req,res,next){
 });
 
 //handle login request
-app.post('/logIn', function(req, res, next){
+app.post('/logIn', urlencodedParser, function(req, res, next){
   console.log("request recieved");
   var username = req.body.user_name;
   var password = req.body.password;
