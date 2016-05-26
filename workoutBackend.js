@@ -30,6 +30,11 @@ app.get('/reset-table',function(req,res,next){
   });
 });
 
+//handle login request
+app.post('/logIn', function(req, res, next){
+  res.send('Post request recieved');
+});
+
 //insert into database
 app.get('/insert',function(req,res,next){
   var context = {};
@@ -95,6 +100,7 @@ app.get('/getWorkoutsForUser', function(req, res, next){
     res.send(context);
   });
 });
+
 
 app.get('/getUsers', function(req, res, next){
   var context = {};
