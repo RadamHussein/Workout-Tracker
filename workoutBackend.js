@@ -39,7 +39,7 @@ app.post('/logIn', urlencodedParser, function(req, res, next){
   var password = req.body.password;
   console.log("The username recieved is " + username + " and the password recieved is " + password);
   var context = {};
-  pool.query("SELECT * FROM users WHERE user_name = (?) AND password = (?)", [req.body.user_name], [req.body.password], function(err, rows, fields){
+  pool.query("SELECT * FROM users WHERE user_name = (?) AND password = (?)", [req.body.user_name, req.body.password], function(err, rows, fields){
     if(err){
       next(err);
       return;
