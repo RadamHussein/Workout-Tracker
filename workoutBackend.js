@@ -45,6 +45,8 @@ app.post('/logIn', urlencodedParser, function(req, res, next){
       return;
     }
     context.results = rows;
+    console.log(rows.user_name);
+    console.log(rows.password);
     res.setHeader('Content-Type', 'application/json');
     console.log(typeof(rows));
     JSON.stringify(rows);
