@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 app.set('port', 2000);
 app.use(express.static('public'));
+app.use(express.urlencoded()); //to support url encoded bodies
 
 //connects to the database
 var mysql = require('mysql');
@@ -33,6 +34,9 @@ app.get('/reset-table',function(req,res,next){
 //handle login request
 app.post('/logIn', function(req, res, next){
   console.log("request recieved");
+  var username = req.body.user_name;
+  var password = req.body.password;
+  console.log("The username recieved is " + username + " and the password recieved is " + password);
   res.send('Post request recieved');
 });
 
