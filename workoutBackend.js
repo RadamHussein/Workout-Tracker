@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 app.set('port', 2000);
 app.use(express.static('public'));
-app.use(express.urlencoded()); //to support url encoded bodies
+//app.use(express.urlencoded()); //to support url encoded bodies
 
 //connects to the database
 var mysql = require('mysql');
