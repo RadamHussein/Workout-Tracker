@@ -44,11 +44,13 @@ app.post('/logIn', urlencodedParser, function(req, res, next){
       next(err);
       return;
     }
+    /*
     console.log(typeof(rows));
     JSON.stringify(rows);
     console.log(rows[0]);
     console.log(rows[0].user_name);
     console.log(rows[0].password);
+    */
     var isEqual = true;
     if(rows[0] === undefined || rows[0] === null){
       isEqual = false;
