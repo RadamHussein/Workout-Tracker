@@ -47,6 +47,8 @@ app.post('/logIn', urlencodedParser, function(req, res, next){
     context.results = rows;
     res.setHeader('Content-Type', 'application/json');
     console.log(typeof(rows));
+    JSON.stringify(rows);
+    console.log(rows);
     res.send(context);
   });
 });
