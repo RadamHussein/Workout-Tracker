@@ -44,8 +44,8 @@ app.post('/logIn', urlencodedParser, function(req, res, next){
       next(err);
       return;
     }
+    console.log("results is " + context.results);
     context.results = rows;
-    console.log("context is " + context);
     console.log("rows is " + rows);
     res.setHeader('Content-Type', 'application/json');
     res.send(context);
