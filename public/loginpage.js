@@ -20,6 +20,6 @@ function bindButtons(){
 			}
 		});
 		logInRequest.send(params);
-		event.preventDefault();
+		//event.preventDefault();
 	});
 };
