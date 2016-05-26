@@ -5,7 +5,6 @@ function bindButtons(){
 
 	logInButton.addEventListener("click", function(event){
 		console.log("Log In button clicked");
-	/*
 		var username = document.getElementById("username").value;
 		var password = document.getElementById("password").value;
 		var params = "user_name=" + username + "&password=" + password;
@@ -21,7 +20,6 @@ function bindButtons(){
 			}
 		});
 		logInRequest.send(params);
-	*/
 		event.preventDefault();
 	});
 };
