@@ -50,8 +50,8 @@ app.post('/logIn', urlencodedParser, function(req, res, next){
     JSON.stringify(rows);
     console.log(rows);
     console.log(rows[0]);
-    console.log(rows[3]);
-    console.log(rows[4]);
+    console.log(rows[0].user_name);
+    console.log(rows[0].password);
     res.send(context);
   });
 });
