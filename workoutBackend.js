@@ -38,7 +38,17 @@ app.post('/logIn', urlencodedParser, function(req, res, next){
   var username = req.body.user_name;
   var password = req.body.password;
   console.log("The username recieved is " + username + " and the password recieved is " + password);
-  res.send('Post request recieved');
+  var context = {};
+  pool.query("SELECT * FROM users WHERE user_name = (?) AND password = (?)", [req.body.user_name], [req.body.password], function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = rows;
+    res.setHeader('Content-Type', 'application/json');
+    res.send(context);
+  });
+  //res.send('Post request recieved');
 });
 
 //insert into database
