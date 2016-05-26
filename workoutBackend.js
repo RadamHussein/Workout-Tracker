@@ -44,15 +44,27 @@ app.post('/logIn', urlencodedParser, function(req, res, next){
       next(err);
       return;
     }
-    context.results = rows;
-    res.setHeader('Content-Type', 'application/json');
     console.log(typeof(rows));
     JSON.stringify(rows);
-    console.log(rows);
     console.log(rows[0]);
     console.log(rows[0].user_name);
     console.log(rows[0].password);
+    var isEqual = true;
+    if(rows[0].user_name == username && rows[0].password == password){
+      context.results = isEqual;
+    }
+    else{
+      isEqual = false;
+      context.results = isEqual;
+    }
+    res.type('text/plain');
     res.send(context);
+
+    //use to send object row returned from database
+    /*
+    context.results = rows;
+    res.setHeader('Content-Type', 'application/json');
+    */
   });
 });
 
