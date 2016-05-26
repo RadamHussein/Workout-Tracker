@@ -46,6 +46,8 @@ app.post('/logIn', urlencodedParser, function(req, res, next){
     }
     context.results = rows;
     res.setHeader('Content-Type', 'application/json');
+    console.log(context.results.first_name);
+    console.log(context.results.last_name);
     res.send(context);
   });
 });
