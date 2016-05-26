@@ -45,10 +45,11 @@ app.post('/logIn', urlencodedParser, function(req, res, next){
       return;
     }
     context.results = rows;
+    console.log("context is " + context);
+    console.log("rows is " + rows);
     res.setHeader('Content-Type', 'application/json');
     res.send(context);
   });
-  //res.send('Post request recieved');
 });
 
 //insert into database
