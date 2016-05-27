@@ -72,6 +72,8 @@ app.post('/logIn', urlencodedParser, function(req, res, next){
       context.results = isEqual;
     }
     */
+    JSON.stringify(response);
+    console.log(typeof(response));
     context.results = response;
     res.type('application/json');
     res.setHeader('Content-Type', 'application/json');
