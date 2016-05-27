@@ -8,6 +8,7 @@ body {
 	height: 100vh;
 }
 */
+
 body {
 	background-color: #EEEEEE;
 	height: 100vh;
@@ -30,6 +31,10 @@ table {
 h1 {
 	position: relative;
 	left: 10px;
+}
+
+#welcome {
+	display: block;
 }
 
 h2 {
