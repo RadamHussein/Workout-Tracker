@@ -23,12 +23,17 @@ table {
 
 h1 {
 	position: relative;
-	display: inline-block;
 	left: 10px;
 }
 
-a {
-	text-align: right;
+h2 {
+	position: relative;
+	display: inline-block;
+}
+
+h3 {
+	position: relative;
+	display: inline-block;
 }
 
 #user_login {
