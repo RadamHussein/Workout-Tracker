@@ -15,18 +15,21 @@ function bindButtons(){
 			var goodResponse = true;
 			if (logInRequest.status >= 200 && logInRequest.status < 400){
 				var response = logInRequest.responseText;
-				console.log(response);		
-				window.open("http://52.33.123.66:2000/workout.html");
+				console.log(response);	
+				if(response == true){	
+					window.open("http://52.33.123.66:2000/workout.html");
+				}
 			} else {
 				console.log("error");
-				goodResponse = false;
 			}
 			return goodResponse;
 		});
 		logInRequest.send(params);
 		event.preventDefault();
+		/*
 		if(openNewPage == true){
 			window.open("http://52.33.123.66:2000/workout.html");
 		}
+		*/
 	});
 };
