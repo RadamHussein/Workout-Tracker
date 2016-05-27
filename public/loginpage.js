@@ -57,7 +57,7 @@ function createNewUser(){
 		insertRequest.open("POST", "http://52.33.123.66:2000/insertUser", true);
 		insertRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		insertRequest.addEventListener("load", function(event){
-			if (updateRequest.status >= 200 && updateRequest.status < 400){
+			if (insertRequest.status >= 200 && insertRequest.status < 400){
 				var response = insertRequest.responseText;
 				console.log(response);
 			} else {
