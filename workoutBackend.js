@@ -56,7 +56,7 @@ app.post('/logIn', urlencodedParser, function(req, res, next){
     //var isEqual = true;
     var response = {
       isEqual: true,
-      tableData = rows[0]
+      tableData: rows[0]
     };
     if(rows[0] === undefined || rows[0] === null){
       //isEqual = false;
