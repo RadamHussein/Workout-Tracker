@@ -17,7 +17,7 @@ function bindButtons(){
 				var response = logInRequest.responseText;
 				console.log(response);
 				console.log(typeof(response));
-				JSON.parse(response);
+				JSON.parse('response');
 				console.log(typeof(response));
 				//check if the response sent back is true
 				if(response == '{"results":true}'){
