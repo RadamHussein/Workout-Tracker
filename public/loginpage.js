@@ -17,6 +17,8 @@ function bindButtons(){
 				var response = logInRequest.responseText;
 				console.log(response);
 				console.log(typeof(response));
+				JSON.parse(response);
+				console.log(typeof(response));
 				//check if the response sent back is true
 				if(response == '{"results":true}'){
 					window.open("http://52.33.123.66:2000/workout.html");
