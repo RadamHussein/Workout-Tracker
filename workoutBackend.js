@@ -73,7 +73,7 @@ app.post('/logIn', urlencodedParser, function(req, res, next){
     }
     */
     context.results = response;
-    //res.type('text/plain');
+    res.type('application/json');
     res.setHeader('Content-Type', 'application/json');
     res.send(context);
 
