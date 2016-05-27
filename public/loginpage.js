@@ -18,6 +18,7 @@ function bindButtons(){
 				console.log(response);
 				if(response == '{"results":true}'){
 					window.open("http://52.33.123.66:2000/workout.html");
+					self.close();
 				}
 			} else {
 				console.log("error");
