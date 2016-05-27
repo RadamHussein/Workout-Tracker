@@ -32,7 +32,6 @@ h1 {
 	position: relative;
 	left: 10px;
 }
-
 h2 {
 	display: inline-block;
 }
@@ -79,15 +78,10 @@ h3 {
 	margin-left: 5px;
 }
 
-
 #title-bar {
-	background: #FFEB3B;
-}
-
-.col-md-12 {
 	display: block;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
-	/*background: #FFEB3B;*/
+	background: #FFEB3B;
   	background: -webkit-linear-gradient(left, #FFEB3B, #FFF59D);
   	background: -o-linear-gradient(right, #FFEB3B, #FFF59D);
   	background: -moz-linear-gradient(right, #FFEB3B, #FFF59D);
