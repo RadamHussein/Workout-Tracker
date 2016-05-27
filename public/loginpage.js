@@ -12,14 +12,19 @@ function bindButtons(){
 		logInRequest.open("POST", "http://52.33.123.66:2000/logIn", true);
 		logInRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		logInRequest.addEventListener("load", function(event){
+			var goodResponse = true;
 			if (logInRequest.status >= 200 && logInRequest.status < 400){
 				var response = logInRequest.responseText;
 				console.log(response);		
 			} else {
 				console.log("error");
+				goodResponse = false;
 			}
 		});
 		logInRequest.send(params);
 		//event.preventDefault();
+		if(goodResponse == true){
+			window.open("http://52.33.123.66:2000/workout.html");
+		}
 	});
 };
