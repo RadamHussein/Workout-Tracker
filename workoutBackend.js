@@ -67,13 +67,6 @@ app.post('/logIn', urlencodedParser, function(req, res, next){
       //context.results = isEqual;
       response.isEqual = false;
     }
-    /*
-    else{
-      context.results = isEqual;
-    }
-    */
-    //var newResponseObject = JSON.stringify(response);
-    //console.log(typeof(newResponseObject));
     context.results = response;
     res.type('application/json');
     res.setHeader('Content-Type', 'application/json');
