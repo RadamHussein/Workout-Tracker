@@ -19,6 +19,7 @@ function bindButtons(){
 				var newResponseObject = JSON.parse(response);
 				console.log(typeof(newResponseObject));
 				console.log(typeof(newResponseObject.results));
+				console.log(newResponseObject.results.userId);
 				//check if the response sent back is true
 				if(response == '{"results":true}'){
 					window.open("http://52.33.123.66:2000/workout.html");
