@@ -15,6 +15,7 @@ var pool = mysql.createPool({
 });
 
 //sets up empty database
+/*
 app.get('/reset-table',function(req,res,next){
   var context = {};
   pool.query("DROP TABLE IF EXISTS workouts", function(err){
@@ -31,6 +32,7 @@ app.get('/reset-table',function(req,res,next){
     })
   });
 });
+*/
 
 //handle login request
 app.post('/logIn', urlencodedParser, function(req, res, next){
@@ -70,6 +72,23 @@ app.post('/logIn', urlencodedParser, function(req, res, next){
   });
 });
 
+app.post('/insertUser', urlencodedParser, function(req, res, next){
+  var first_name = req.body.first_name;
+  var last_name = req.body.last_name;
+  var user_name = req.body.user_name;
+  var password = req.body.password;
+  var context = {};
+  pool.query("INSERT INTO users (`first_name`, `last_name`, `user_name`, `password`) VALUES (?, ?, ?, ?)", [req.query.first_name, req.query.last_name, req.query.user_name, req.query.password], function(err, result){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = "User created";
+    res.type('text/plain');
+    res.send(context);
+  });
+});
+
 //insert into database
 app.get('/insert',function(req,res,next){
   var context = {};
@@ -94,6 +113,8 @@ app.get('/insertUsers', function(req, res, next){
     res.type('text/plain');
   });
 });
+
+
 
 app.get('/insertWorkouts', function(req, res, next){
   var context = {};
@@ -215,19 +236,6 @@ app.get('/getWorkouts_Exercises', function(req, res, next){
   });
 });
 
-app.get('/getExercise_Sets', function(req, res, next){
-  var context = {};
-  pool.query('SELECT * FROM exercise_sets', function(err, rows, fields){
-    if(err){
-      next(err);
-      return;
-    }
-    context.results = rows;
-    res.setHeader('Content-Type', 'application/json');
-    res.send(context);
-  });
-});
-
 //get database
 app.get('/',function(req, res, next){
   var context = {};
@@ -281,6 +289,7 @@ app.get('/delete', function(req, res, next){
   });
 });
 
+/*
 app.get('/createUsers', function(req, res, next){
   var context = {};
   pool.query("DROP TABLE IF EXISTS users", function(err){
@@ -393,6 +402,7 @@ app.get('/createExercise_Sets', function(req, res, next){
     })
   });
 });
+*/
 
 app.use(function(req,res){
   res.type('text/plain');
