@@ -22,7 +22,7 @@ function bindButtons(){
 			}
 		});
 		logInRequest.send(params);
-		//event.preventDefault();
+		event.preventDefault();
 		if(goodResponse == true){
 			window.open("http://52.33.123.66:2000/workout.html");
 		}
