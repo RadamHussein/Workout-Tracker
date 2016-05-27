@@ -26,7 +26,6 @@ h1 {
 	left: 10px;
 }
 
-/*
 h2 {
 	display: inline-block;
 }
@@ -34,7 +33,6 @@ h2 {
 h3 {
 	display: inline-block;
 }
-*/
 
 #user_login {
 	text-align: center;
@@ -75,6 +73,7 @@ h3 {
 }
 
 .col-md-12 {
+	display: block;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
 	background: #FFEB3B; 
   	background: -webkit-linear-gradient(left, #FFEB3B, #FFF59D);
