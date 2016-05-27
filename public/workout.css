@@ -23,6 +23,7 @@ table {
 
 h1 {
 	position: relative;
+	display: inline;
 	left: 10px;
 }
 
