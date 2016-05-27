@@ -16,10 +16,7 @@ function bindButtons(){
 			if (logInRequest.status >= 200 && logInRequest.status < 400){
 				var response = logInRequest.responseText;
 				console.log(response);
-				console.log(response[0]);
-				if(response.results == true){	
-					window.open("http://52.33.123.66:2000/workout.html");
-				}
+				//window.open("http://52.33.123.66:2000/workout.html");
 			} else {
 				console.log("error");
 			}
@@ -27,6 +24,7 @@ function bindButtons(){
 		});
 		logInRequest.send(params);
 		event.preventDefault();
+		console.log(openNewPage);
 		/*
 		if(openNewPage == true){
 			window.open("http://52.33.123.66:2000/workout.html");
