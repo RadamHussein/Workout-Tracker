@@ -11,12 +11,14 @@ function bindButtons(){
 		var logInRequest = new XMLHttpRequest();
 		logInRequest.open("POST", "http://52.33.123.66:2000/logIn", true);
 		logInRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		var openNewPage = logInRequest.addEventListener("load", function(event){
+		logInRequest.addEventListener("load", function(event){
 			var goodResponse = true;
 			if (logInRequest.status >= 200 && logInRequest.status < 400){
 				var response = logInRequest.responseText;
 				console.log(response);
-				//window.open("http://52.33.123.66:2000/workout.html");
+				if(response == '{"results":true}'){
+					window.open("http://52.33.123.66:2000/workout.html");
+				}
 			} else {
 				console.log("error");
 			}
@@ -24,11 +26,5 @@ function bindButtons(){
 		});
 		logInRequest.send(params);
 		event.preventDefault();
-		console.log(openNewPage);
-		/*
-		if(openNewPage == true){
-			window.open("http://52.33.123.66:2000/workout.html");
-		}
-		*/
 	});
 };
