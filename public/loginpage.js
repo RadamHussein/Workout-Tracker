@@ -12,28 +12,23 @@ function bindButtons(){
 		logInRequest.open("POST", "http://52.33.123.66:2000/logIn", true);
 		logInRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		logInRequest.addEventListener("load", function(event){
-			var goodResponse = true;
 			if (logInRequest.status >= 200 && logInRequest.status < 400){
 				var response = logInRequest.responseText;
+
+				//statement for debuging
 				console.log(response);
 				var newResponseObject = JSON.parse(response);
 				console.log(typeof(newResponseObject));
 				console.log(typeof(newResponseObject.results));
 				console.log(newResponseObject.results.userId);
+
 				//check if the response sent back is true
 				if(newResponseObject.results.isEqual == true){
-					window.open("http://52.33.123.66:2000/workout.html");
+					window.open("http://52.33.123.66:2000/workoutV2.html");
 				}
-				/*
-				if(response == '{"results":true}'){
-					window.open("http://52.33.123.66:2000/workout.html");
-					//self.close();
-				}
-				*/
 			} else {
 				console.log("error");
 			}
-			return goodResponse;
 		});
 		logInRequest.send(params);
 		event.preventDefault();

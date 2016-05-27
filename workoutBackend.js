@@ -46,27 +46,14 @@ app.post('/logIn', urlencodedParser, function(req, res, next){
       next(err);
       return;
     }
-    /*
-    console.log(typeof(rows));
-    JSON.stringify(rows);
-    console.log(rows[0]);
-    console.log(rows[0].user_name);
-    console.log(rows[0].password);
-    */
-    /*
-    var response = {
-      isEqual: true,
-      userId: rows[0].id,
-      fname: rows[0].first_name,
-      lname: rows[0].last_name
-    };
-    */
+
     var response = {
       isEqual: true,
       userId: null,
       fname: null,
       lname: null 
     }
+    
     console.log(typeof(rows[0]));
     console.log(rows[0]);
     if(rows[0] === undefined || rows[0] === null){
