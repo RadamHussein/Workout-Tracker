@@ -53,14 +53,22 @@ app.post('/logIn', urlencodedParser, function(req, res, next){
     console.log(rows[0].user_name);
     console.log(rows[0].password);
     */
-    var isEqual = true;
+    //var isEqual = true;
+    var response = {
+      isEqual: true,
+      tableData = rows[0]
+    };
     if(rows[0] === undefined || rows[0] === null){
-      isEqual = false;
-      context.results = isEqual;
+      //isEqual = false;
+      //context.results = isEqual;
+      response.isEqual = false;
     }
+    /*
     else{
       context.results = isEqual;
     }
+    */
+    context.results = response;
     res.type('text/plain');
     res.send(context);
 
