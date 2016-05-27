@@ -59,6 +59,7 @@ app.post('/logIn', urlencodedParser, function(req, res, next){
       tableData: rows[0]
     };
     console.log(typeof(rows[0]));
+    console.log(rows[0]);
     if(rows[0] === undefined || rows[0] === null){
       //isEqual = false;
       //context.results = isEqual;
