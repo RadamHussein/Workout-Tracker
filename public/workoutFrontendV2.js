@@ -18,6 +18,7 @@ function convertUsersToTableRow(singleObjectRow){
 	//get cell data from each element in the object and add to DOM
 	var newRow = document.createElement("tr");
 	document.getElementById("tableBody").appendChild(newRow);
+	newRow.setAttribute("class", "clickable-row");
 	
 	//cut the time off the end of the date
 	//var formattedDate = singleObjectRow.date.slice(0, 10);
@@ -60,6 +61,10 @@ function displayUsersTable(){
 		convertUsersToTable(objectListFromDatabase);
 	});
 };
+
+$('.clickable-row').click(function(){
+	console.log("Table row is clicked");
+});
 
 
 
