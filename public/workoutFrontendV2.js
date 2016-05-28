@@ -62,10 +62,8 @@ function displayUsersTable(){
 	});
 };
 
-jQuery(document).ready(function($){
-	$('.clickable-row').click(function(){
-		window.document.location = $(this).console.log("Table row is clicked");
-	});
+$('.clickable-row').on('click', function(){
+	console.log("Table row is clicked");
 });
 
 
