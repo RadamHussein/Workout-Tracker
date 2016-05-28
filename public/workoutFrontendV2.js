@@ -13,7 +13,7 @@ function addTableRowToDOM(newRow, singleTableItem){
 };
 
 //add workouts to the table
-function convertWorkoutToTableRow(singleObjectRow){
+function convertUsersToTableRow(singleObjectRow){
 
 	//get cell data from each element in the object and add to DOM
 	var newRow = document.createElement("tr");
@@ -23,9 +23,9 @@ function convertWorkoutToTableRow(singleObjectRow){
 	//var formattedDate = singleObjectRow.date.slice(0, 10);
 
 	//send to function to add entry to table
-	addTableRowToDOM(newRow, singleObjectRow.fname);
-	addTableRowToDOM(newRow, singleObjectRow.lname);
-	addTableRowToDOM(newRow, singleObjectRow.usrename);
+	addTableRowToDOM(newRow, singleObjectRow.first_name);
+	addTableRowToDOM(newRow, singleObjectRow.last_name);
+	addTableRowToDOM(newRow, singleObjectRow.user_name);
 	addTableRowToDOM(newRow, singleObjectRow.password);
 };
 
@@ -47,7 +47,7 @@ function getUsers(Users){
 		console.log(response);
 		var objectListFromDatabase = JSON.parse(response); //change it to an object
 		console.log(typeof(objectListFromDatabase));
-		//Users(objectListFromDatabase); // Call the callback provided by the caller
+		Users(objectListFromDatabase); // Call the callback provided by the caller
 	});
 	request.send(null);
 };
@@ -57,7 +57,7 @@ function displayUsersTable(){
 	//Actually insert all of these construct elements into the DOM
 	console.log("Displaying users...");
 	getUsers(function Users(objectListFromDatabase){
-		//convertUsersToTable(objectListFromDatabase);
+		convertUsersToTable(objectListFromDatabase);
 	});
 };
 
