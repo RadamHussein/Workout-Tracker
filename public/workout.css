@@ -40,6 +40,13 @@ h3 {
 	display: inline-block;
 }
 
+#addUser {
+	margin-bottom: 0px;
+	margin-left: 50px;
+	padding: 0px;
+
+}
+
 #user_login {
 	text-align: center;
 }
