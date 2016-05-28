@@ -19,6 +19,8 @@ function convertUsersToTableRow(singleObjectRow){
 	var newRow = document.createElement("tr");
 	document.getElementById("tableBody").appendChild(newRow);
 	newRow.setAttribute("class", "clickable-row");
+	var rowId = singleObjectRow.id;
+	newRow.setAttribute("href", rowId);
 	
 	//cut the time off the end of the date
 	//var formattedDate = singleObjectRow.date.slice(0, 10);
