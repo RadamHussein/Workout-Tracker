@@ -21,6 +21,10 @@ function convertUsersToTableRow(singleObjectRow){
 	newRow.setAttribute("class", "clickable-row");
 	var rowId = singleObjectRow.id;
 	newRow.setAttribute("href", rowId);
+
+	newRow.addEventListener("click", function(event){
+		console.log("table row clicked");
+	});
 	
 	//cut the time off the end of the date
 	//var formattedDate = singleObjectRow.date.slice(0, 10);
@@ -64,9 +68,11 @@ function displayUsersTable(){
 	});
 };
 
+/*
 $('.clickable-row').on('click', function(){
 	console.log("Table row is clicked");
 });
+*/
 
 
 
