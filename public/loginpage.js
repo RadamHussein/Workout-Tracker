@@ -24,7 +24,8 @@ function bindButtons(){
 
 				//check if the response sent back is true
 				if(newResponseObject.results.isEqual == true){
-					window.open("http://52.33.123.66:2000/workoutV2.html").addEventListener("load", function(event){
+					var homePage = window.open("http://52.33.123.66:2000/workoutV2.html");
+					homePage.addEventListener("load", function(event){
 						handleUserInfo(newResponseObject.results.userID, newResponseObject.results.fname, newResponseObject.results.lname);
 					});
 				}
