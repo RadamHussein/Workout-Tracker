@@ -45,7 +45,10 @@ h3 {
 	margin-left: 50px;
 	padding: 0px;
 	float: right;
+}
 
+.clickable-row:hover {
+	background-color: #E0E0E0;
 }
 
 #user_login {
