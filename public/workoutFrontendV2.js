@@ -44,6 +44,7 @@ function getUsers(Users){
 	request.withCredentials = true;
 	request.addEventListener("load", function(){
 		var response = request.responseText;
+		console.log(response);
 		var objectListFromDatabase = JSON.parse(response); //change it to an object
 		console.log(typeof(objectListFromDatabase));
 		//Users(objectListFromDatabase); // Call the callback provided by the caller
