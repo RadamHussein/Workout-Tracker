@@ -6,7 +6,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
-		<script src="loginpage.js"></script>
+		<script src="workoutFrontendV2.js"></script>
 		<link rel="stylesheet" type="text/css" href="workout.css">
 	</head>
 	<body>
@@ -16,12 +16,33 @@
 					<h1>Workout Tracker</h1>
 				</div>
 			</div>
-			<div class="row">
+			<!--<div class="row">
 				<div class="col-md-12 col-xs-12">
 					<div class="card-style">
 						<h3>Welcome</h3>
 						<h2 id="user-name"></h2>
 						<button type="button" class="btn btn-link">Log Out</button>
+					</div>
+				</div>
+			</div>-->
+			<div class="row">
+				<div class="col-md-12 col-xs-12">
+					<div class="card-style" id="table-container">
+						<table class="table">
+							<thead>
+								<tr>
+									<th colspan="12">Users</th>
+								</tr>
+								<tr>
+									<th>First Name
+									<th>Last Name
+									<th>User Name
+									<th>Password
+								</tr>
+							</thead>
+							<tbody id="tableBody">
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
