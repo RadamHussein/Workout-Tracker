@@ -25,6 +25,7 @@ function bindButtons(){
 				//check if the response sent back is true
 				if(newResponseObject.results.isEqual == true){
 					window.open("http://52.33.123.66:2000/workoutV2.html");
+					handleUserInfo(newResponseObject.results.userID, newResponseObject.results.fname, newResponseObject.results.lname);
 				}
 			} else {
 				console.log("error");
