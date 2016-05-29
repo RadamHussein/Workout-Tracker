@@ -34,6 +34,7 @@ function convertUsersToTableRow(singleObjectRow){
 			console.log(response);
 			var newResponseObject = JSON.parse(response);
 		});
+		requestUserWorkouts.send(params);
 	});
 	
 	//cut the time off the end of the date
