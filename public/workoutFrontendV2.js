@@ -24,6 +24,16 @@ function convertUsersToTableRow(singleObjectRow){
 
 	newRow.addEventListener("click", function(event){
 		console.log("table row clicked");
+		var userId = singleObjectRow.id;
+		var requestUserWorkouts = new XMLHttpRequest();
+		var params = "id=" + userId;
+		requestUserWorkouts.open("POST", "http://52.33.123.66:2000/userWorkouts", true);
+		requestUserWorkouts.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		requestUserWorkouts.addEventListener("load", function(event){
+			var response = requestUserWorkouts.responseText;
+			console.log(response);
+			var newResponseObject = JSON.parse(response);
+		});
 	});
 	
 	//cut the time off the end of the date
@@ -59,6 +69,7 @@ function getUsers(Users){
 	request.send(null);
 };
 
+
 //gets called first. Calls getWorkouts and calls converWorkoutsToTable with results;
 function displayUsersTable(){
 	//Actually insert all of these construct elements into the DOM
@@ -68,11 +79,6 @@ function displayUsersTable(){
 	});
 };
 
-/*
-$('.clickable-row').on('click', function(){
-	console.log("Table row is clicked");
-});
-*/
 
 
 

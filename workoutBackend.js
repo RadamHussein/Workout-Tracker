@@ -53,7 +53,7 @@ app.post('/logIn', urlencodedParser, function(req, res, next){
       fname: null,
       lname: null 
     }
-    
+
     console.log(typeof(rows[0]));
     console.log(rows[0]);
     if(rows[0] === undefined || rows[0] === null){
@@ -162,6 +162,19 @@ app.get('/getWorkoutsForUser', function(req, res, next){
   });
 });
 
+app.post('/getUserWorkouts', urlencodedParser, function(req, res, next){
+  //var id = req.body.id;
+  var context = {};
+  pool.query('SELECT workouts.name FROM users INNER JOIN user_workouts ON users.id = user_workouts.uid INNER JOIN workouts ON user_workouts.wid = workouts.id WHERE users.id = (?)', [req.body.id], function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = rows;
+    res.setHeader('Content-Type', 'application/json');
+    res.send(context);
+  });
+});
 
 app.get('/getUsers', function(req, res, next){
   var context = {};
