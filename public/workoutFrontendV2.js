@@ -102,7 +102,7 @@ function convertExercisesToTableRow(singleObjectRow){
 	addTableRowToDOM(newRow, singleObjectRow.name);
 };
 
-function convertSetsToTableRow(singleObjetRow){
+function convertSetsToTableRow(singleObjectRow){
 	var newRow = document.createElement("tr");
 	document.getElementById("sets_table_body").appendChild(newRow);
 	addTableRowToDOM(newRow, singleObjectRow.weight);
