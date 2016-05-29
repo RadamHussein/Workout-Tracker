@@ -167,7 +167,20 @@ app.get('/getWorkoutsForUser', function(req, res, next){
 app.post('/getUserWorkouts', urlencodedParser, function(req, res, next){
   //var id = req.body.id;
   var context = {};
-  pool.query('SELECT workouts.name FROM users INNER JOIN user_workouts ON users.id = user_workouts.uid INNER JOIN workouts ON user_workouts.wid = workouts.id WHERE users.id = (?)', [req.body.id], function(err, rows, fields){
+  pool.query('SELECT workouts.id, workouts.name FROM users INNER JOIN user_workouts ON users.id = user_workouts.uid INNER JOIN workouts ON user_workouts.wid = workouts.id WHERE users.id = (?)', [req.body.id], function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = rows;
+    res.setHeader('Content-Type', 'application/json');
+    res.send(context);
+  });
+});
+
+app.post('/getExercisesForUserWorkout', urlencodedParser, function(req, res, next){
+  var context = {};
+  pool.query('SELECT exercises.id, exercises.name FROM users INNER JOIN workouts_log ON users.id = workouts_log.user_id INNER JOIN exercises ON workouts_log.exercise_id = exercises.id WHERE users.id = (?) AND workouts_log.workout_id = (?) GROUP BY exercises.id', [req.body.user_id, req.body.workout_id], function(err, rows, fields){
     if(err){
       next(err);
       return;

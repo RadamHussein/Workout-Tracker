@@ -5,6 +5,9 @@ function main(){
 	//handleInsert();
 };
 
+//global variable for keeping track of the current user
+var currentUser_Id;
+
 //takes a single cell of table data and adds it to the current row
 function addTableRowToDOM(newRow, singleTableItem){
 	var cellData = document.createElement("td");
@@ -34,6 +37,7 @@ function convertUsersToTableRow(singleObjectRow){
 			console.log(response);
 			var newResponseObject = JSON.parse(response);
 			convertWorkoutsToTable(newResponseObject);
+			currentUser_Id = userId;
 		});
 		requestUserWorkouts.send(params);
 	});
@@ -55,6 +59,16 @@ function convertWorkoutsToTableRow(singleObjectRow){
 
 	newRow.addEventListener("click", function(event){
 		console.log("table row clicked");
+		//var workout_id = singleObjectRow.id;
+		var requestExercisesForUserWorkout = new XMLHttpRequest();
+		var params = "user_id=" + currentUser_Id + "&workout_id=" + singleObjectRow.id;
+		requestExercisesForUserWorkout.open("POST", "http://52.33.123.66:2000/getExercisesForUserWorkout", true);
+		requestExercisesForUserWorkout.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		requestExercisesForUserWorkout.addEventListener("load", function(event){
+			var response = requestExercisesForUserWorkout.responseText;
+			console.log(response);
+		});
+		requestExercisesForUserWorkout.send(params);
 	});
 
 	addTableRowToDOM(newRow, singleObjectRow.name);
