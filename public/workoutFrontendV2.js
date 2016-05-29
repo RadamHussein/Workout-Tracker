@@ -33,7 +33,7 @@ function convertUsersToTableRow(singleObjectRow){
 			var response = requestUserWorkouts.responseText;
 			console.log(response);
 			var newResponseObject = JSON.parse(response);
-			converWorkoutsToTable(newResponseObject);
+			convertWorkoutsToTable(newResponseObject);
 		});
 		requestUserWorkouts.send(params);
 	});
