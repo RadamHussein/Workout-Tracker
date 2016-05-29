@@ -199,7 +199,6 @@ app.post('/getSetsForUserExercise', urlencodedParser, function(req, res, next){
       return;
     }
     context.results = rows;
-    console.log(context.results);
     res.setHeader('Content-Type', 'application/json');
     res.send(context);
   });

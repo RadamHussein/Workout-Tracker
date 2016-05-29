@@ -107,7 +107,9 @@ function convertSetsToTableRow(singleObjectRow){
 	document.getElementById("sets_table_body").appendChild(newRow);
 	addTableRowToDOM(newRow, singleObjectRow.weight);
 	addTableRowToDOM(newRow, singleObjectRow.reps);
-	addTableRowToDOM(newRow, singleObjectRow.date);
+
+	var formattedDate = singleObjectRow.date.slice(0, 10);
+	addTableRowToDOM(newRow, formattedDate);
 };
 
 //iterates through data returned form mysql and send individual objects to be added to table.
