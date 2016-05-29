@@ -38,6 +38,7 @@ function convertUsersToTableRow(singleObjectRow){
 			var newResponseObject = JSON.parse(response);
 			convertWorkoutsToTable(newResponseObject);
 			currentUser_Id = userId;
+			console.log("current User is now " + currentUser_Id);
 		});
 		requestUserWorkouts.send(params);
 	});
