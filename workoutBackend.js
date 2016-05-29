@@ -191,6 +191,19 @@ app.post('/getExercisesForUserWorkout', urlencodedParser, function(req, res, nex
   });
 });
 
+app.post('/getSetsForUserExercise', urlencodedParser, function(req, res, next){
+  var context = {};
+  pool.query('SELECT workouts_log.weight, workouts_log.reps, workouts_log.date FROM users INNER JOIN workouts_log ON users.id = workouts_log.user_id INNER JOIN exercises ON workouts_log.exercise_id = exercises.id WHERE users.id = (?) AND workouts_log.workout_id = (?)', [req.body.user_id, req.body.workout_id], function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = rows;
+    res.setHeader('Content-Type', 'application/json');
+    res.send(context);
+  });
+});
+
 app.get('/getUsers', function(req, res, next){
   var context = {};
   pool.query('SELECT * FROM users', function(err, rows, fields){

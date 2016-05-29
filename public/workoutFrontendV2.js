@@ -83,9 +83,26 @@ function convertExercisesToTableRow(singleObjectRow){
 
 	newRow.addEventListener("click", function(event){
 		console.log("table row clicked");
+		var requestSetsForUserExercise = new XMLHttpRequest();
+		var params = "user_id=" + currentUser_Id + "&workout_id=" + singleObjectRow.id;
+		requestSetsForUserExercise.open("POST", "http://52.33.123.66:2000/getSetsForUserExercise", true);
+		requestSetsForUserExercise.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		requestSetsForUserExercise.addEventListener("load", function(event){
+			var response = requestSetsForUserExercise.responseText;
+			console.log(response);
+		});
+		requestSetsForUserExercise.send(params);
 	});
 
 	addTableRowToDOM(newRow, singleObjectRow.name);
+};
+
+function convertSetsToTableRow(singleObjetRow){
+	var newRow = document.createElement("tr");
+	document.getElementById("sets_table_body").appendChild(newRow);
+	addTableRowToDOM(newRow, singleObjectRow.weight);
+	addTableRowToDOM(newRow, singleObjectRow.reps);
+	addTableRowToDOM(newRow, singleObjectRow.date);
 };
 
 //iterates through data returned form mysql and send individual objects to be added to table.
@@ -104,6 +121,12 @@ function convertWorkoutsToTable(objList){
 function convertExercisesToTable(objList){
 	for (var i=0; i<objList.results.length; i++){
 		convertExercisesToTableRow(objList.results[i]);
+	};
+};
+
+function convertSetsToTable(objList){
+	for (var i=0; i<objList.results.length; i++){
+		convertSetsToTableRow(objList.results[i]);
 	};
 };
 
