@@ -33,6 +33,7 @@ function convertUsersToTableRow(singleObjectRow){
 			var response = requestUserWorkouts.responseText;
 			console.log(response);
 			var newResponseObject = JSON.parse(response);
+			converWorkoutsToTable(newResponseObject);
 		});
 		requestUserWorkouts.send(params);
 	});
@@ -47,11 +48,29 @@ function convertUsersToTableRow(singleObjectRow){
 	addTableRowToDOM(newRow, singleObjectRow.password);
 };
 
+function convertWorkoutsToTableRow(singleObjectRow){
+	var newRow = document.createElement("tr");
+	document.getElementById("workouts_table_body").appendChild(newRow);
+	newRow.setAttribute("class", "clickable-row");
+
+	newRow.addEventListener("click", function(event){
+		console.log("table row clicked");
+	});
+
+	addTableRowToDOM(newRow, singleObjectRow.name);
+};
+
 //iterates through data returned form mysql and send individual objects to be added to table.
 function convertUsersToTable(objList){
 	for (var i=0; i<objList.results.length; i++){
 		convertUsersToTableRow(objList.results[i])
 	}
+};
+
+function convertWorkoutsToTable(objList){
+	for (var i=0; i<objList.results.length; i++){
+		convertWorkoutsToTableRow(objList.results[i]);
+	};
 };
 
 //gets users data from database 
