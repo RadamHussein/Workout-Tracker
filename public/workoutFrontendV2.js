@@ -27,7 +27,7 @@ function convertUsersToTableRow(singleObjectRow){
 		var userId = singleObjectRow.id;
 		var requestUserWorkouts = new XMLHttpRequest();
 		var params = "id=" + userId;
-		requestUserWorkouts.open("POST", "http://52.33.123.66:2000/userWorkouts", true);
+		requestUserWorkouts.open("POST", "http://52.33.123.66:2000/getUserWorkouts", true);
 		requestUserWorkouts.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		requestUserWorkouts.addEventListener("load", function(event){
 			var response = requestUserWorkouts.responseText;

@@ -149,6 +149,7 @@ app.get('/insertUser_Workouts', function(req, res, next){
 Get contents from each table
 **********************************************/
 
+//get request for user workouts
 app.get('/getWorkoutsForUser', function(req, res, next){
   var context = {};
   pool.query("SELECT users.first_name, users.last_name, workouts.name FROM users INNER JOIN user_workouts ON users.id = user_workouts.uid INNER JOIN workouts ON user_workouts.wid = workouts.id WHERE users.id = (?)", [req.query.id], function(err, rows, fields){
@@ -162,6 +163,7 @@ app.get('/getWorkoutsForUser', function(req, res, next){
   });
 });
 
+//post request for user workouts
 app.post('/getUserWorkouts', urlencodedParser, function(req, res, next){
   //var id = req.body.id;
   var context = {};
