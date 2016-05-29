@@ -93,6 +93,8 @@ function convertExercisesToTableRow(singleObjectRow){
 		requestSetsForUserExercise.addEventListener("load", function(event){
 			var response = requestSetsForUserExercise.responseText;
 			console.log(response);
+			var newResponseObject = JSON.parse(response);
+			convertSetsToTable(newResponseObject);
 		});
 		requestSetsForUserExercise.send(params);
 	});
