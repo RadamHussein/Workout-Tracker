@@ -105,8 +105,8 @@ function convertExercisesToTableRow(singleObjectRow){
 function convertSetsToTableRow(singleObjectRow){
 	var newRow = document.createElement("tr");
 	document.getElementById("sets_table_body").appendChild(newRow);
-	addTableRowToDOM(newRow, singleObjectRow.weight);
 	addTableRowToDOM(newRow, singleObjectRow.reps);
+	addTableRowToDOM(newRow, singleObjectRow.weight);
 
 	var formattedDate = singleObjectRow.date.slice(0, 10);
 	addTableRowToDOM(newRow, formattedDate);
