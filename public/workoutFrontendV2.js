@@ -60,7 +60,6 @@ function convertWorkoutsToTableRow(singleObjectRow){
 
 	newRow.addEventListener("click", function(event){
 		console.log("table row clicked");
-		//var workout_id = singleObjectRow.id;
 		var requestExercisesForUserWorkout = new XMLHttpRequest();
 		var params = "user_id=" + currentUser_Id + "&workout_id=" + singleObjectRow.id;
 		requestExercisesForUserWorkout.open("POST", "http://52.33.123.66:2000/getExercisesForUserWorkout", true);
@@ -68,8 +67,22 @@ function convertWorkoutsToTableRow(singleObjectRow){
 		requestExercisesForUserWorkout.addEventListener("load", function(event){
 			var response = requestExercisesForUserWorkout.responseText;
 			console.log(response);
+			var newResponseObject = JSON.parse(response);
+			convertExercisesToTable(newResponseObject);
 		});
 		requestExercisesForUserWorkout.send(params);
+	});
+
+	addTableRowToDOM(newRow, singleObjectRow.name);
+};
+
+function convertExercisesToTableRow(singleObjectRow){
+	var newRow = document.createElement("tr");
+	document.getElementById("exercises_table_body").appendChild(newRow);
+	newRow.setAttribute("class", "clickable-row");
+
+	newRow.addEventListener("click", function(event){
+		console.log("table row clicked");
 	});
 
 	addTableRowToDOM(newRow, singleObjectRow.name);
@@ -85,6 +98,12 @@ function convertUsersToTable(objList){
 function convertWorkoutsToTable(objList){
 	for (var i=0; i<objList.results.length; i++){
 		convertWorkoutsToTableRow(objList.results[i]);
+	};
+};
+
+function convertExercisesToTable(objList){
+	for (var i=0; i<objList.results.length; i++){
+		convertExercisesToTableRow(objList.results[i]);
 	};
 };
 
