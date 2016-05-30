@@ -210,6 +210,49 @@ function insertWorkouts_LogHelper(currentUser_id, workout_id, exercise_name){
   });
 };
 
+app.post('/insertSet', function(req, res, next){
+  var context = {};
+  var currentUser_id = req.body.currentUser_id;
+  var workout_id = req.body.workout_id;
+  var exercise_id = req.body.exercise_id;
+  var reps = req.body.reps;
+  var weight = req.body.weight;
+  var date = req.body.date;
+
+  //check for an entry without set data
+  pool.query("SELECT * FROM workouts_log WHERE workouts_log.user_id = (?) AND workouts_log.exercise_id = (?) AND workouts_log.weight IS NULL", [currentUser_id, exercise_id], function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    //if not found, create new entry
+    if(rows[0] === undefined || rows[0] === null){
+      pool.query("INSERT INTO workouts_log (`user_id`, `workout_id`, `exercise_id`, `weight`, `reps`, `date`) VALUES (?, ?, ?, ?, ?, ?)", [currentUser_id, workout_id, exercise_id, weight, reps, date], function(err, result){
+        if(err){
+          next(err);
+          return;
+        }
+        context.results = "Set added";
+        res.type('text/plain');
+        res.send(context);
+      });
+    }
+    //update every entry found without set data matching the user and the exercise id's with new set data
+    else{
+      for (var i=0; i<rows.length; i++){
+        pool.query("UPDATE workouts_log SET weight=?, reps=?, date=? WHERE id=?", [weight || rows[i].weight, reps || rows[i].reps, date || rows[i].date, rows[i].id], function(err, result){
+          if(err){
+           next(err);
+            return;
+            }
+          context.results = "Set added";
+          res.send(context);
+        });
+      };
+    }
+  });
+});
+
 
 
 /*

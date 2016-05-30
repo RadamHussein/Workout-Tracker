@@ -48,11 +48,27 @@ function main(){
 	$('#new-exercise').on('hide.bs.modal', function(event){
 		$('#submit-exercise-modal').off();
 	});
+
+	//this executes code for adding a set when the new set modal is shown
+	$('#new-set').on('show.bs.modal', function(event){
+		var modal = $(this);
+		console.log('Modal is shown');
+		modal.find("#submit-set-modal").on('click', function(event){
+			createNewSet();
+			console.log("Submit Clicked");
+		});
+	});
+
+	//removes event listener from modal once modal is hidden
+	$('#new-set').on('hide.bs.modal', function(event){
+		$('#submit-set-modal').off();
+	});
 };
 
 //global variables for keeping track of the current user and current workout
 var currentUser_Id = null;
 var currentWorkout_Id = null;
+var currentExercise_Id = null;
 
 //takes a single cell of table data and adds it to the current row
 function addTableRowToDOM(newRow, singleTableItem){
@@ -145,6 +161,9 @@ function convertExercisesToTableRow(singleObjectRow){
 
 	newRow.addEventListener("click", function(event){
 		console.log("table row clicked");
+		currentExercise_Id = singleObjectRow.id;
+		getExerciseSets();
+		/*
 		var requestSetsForUserExercise = new XMLHttpRequest();
 		var params = "user_id=" + currentUser_Id + "&workout_id=" + currentWorkout_Id + "&exercise_id=" + singleObjectRow.id;
 		requestSetsForUserExercise.open("POST", "http://52.33.123.66:2000/getSetsForUserExercise", true);
@@ -158,6 +177,7 @@ function convertExercisesToTableRow(singleObjectRow){
 			convertSetsToTable(newResponseObject);
 		});
 		requestSetsForUserExercise.send(params);
+		*/
 	});
 
 	addTableRowToDOM(newRow, singleObjectRow.name);
@@ -281,6 +301,22 @@ function getUserExercises(){
 		requestUserExercises.send(params);
 }
 
+function getExerciseSets(){
+	var requestSetsForUserExercise = new XMLHttpRequest();
+		var params = "user_id=" + currentUser_Id + "&workout_id=" + currentWorkout_Id + "&exercise_id=" + singleObjectRow.id;
+		requestSetsForUserExercise.open("POST", "http://52.33.123.66:2000/getSetsForUserExercise", true);
+		requestSetsForUserExercise.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		requestSetsForUserExercise.addEventListener("load", function(event){
+			var response = requestSetsForUserExercise.responseText;
+			console.log(response);
+			var newResponseObject = JSON.parse(response);
+
+			resetTable("sets_table_body");
+			convertSetsToTable(newResponseObject);
+		});
+		requestSetsForUserExercise.send(params);
+}
+
 /**************************************************
 * Functions to handle inserting into the database
 ***************************************************/
@@ -344,6 +380,27 @@ function createNewExercise(){
 		}
 	});
 	insertExerciseRequest.send(params);
+};
+
+function createNewSet(){
+	var reps = document.getElementById("reps-modal").value;
+	var weight = document.getElementById("weight-modal").value;
+	var date = document.getElementById("date-modal").value;
+	var params = "currentUser_id=" + currentUser_Id + "&workout_id=" + currentWorkout_Id + "&exercise_id=" + currentExercise_Id + "&reps=" + reps + "&weight=" + weight + "&date=" + date;
+	insertSetRequest = new XMLHttpRequest();
+
+	insertSetRequest.open("POST", "http://52.33.123.66:2000/insertSet", true);
+	insertSetRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	insertSetRequest.addEventListener("load", function(event){
+		if (insertSetRequest.status >= 200 && insertSetRequest.status < 400){
+			var response = insertSetRequest.responseText;
+			console.log(response);
+			getExerciseSets();
+		} else {
+			console.log("error");
+		}
+	});
+	insertSetRequest.send(params);
 };
 
 
