@@ -329,7 +329,7 @@ function createNewWorkout(){
 
 function createNewExercise(){
 	var exercise_name = document.getElementById("exercise_name-modal").value;
-	var params = "currentUser_id" + currentUser_Id + "&workout_id=" + currentWorkout_Id + "&exercise_name=" + exercise_name;
+	var params = "currentUser_id=" + currentUser_Id + "&workout_id=" + currentWorkout_Id + "&exercise_name=" + exercise_name;
 	var insertExerciseRequest = new XMLHttpRequest();
 
 	insertExerciseRequest.open("POST", "http://52.33.123.66:2000/insertExercise", true);
