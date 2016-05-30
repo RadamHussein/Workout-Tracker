@@ -33,6 +33,21 @@ function main(){
 	$('#new-workout').on('hide.bs.modal', function(event){
 		$('#submit-workout-modal').off();
 	});
+
+	//this executes code for adding a workout when the add exercise modal is shown
+	$('#new-exercise').on('show.bs.modal', function(event){
+		var modal = $(this);
+		console.log('Modal is shown');
+		modal.find("#submit-exercise-modal").on('click', function(event){
+			//createNewWorkout();
+			console.log("Submit Clicked");
+		});
+	});
+
+	//removes event listener from modal once modal is hidden
+	$('#new-exercise').on('hide.bs.modal', function(event){
+		$('#submit-exercise-modal').off();
+	});
 };
 
 //global variables for keeping track of the current user and current workout
@@ -98,6 +113,9 @@ function convertWorkoutsToTableRow(singleObjectRow){
 
 	newRow.addEventListener("click", function(event){
 		console.log("table row clicked");
+		currentWorkout_Id = singleObjectRow.id;
+		getUserExercises();
+		/*
 		var requestExercisesForUserWorkout = new XMLHttpRequest();
 		var params = "user_id=" + currentUser_Id + "&workout_id=" + singleObjectRow.id;
 		requestExercisesForUserWorkout.open("POST", "http://52.33.123.66:2000/getExercisesForUserWorkout", true);
@@ -113,19 +131,11 @@ function convertWorkoutsToTableRow(singleObjectRow){
 			console.log("Current Workouts is now " + currentWorkout_Id);
 		});
 		requestExercisesForUserWorkout.send(params);
+		*/
 	});
 
 	addTableRowToDOM(newRow, singleObjectRow.name);
 	addDeleteButton(newRow);
-	/*
-	var cellForButtons = document.createElement("td");
-	newRow.appendChild(cellForButtons);
-	var deleteButton = document.createElement("button");
-	deleteButton.id = "Delete";
-	deleteButton.className = "btn btn-danger";
-	cellForButtons.appendChild(deleteButton);
-	deleteButton.textContent = "Delete";
-	*/
 };
 
 function convertExercisesToTableRow(singleObjectRow){
@@ -253,6 +263,28 @@ function getUserWorkouts(){
 		requestUserWorkouts.send(params);
 }
 
+function getUserExercises(){
+	var requestUserExercises = new XMLHttpRequest();
+		var params = "user_id=" + currentUser_Id + "&workout_id=" + currentWorkout_Id;
+		requestUserExercises.open("POST", "http://52.33.123.66:2000/getExercisesForUserWorkout", true);
+		requestUserExercises.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		requestUserExercises.addEventListener("load", function(event){
+			var response = requestUserExercises.responseText;
+			console.log(response);
+			var newResponseObject = JSON.parse(response);
+
+			resetTable("exercises_table_body");
+			convertExercisesToTable(newResponseObject);
+			//currentUser_Id = userId;
+			//console.log("current User is now " + currentUser_Id);
+		});
+		requestUserExercises.send(params);
+}
+
+/**************************************************
+* Functions to handle inserting into the database
+***************************************************/
+
 //add logic for reseting current user table and adding new user to html user table!!!
 function createNewUser(){
 		var fname = document.getElementById("first_name-modal").value;
@@ -275,6 +307,7 @@ function createNewUser(){
 		insertRequest.send(params);
 };
 
+//adds a new workout for the selected user
 function createNewWorkout(){
 	var workout_name = document.getElementById("workout_name-modal").value;
 	var params = "currentUser_id=" + currentUser_Id + "&workout_name=" + workout_name;
@@ -292,6 +325,25 @@ function createNewWorkout(){
 		}
 	});
 	insertWorkoutRequest.send(params);
+};
+
+function createNewExercise(){
+	var exercise_name = document.getElementById("exercise_name-modal").value;
+	var params = "currentUser_id" + currentUser_Id + "&workout_id=" + currentWorkout_Id + "&exercise_name=" + exercise_name;
+	var insertExerciseRequest = new XMLHttpRequest();
+
+	insertExerciseRequest.open("POST", "http://52.33.123.66:2000/insertExercise", true);
+	insertExerciseRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	insertExerciseRequest.addEventListener("load", function(event){
+		if (insertExerciseRequest.status >= 200 && insertExerciseRequest.status < 400){
+			var response = insertExerciseRequest.responseText;
+			console.log(response);
+			//getUserWorkouts();
+		} else {
+			console.log("error");
+		}
+	});
+	insertExerciseRequest.send(params);
 };
 
 

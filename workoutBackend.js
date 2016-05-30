@@ -118,23 +118,6 @@ app.post('/insertWorkout', urlencodedParser, function(req, res, next){
       });
 
       insertWorkoutsHelper(currentUser_id, workout_name);
-      /*
-      //get id for new workout
-      pool.query("SELECT workouts.id FROM workouts WHERE workouts.name = (?)", [req.body.workout_name], function(err, rows, fields){
-        if(err){
-          next(err);
-          return;
-        }
-        var newWorkout_id = rows[0].id;
-        //insert new workout and current user into user_workouts table
-        pool.query("INSERT INTO user_workouts (`uid`, `wid`) VALUES (?, ?)", [currentUser_id, newWorkout_id], function(err, rows, fields){
-          if(err){
-            next(err):
-            return;
-          }
-        });
-      });
-      */
     }
     else{
       var existing_id = rows[0].id;
@@ -169,6 +152,67 @@ function insertWorkoutsHelper(currentUser_id, workout_name){
   });
 };
 
+app.post('/insertExercise', urlencodedParser, function(req, res, next){
+  var context = {};
+  var currentUser_id = req.body.currentUser_id;
+  var workout_id = req.body.workout_id;
+  var exercise_name = req.body.exercise_name;
+
+  pool.query('SELECT exercise.id, exercise.name FROM exercises WHERE exercises.name = (?)'. [exercise_name], function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    //if exercise doesn't already exist, create it
+    if(rows[0] === undefined || rows[0] === null){
+      //insert new exercise into table
+      pool.query("INSERT INTO exercises (`name`) VALUES (?)", [exercise_name], function(err, result){
+        if(err){
+          next(err);
+          return;
+        }
+        context.results = "Exercise created";
+        res.type('text/plain');
+        res.send(context);
+      });
+      insertWorkouts_LogHelper(currentUser_id, workout_id, exercise_name);
+    }
+    else{
+      var existing_id = rows[0].id;
+      pool.query("INSERT INTO workouts_log (`user_id`, `workout_id`, `exercise_id`) VALUES (?, ?, ?)", [currentUser_id, workout_id, existing_id], function(err, rows, fields){
+        if(err){
+          next(err);
+          return;
+        }
+        context.results = "Workout created";
+        res.type('text/plain');
+        res.send(context);
+      });
+    }
+  });
+});
+
+function insertWorkouts_LogHelper(currentUser_id, workout_id, exercise_name){
+  //get id for exercise
+  pool.query("SELECT exercises.id FROM exercises WHERE exercises.name = (?)", [exercise_name], function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    var newExercise_id = rows[0].id;
+    //insert workout and current user into user_workouts table
+    pool.query("INSERT INTO workouts_log (`user_id`, `workout_id`, `exercise_id`) VALUES (?, ?, ?)", [currentUser_id, workout_id, newExercise_id], function(err, rows, fields){
+      if(err){
+        next(err);
+        return;
+      }
+    });
+  });
+};
+
+
+
+/*
 //insert into database
 app.get('/insert',function(req,res,next){
   var context = {};
@@ -219,12 +263,14 @@ app.get('/insertUser_Workouts', function(req, res, next){
     res.type('text/plain');
   });
 });
+*/
 
 /*********************************************
 Get contents from each table
 **********************************************/
 
 //get request for user workouts
+/*
 app.get('/getWorkoutsForUser', function(req, res, next){
   var context = {};
   pool.query("SELECT users.first_name, users.last_name, workouts.name FROM users INNER JOIN user_workouts ON users.id = user_workouts.uid INNER JOIN workouts ON user_workouts.wid = workouts.id WHERE users.id = (?)", [req.query.id], function(err, rows, fields){
@@ -237,6 +283,7 @@ app.get('/getWorkoutsForUser', function(req, res, next){
     res.send(context);
   });
 });
+*/
 
 //post request for user workouts
 app.post('/getUserWorkouts', urlencodedParser, function(req, res, next){
@@ -292,6 +339,7 @@ app.get('/getUsers', function(req, res, next){
   });
 });
 
+/*
 app.get('/getWorkouts', function(req, res, next){
   var context = {};
   pool.query('SELECT * FROM workouts', function(err, rows, fields){
@@ -370,6 +418,7 @@ app.get('/',function(req, res, next){
     res.send(context);
   });
 });
+*/
 
 //update database entry
 app.get('/update',function(req,res,next){
