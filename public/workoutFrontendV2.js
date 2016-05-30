@@ -233,7 +233,7 @@ function displayUsersTable(){
 	});
 };
 
-function getUserWorkous(){
+function getUserWorkouts(){
 	var requestUserWorkouts = new XMLHttpRequest();
 		var params = "id=" + currentUser_Id;
 		requestUserWorkouts.open("POST", "http://52.33.123.66:2000/getUserWorkouts", true);
@@ -286,7 +286,7 @@ function createNewWorkout(){
 		if (insertWorkoutRequest.status >= 200 && insertWorkoutRequest.status < 400){
 			var response = insertWorkoutRequest.responseText;
 			console.log(response);
-			getUserWorkous();
+			getUserWorkouts();
 		} else {
 			console.log("error");
 		}
