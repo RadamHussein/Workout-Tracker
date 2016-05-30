@@ -83,6 +83,8 @@ function convertWorkoutsToTableRow(singleObjectRow){
 	});
 
 	addTableRowToDOM(newRow, singleObjectRow.name);
+	addDeleteButton(newRow);
+	/*
 	var cellForButtons = document.createElement("td");
 	newRow.appendChild(cellForButtons);
 	var deleteButton = document.createElement("button");
@@ -90,6 +92,7 @@ function convertWorkoutsToTableRow(singleObjectRow){
 	deleteButton.className = "btn btn-danger";
 	cellForButtons.appendChild(deleteButton);
 	deleteButton.textContent = "Delete";
+	*/
 };
 
 function convertExercisesToTableRow(singleObjectRow){
@@ -115,6 +118,7 @@ function convertExercisesToTableRow(singleObjectRow){
 	});
 
 	addTableRowToDOM(newRow, singleObjectRow.name);
+	addDeleteButton(newRow);
 };
 
 function convertSetsToTableRow(singleObjectRow){
@@ -158,6 +162,16 @@ function resetTable(table_id){
 	var oldTableBody = document.getElementById(table_id);
 	oldTableBody.parentNode.replaceChild(newTableBody, oldTableBody);
 	newTableBody.id = table_id;
+}
+
+function addDeleteButton(newRow){
+	var cellForButtons = document.createElement("td");
+	newRow.appendChild(cellForButtons);
+	var deleteButton = document.createElement("button");
+	deleteButton.id = "Delete";
+	deleteButton.className = "btn btn-danger";
+	cellForButtons.appendChild(deleteButton);
+	deleteButton.textContent = "Delete";
 }
 
 //gets users data from database 
