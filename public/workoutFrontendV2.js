@@ -303,7 +303,7 @@ function getUserExercises(){
 
 function getExerciseSets(){
 	var requestSetsForUserExercise = new XMLHttpRequest();
-		var params = "user_id=" + currentUser_Id + "&workout_id=" + currentWorkout_Id + "&exercise_id=" + singleObjectRow.id;
+		var params = "user_id=" + currentUser_Id + "&workout_id=" + currentWorkout_Id + "&exercise_id=" + currentExercise_Id;
 		requestSetsForUserExercise.open("POST", "http://52.33.123.66:2000/getSetsForUserExercise", true);
 		requestSetsForUserExercise.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		requestSetsForUserExercise.addEventListener("load", function(event){
