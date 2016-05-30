@@ -169,7 +169,7 @@ function addDeleteButton(newRow){
 	newRow.appendChild(cellForButtons);
 	var deleteButton = document.createElement("button");
 	deleteButton.id = "Delete";
-	deleteButton.className = "btn btn-danger";
+	deleteButton.className = "btn btn-danger btn-sm";
 	cellForButtons.appendChild(deleteButton);
 	deleteButton.textContent = "Delete";
 }
