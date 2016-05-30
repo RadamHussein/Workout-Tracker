@@ -155,7 +155,6 @@ function insertWorkoutsHelper(currentUser_id, workout_name){
 app.post('/insertExercise', urlencodedParser, function(req, res, next){
   var context = {};
   var currentUser_id = req.body.currentUser_id;
-  console.log("currentUser_id is " + currentUser_id + "on the backend");
   var workout_id = req.body.workout_id;
   var exercise_name = req.body.exercise_name;
 

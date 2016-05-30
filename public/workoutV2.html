@@ -82,6 +82,32 @@
     			</div>
   			</div>
 		</div>
+		<div class="modal fade" id="new-set" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+			<div class="modal-dialog">
+    			<div class="modal-content">
+    				<div class="modal-header">
+    					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        				<h4 class="modal-title">Create Exercise</h4>
+    				</div>
+    				<div class="modal-body">
+        				<form role="form">
+  							<div class="form-group">
+    							<label for="reps">Reps:</label>
+    							<input type="text" class="form-control" id="reps-modal"></br>
+    							<label for="weight">Weight:</label>
+    							<input type="text" class="form-control" id="weight-modal"></br>
+    							<lable for="date">Date:</lable>
+    							<input type="date" class="form-control" id="date-modal"></br>
+  							</div>
+						</form>
+     				</div>
+     				<div class="modal-footer">
+        				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        				<button type="submit" class="btn btn-primary" data-dismiss="modal" id="submit-set-modal">Create Exercise</button>
+      				</div>
+    			</div>
+  			</div>
+		</div>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12 col-xs-12" id="title-bar">
@@ -182,7 +208,7 @@
 								<tr>
 									<th colspan="2">Sets</th>
 									<th colspan="1">
-										<button type="button" class="btn btn-link" id="addButton">+ Add Set</button>
+										<button type="button" class="btn btn-link" data-toggle="modal" data-target="#new-set" id="addButton">+ Add Set</button>
 									</th>
 								</tr>
 								<tr>
