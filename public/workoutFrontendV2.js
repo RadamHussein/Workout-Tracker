@@ -37,10 +37,11 @@ function convertUsersToTableRow(singleObjectRow){
 			var response = requestUserWorkouts.responseText;
 			console.log(response);
 			var newResponseObject = JSON.parse(response);
+
+			resetTable("workouts_table_body");
 			convertWorkoutsToTable(newResponseObject);
 			currentUser_Id = userId;
 			console.log("current User is now " + currentUser_Id);
-			resetTable("workouts_table_body");
 		});
 		requestUserWorkouts.send(params);
 	});
