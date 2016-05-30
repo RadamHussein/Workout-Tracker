@@ -39,6 +39,8 @@ function convertUsersToTableRow(singleObjectRow){
 			var newResponseObject = JSON.parse(response);
 
 			resetTable("workouts_table_body");
+			resetTable("exercises_table_body");
+			resetTable("sets_table_body");
 			convertWorkoutsToTable(newResponseObject);
 			currentUser_Id = userId;
 			console.log("current User is now " + currentUser_Id);
