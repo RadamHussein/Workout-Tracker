@@ -201,7 +201,7 @@ function insertWorkouts_LogHelper(currentUser_id, workout_id, exercise_name){
     }
     var newExercise_id = rows[0].id;
     //insert workout and current user into user_workouts table
-    pool.query("INSERT INTO workouts_log (`user_id`, `workout_id`, `exercise_id`) VALUES (?, ?, ?)", [currentUser_id, workout_id, newExercise_id], function(err, rows, fields){
+    pool.query("INSERT INTO workouts_log (`user_id`, `workout_id`, `exercise_id`) VALUES (?, ?, ?)", [currentUser_id, workout_id, newExercise_id], function(err, results){
       if(err){
         next(err);
         return;
