@@ -158,7 +158,7 @@ app.post('/insertExercise', urlencodedParser, function(req, res, next){
   var workout_id = req.body.workout_id;
   var exercise_name = req.body.exercise_name;
 
-  pool.query('SELECT exercise.id, exercise.name FROM exercises WHERE exercises.name = (?)'. [exercise_name], function(err, rows, fields){
+  pool.query("SELECT exercises.id, exercises.name FROM exercises WHERE exercises.name = (?)", [exercise_name], function(err, rows, fields){
     if(err){
       next(err);
       return;
