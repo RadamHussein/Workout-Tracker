@@ -162,7 +162,7 @@ function insertWorkoutsHelper(currentUser_id, workout_name){
     //insert workout and current user into user_workouts table
     pool.query("INSERT INTO user_workouts (`uid`, `wid`) VALUES (?, ?)", [currentUser_id, newWorkout_id], function(err, rows, fields){
       if(err){
-        next(err):
+        next(err);
         return;
       }
     });
