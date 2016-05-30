@@ -40,6 +40,7 @@ function convertUsersToTableRow(singleObjectRow){
 			convertWorkoutsToTable(newResponseObject);
 			currentUser_Id = userId;
 			console.log("current User is now " + currentUser_Id);
+			resetTable("workouts_table_body");
 		});
 		requestUserWorkouts.send(params);
 	});
@@ -136,6 +137,14 @@ function convertSetsToTable(objList){
 		convertSetsToTableRow(objList.results[i]);
 	};
 };
+
+//this function clears the table so that a new one can be built after a change
+function resetTable(table_id){
+	var newTableBody = document.createElement("tbody");
+	var oldTableBody = document.getElementById(table_id);
+	oldTableBody.parentNode.replaceChild(newTableBody, oldTableBody);
+	newTableBody.id = table_id;
+}
 
 //gets users data from database 
 function getUsers(Users){
