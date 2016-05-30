@@ -3,6 +3,21 @@ document.addEventListener("DOMContentLoaded", main);
 function main(){
 	displayUsersTable();
 	//handleInsert();
+
+	//this function executes code for updating an entry when a modal is shown
+	$('#new-user').on('show.bs.modal', function(event){
+		var modal = $(this);
+		console.log('Modal is shown');
+		modal.find("#submit-modal").on('click', function(event){
+			createNewUser();
+			console.log("Submit Clicked");
+		});
+	});
+
+	//removes event listener from modal once modal is hidden
+	$('#new-user').on('hide.bs.modal', function(event){
+		$('#submit-modal').off();
+	});
 };
 
 //global variables for keeping track of the current user and current workout
