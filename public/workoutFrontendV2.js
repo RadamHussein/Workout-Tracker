@@ -58,8 +58,8 @@ function convertUsersToTableRow(singleObjectRow){
 
 	newRow.addEventListener("click", function(event){
 		console.log("table row clicked");
-		var userId = singleObjectRow.id;
-		getUserWorkous();
+		currentUser_Id = singleObjectRow.id;
+		getUserWorkouts();
 		/*
 		var requestUserWorkouts = new XMLHttpRequest();
 		var params = "id=" + userId;
