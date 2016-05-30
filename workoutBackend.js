@@ -94,6 +94,81 @@ app.post('/insertUser', urlencodedParser, function(req, res, next){
   });
 });
 
+app.post('/insertWorkout', urlencodedParser, function(req, res, next){
+  var context = {};
+  var currentUser_id = req.body.currentUser_id;
+  var workout_name = req.body.workout_name;
+  //look for existing workout in table
+  pool.query("SELECT workouts.id, workouts.name FROM workouts WHERE workouts.name = (?)", [req.body.workout_name], function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    //if workout doesn't already exist create it
+    if(rows[0] === undefined || rows[0] === null){
+      //insert workout into workouts table
+      pool.query("INSERT INTO workouts (`name`) VALUES (?)", [req.body.workout_name], function(err, result){
+        if(err){
+          next(err);
+          return;
+        }
+        context.results = "Workout created";
+        res.type('text/plain');
+        res.send(context);
+      });
+
+      insertWorkoutsHelper(currentUser_id, workout_name);
+      /*
+      //get id for new workout
+      pool.query("SELECT workouts.id FROM workouts WHERE workouts.name = (?)", [req.body.workout_name], function(err, rows, fields){
+        if(err){
+          next(err);
+          return;
+        }
+        var newWorkout_id = rows[0].id;
+        //insert new workout and current user into user_workouts table
+        pool.query("INSERT INTO user_workouts (`uid`, `wid`) VALUES (?, ?)", [currentUser_id, newWorkout_id], function(err, rows, fields){
+          if(err){
+            next(err):
+            return;
+          }
+        });
+      });
+      */
+    }
+    else{
+      var existing_id = rows[0].id;
+      pool.query("INSERT INTO user_workouts (`uid`, `wid`) VALUES (?, ?)", [currentUser_id, existing_id], function(err, rows, fields){
+        if(err){
+          next(err);
+          return;
+        }
+        context.results = "Workout created";
+        res.type('text/plain');
+        res.send(context);
+      });
+    }
+  });
+});
+
+function insertWorkoutsHelper(currentUser_id, workout_name){
+  //get id for workout
+  pool.query("SELECT workouts.id FROM workouts WHERE workouts.name = (?)", [workout_name], function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    var newWorkout_id = rows[0].id;
+    //insert workout and current user into user_workouts table
+    pool.query("INSERT INTO user_workouts (`uid`, `wid`) VALUES (?, ?)", [currentUser_id, newWorkout_id], function(err, rows, fields){
+      if(err){
+        next(err):
+        return;
+      }
+    });
+  });
+};
+
 //insert into database
 app.get('/insert',function(req,res,next){
   var context = {};

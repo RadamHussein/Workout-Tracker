@@ -4,7 +4,7 @@ function main(){
 	displayUsersTable();
 	//handleInsert();
 
-	//this function executes code for updating an entry when a modal is shown
+	//this executes code for adding a user when the add user modal is shown
 	$('#new-user').on('show.bs.modal', function(event){
 		var modal = $(this);
 		console.log('Modal is shown');
@@ -18,11 +18,26 @@ function main(){
 	$('#new-user').on('hide.bs.modal', function(event){
 		$('#submit-modal').off();
 	});
+
+	//this executes code for adding a workout when the add workout modal is shown
+	$('#new-workout').on('show.bs.modal', function(event){
+		var modal = $(this);
+		console.log('Modal is shown');
+		modal.find("#submit-workout-modal").on('click', function(event){
+			createNewWorkout();
+			console.log("Submit Clicked");
+		});
+	});
+
+	//removes event listener from modal once modal is hidden
+	$('#new-workout').on('hide.bs.modal', function(event){
+		$('#submit-workout-modal').off();
+	});
 };
 
 //global variables for keeping track of the current user and current workout
-var currentUser_Id;
-var currentWorkout_Id;
+var currentUser_Id = null;
+var currentWorkout_Id = null;
 
 //takes a single cell of table data and adds it to the current row
 function addTableRowToDOM(newRow, singleTableItem){
@@ -215,6 +230,26 @@ function displayUsersTable(){
 	});
 };
 
+function getUserWorkous(){
+	var requestUserWorkouts = new XMLHttpRequest();
+		var params = "id=" + currentUser_Id;
+		requestUserWorkouts.open("POST", "http://52.33.123.66:2000/getUserWorkouts", true);
+		requestUserWorkouts.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		requestUserWorkouts.addEventListener("load", function(event){
+			var response = requestUserWorkouts.responseText;
+			console.log(response);
+			var newResponseObject = JSON.parse(response);
+
+			resetTable("workouts_table_body");
+			resetTable("exercises_table_body");
+			resetTable("sets_table_body");
+			convertWorkoutsToTable(newResponseObject);
+			//currentUser_Id = userId;
+			//console.log("current User is now " + currentUser_Id);
+		});
+		requestUserWorkouts.send(params);
+}
+
 //add logic for reseting current user table and adding new user to html user table!!!
 function createNewUser(){
 		var fname = document.getElementById("first_name-modal").value;
@@ -235,6 +270,25 @@ function createNewUser(){
 			}
 		});
 		insertRequest.send(params);
+};
+
+function createNewWorkout(){
+	var workout_name = document.getElementById("workout_name-modal").value;
+	var params = "currentUser_id=" + currentUser_Id + "&workout_name=" + workout_name;
+	var insertWorkoutRequest = new XMLHttpRequest();
+
+	insertWorkoutRequest.open("POST", "http://52.33.123.66:2000/insertWorkout", true);
+	insertWorkoutRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	insertWorkoutRequest.addEventListener("load", function(event){
+		if (insertWorkoutRequest.status >= 200 && insertWorkoutRequest.status < 400){
+			var response = insertWorkoutRequest.responseText;
+			console.log(response);
+			getUserWorkous();
+		} else {
+			console.log("error");
+		}
+	});
+	insertWorkoutRequest.send(params);
 };
 
 
