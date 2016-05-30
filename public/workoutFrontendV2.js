@@ -71,6 +71,8 @@ function convertWorkoutsToTableRow(singleObjectRow){
 			var response = requestExercisesForUserWorkout.responseText;
 			console.log(response);
 			var newResponseObject = JSON.parse(response);
+
+			resetTable("exercises_table_body");
 			convertExercisesToTable(newResponseObject);
 			currentWorkout_Id = singleObjectRow.id;
 			console.log("Current Workouts is now " + currentWorkout_Id);
@@ -96,6 +98,8 @@ function convertExercisesToTableRow(singleObjectRow){
 			var response = requestSetsForUserExercise.responseText;
 			console.log(response);
 			var newResponseObject = JSON.parse(response);
+
+			resetTable("sets_table_body");
 			convertSetsToTable(newResponseObject);
 		});
 		requestSetsForUserExercise.send(params);
