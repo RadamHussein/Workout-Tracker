@@ -83,6 +83,13 @@ function convertWorkoutsToTableRow(singleObjectRow){
 	});
 
 	addTableRowToDOM(newRow, singleObjectRow.name);
+	var cellForButtons = document.createElement("td");
+	newRow.appendChild(cellForButtons);
+	var deleteButton = document.createElement("button");
+	deleteButton.id = "Delete";
+	deleteButton.className = "btn btn-danger";
+	cellForButtons.appendChild(deleteButton);
+	deleteButton.textContent = "Delete";
 };
 
 function convertExercisesToTableRow(singleObjectRow){
