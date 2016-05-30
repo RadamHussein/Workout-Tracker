@@ -39,7 +39,7 @@ function main(){
 		var modal = $(this);
 		console.log('Modal is shown');
 		modal.find("#submit-exercise-modal").on('click', function(event){
-			//createNewWorkout();
+			createNewExercise();
 			console.log("Submit Clicked");
 		});
 	});
