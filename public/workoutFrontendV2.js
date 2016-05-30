@@ -215,6 +215,28 @@ function displayUsersTable(){
 	});
 };
 
+//add logic for reseting current user table and adding new user to html user table!!!
+function createNewUser(){
+		var fname = document.getElementById("first_name-modal").value;
+		var lname = document.getElementById("last_name-modal").value;
+		var username = document.getElementById("user_name-modal").value;
+		var password = document.getElementById("password-modal").value;
+		var params = "first_name=" + fname + "&last_name=" + lname + "&user_name=" + username + "&password=" + password;
+		var insertRequest = new XMLHttpRequest();
+
+		insertRequest.open("POST", "http://52.33.123.66:2000/insertUser", true);
+		insertRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		insertRequest.addEventListener("load", function(event){
+			if (insertRequest.status >= 200 && insertRequest.status < 400){
+				var response = insertRequest.responseText;
+				console.log(response);
+			} else {
+				console.log("error");
+			}
+		});
+		insertRequest.send(params);
+};
+
 
 
 
