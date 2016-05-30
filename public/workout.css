@@ -47,6 +47,10 @@ h3 {
 	float: right;
 }
 
+#Delete {
+	float: right;
+}
+
 .clickable-row:hover {
 	background-color: #E0E0E0;
 }
