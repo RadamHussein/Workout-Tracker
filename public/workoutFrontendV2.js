@@ -59,6 +59,8 @@ function convertUsersToTableRow(singleObjectRow){
 	newRow.addEventListener("click", function(event){
 		console.log("table row clicked");
 		var userId = singleObjectRow.id;
+		getUserWorkous();
+		/*
 		var requestUserWorkouts = new XMLHttpRequest();
 		var params = "id=" + userId;
 		requestUserWorkouts.open("POST", "http://52.33.123.66:2000/getUserWorkouts", true);
@@ -76,6 +78,7 @@ function convertUsersToTableRow(singleObjectRow){
 			console.log("current User is now " + currentUser_Id);
 		});
 		requestUserWorkouts.send(params);
+		*/
 	});
 	
 	//cut the time off the end of the date
