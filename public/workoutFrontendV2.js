@@ -67,9 +67,10 @@ function main(){
 	//adds event listener to search button
 	var search = document.getElementById("search-button");
 	search.addEventListener("click", function(event){
+		event.preventDefault();
 		document.getElementById("error-message").textContent = "";
 		searchExercises();
-		event.preventDefault();
+		//event.preventDefault();
 	});
 };
 
