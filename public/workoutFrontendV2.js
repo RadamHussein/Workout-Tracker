@@ -63,6 +63,13 @@ function main(){
 	$('#new-set').on('hide.bs.modal', function(event){
 		$('#submit-set-modal').off();
 	});
+
+	//adds event listener to search button
+	var search = document.getElementById("search-button");
+	search.addEventListener("click", function(event){
+		document.getElementById("error-message").textContent = "";
+		searchExercises();
+	});
 };
 
 //global variables for keeping track of the current user and current workout
@@ -266,6 +273,39 @@ function getExerciseSets(){
 		});
 		requestSetsForUserExercise.send(params);
 }
+
+function searchExercises(){
+	var name = document.getElementById("search").value;
+	if(currentUser_Id == NULL){
+		document.getElementById("error-message").textContent = "Please select a user to search";
+	}
+	else if(name == NULL){
+		document.getElementById("error-message").textContent = "No search term entered";
+	}
+	else{
+		document.getElementById("error-message").textContent = "";
+		var params = "user_id=" + currentUser_Id + "&name=" + name;
+		var searchRequest = new XMLHttpRequest();
+		searchRequest.open("POST", "http://52.33.123.66:2000/searchExercises", true);
+		searchRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		searchRequest.addEventListener("load", function(event){
+			var response = searchRequest.responseText;
+			console.log(response);
+			var newResponseObject = JSON.parse(response);
+
+			if(newResponseObject[0] == NULL || newResponseObject[0] == undefined){
+				document.getElementById("error-message").textContent = "No exercise found";
+			}
+			else{
+				document.getElementById("error-message").textContent = "";
+				resetTable("exercises_table_body");
+				resetTable("sets_table_body");
+				convertExercisesToTable(newResponseObject);
+			}
+		});
+		searchRequest.send(params);
+	}
+};
 
 /**************************************************
 * Functions to handle inserting into the database

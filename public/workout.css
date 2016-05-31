@@ -45,6 +45,10 @@ p {
 	color: #9E9E9E;
 }
 
+#error-message {
+	color: red;
+}
+
 #addButton {
 	margin-bottom: 0px;
 	margin-left: 50px;
