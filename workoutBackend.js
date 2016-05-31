@@ -396,6 +396,25 @@ app.get('/getUsers', function(req, res, next){
   });
 });
 
+app.post('/deleteWorkout', urlencodedParser, function(req, res, next){
+  var context = {};
+  pool.query('UPDATE workouts_log SET workout_id = NULL WHERE user_id = (?) AND workout_id = (?)', [req.body.user_id, req.body.workout_id], function(err, result){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = "workouts_log updated"
+    res.send(context);
+  });
+  pool.query('DELETE FROM user_workouts WHERE uid = (?) AND wid = (?)', [req.body.user_id, req.body.workout_id], function(err, result){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = "workout deleted"
+    res.send(context);
+  });
+});
 
 /*
 app.get('/getWorkouts', function(req, res, next){
