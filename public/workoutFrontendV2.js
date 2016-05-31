@@ -278,10 +278,10 @@ function getExerciseSets(){
 
 function searchExercises(){
 	var name = document.getElementById("search").value;
-	if(currentUser_Id == NULL){
+	if(currentUser_Id == null){
 		document.getElementById("error-message").textContent = "Please select a user to search";
 	}
-	else if(name == NULL){
+	else if(name == null){
 		document.getElementById("error-message").textContent = "No search term entered";
 	}
 	else{
