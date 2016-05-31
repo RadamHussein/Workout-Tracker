@@ -340,6 +340,7 @@ function deleteWorkout(){
 		resetTable("exercises_table_body");
 		resetTable("sets_table_body");
 	});
+	deleteRequest.send(params);
 };
 /**************************************************
 * Functions to handle inserting into the database
