@@ -359,7 +359,7 @@ app.post('/getExercisesForUserWorkout', urlencodedParser, function(req, res, nex
 
 app.post('/getSetsForUserExercise', urlencodedParser, function(req, res, next){
   var context = {};
-  pool.query('SELECT weight, reps, date FROM workouts_log WHERE users.id = (?) AND exercise_id = (?) ORDER BY date DESC', [req.body.user_id, req.body.exercise_id], function(err, rows, fields){
+  pool.query('SELECT weight, reps, date FROM workouts_log WHERE user_id = (?) AND exercise_id = (?) ORDER BY date DESC', [req.body.user_id, req.body.exercise_id], function(err, rows, fields){
     if(err){
       next(err);
       return;
