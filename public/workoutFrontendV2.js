@@ -387,7 +387,7 @@ function createNewSet(){
 	var reps = document.getElementById("reps-modal").value;
 	var weight = document.getElementById("weight-modal").value;
 	var date = document.getElementById("date-modal").value;
-	var params = "currentUser_id=" + currentUser_Id + "&workout_id=" + currentWorkout_Id + "&exercise_id=" + currentExercise_Id + "&reps=" + reps + "&weight=" + weight + "&date=" + date;
+	var params = "user_id=" + currentUser_Id + "&workout_id=" + currentWorkout_Id + "&exercise_id=" + currentExercise_Id + "&reps=" + reps + "&weight=" + weight + "&date=" + date;
 	insertSetRequest = new XMLHttpRequest();
 
 	insertSetRequest.open("POST", "http://52.33.123.66:2000/insertSet", true);
