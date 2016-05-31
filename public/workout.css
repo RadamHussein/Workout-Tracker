@@ -41,7 +41,8 @@ h3 {
 }
 
 p {
-	text-decoration-color: #BDBDBD;
+	display: inline;
+	color: #BDBDBD;
 }
 
 #addButton {
