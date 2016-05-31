@@ -188,7 +188,7 @@ function resetTable(table_id){
 function addDeleteButton(newRow){
 	var cellForButtons = document.createElement("td");
 	newRow.appendChild(cellForButtons);
-	cellForButtons.innerHTML = "<button class=&qtbtn btn-danger btn-sm&qt data-toggle=&qtmodal&qt data-target=&qt#delete-workout&qt id=&qtDelete&qt>Delete</button>";
+	cellForButtons.innerHTML = "<button class='btn btn-danger btn-sm' data-toggle='modal' data-target='#delete-workout' id='Delete'>Delete</button>";
 	/*
 	var deleteButton = document.createElement("button");
 	deleteButton.id = "Delete";
