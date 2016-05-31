@@ -295,7 +295,7 @@ function searchExercises(){
 			console.log(response);
 			var newResponseObject = JSON.parse(response);
 
-			if(newResponseObject[0] == NULL || newResponseObject[0] == undefined){
+			if(newResponseObject[0] == null || newResponseObject[0] == undefined){
 				document.getElementById("error-message").textContent = "No exercise found";
 			}
 			else{
