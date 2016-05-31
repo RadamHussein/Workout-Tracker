@@ -43,10 +43,12 @@ h3 {
 p {
 	display: inline;
 	color: #9E9E9E;
+	margin-left: 15px;
 }
 
 #error-message {
 	color: red;
+	margin-left: 15px;
 }
 
 #addButton {
