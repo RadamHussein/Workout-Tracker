@@ -370,7 +370,7 @@ app.post('/getSetsForUserExercise', urlencodedParser, function(req, res, next){
   });
 });
 
-app.post('/searchExercises', urlencodedParser function(req, res, next){
+app.post('/searchExercises', urlencodedParser, function(req, res, next){
   var context = {};
   pool.query('SELECT exercises.id, exercises.name FROM workouts_log INNER JOIN exercises ON workouts_log.exercise_id = exercises.id WHERE workouts_log.user_id = (?) AND exercises.name = (?) GROUP BY exercises.name', [req.body.user_id, req.body.name], function(err, rows, fields){
     if(err){
