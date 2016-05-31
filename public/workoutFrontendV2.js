@@ -339,6 +339,8 @@ function deleteWorkout(){
 		resetTable("workouts_table_body");
 		resetTable("exercises_table_body");
 		resetTable("sets_table_body");
+		getUserWorkouts();
+		currentWorkout_Id = null;
 	});
 	deleteRequest.send(params);
 };
