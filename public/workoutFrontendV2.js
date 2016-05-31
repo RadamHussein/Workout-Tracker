@@ -243,6 +243,7 @@ function getUserExercises(){
 			var newResponseObject = JSON.parse(response);
 
 			resetTable("exercises_table_body");
+			resetTable("sets_table_body");
 			convertExercisesToTable(newResponseObject);
 			//currentUser_Id = userId;
 			//console.log("current User is now " + currentUser_Id);
