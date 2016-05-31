@@ -70,8 +70,23 @@ function main(){
 		event.preventDefault();
 		document.getElementById("error-message").textContent = "";
 		searchExercises();
-		//event.preventDefault();
 	});
+
+	//this executes code for deleting a workout when the delete workout modal is shown
+	$('#delete-workout').on('show.bs.modal', function(event){
+		var modal = $(this);
+		console.log('Modal is shown');
+		modal.find("#delete-workout-modal").on('click', function(event){
+			deleteWorkout();
+			console.log("Submit Clicked");
+		});
+	});
+
+	//removes event listener from modal once modal is hidden
+	$('#new-set').on('hide.bs.modal', function(event){
+		$('#delete-workout-modal').off();
+	});
+
 };
 
 //global variables for keeping track of the current user and current workout
@@ -313,6 +328,19 @@ function searchExercises(){
 	}
 };
 
+function deleteWorkout(){
+	var deleteRequest = new XMLHttpRequest();
+	var params = "user_id=" + currentUser_Id + "&workout_id=" + currentWorkout_Id;
+	deleteRequest.open("POST", "http://52.33.123.66:2000/deleteWorkout", true);
+	deleteRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	deleteRequest.addEventListener("load", function(event){
+		var response = deleteRequest.responseText;
+		console.log(response);
+		resetTable("workouts_table_body");
+		resetTable("exercises_table_body");
+		resetTable("sets_table_body");
+	});
+};
 /**************************************************
 * Functions to handle inserting into the database
 ***************************************************/
