@@ -47,6 +47,7 @@ p {
 }
 
 #error-message {
+	display: inline;
 	color: red;
 	margin-left: 15px;
 }
