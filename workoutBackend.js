@@ -210,10 +210,10 @@ function insertWorkouts_LogHelper(currentUser_id, workout_id, exercise_name){
   });
 };
 
-app.post('/insertSet', function(req, res, next){
+app.post('/insertSet', urlencodedParser, function(req, res, next){
   var context = {};
   //console.log("current user id " + req.body.user_id);
-  //var currentUser_id = req.body.user_id;
+  var currentUser_id = req.body.user_id;
   var workout_id = req.body.workout_id;
   var exercise_id = req.body.exercise_id;
   var reps = req.body.reps;
