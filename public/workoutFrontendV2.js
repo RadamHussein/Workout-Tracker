@@ -294,9 +294,9 @@ function searchExercises(){
 			var response = searchRequest.responseText;
 			console.log(response);
 			var newResponseObject = JSON.parse(response);
-			console.log(newResponseObject[0]);
+			console.log(newResponseObject.results[0]);
 
-			if(newResponseObject[0] == null || newResponseObject[0] == undefined){
+			if(newResponseObject.results[0] == null || newResponseObject.results[0] == undefined){
 				document.getElementById("error-message").textContent = "No exercise found";
 			}
 			else{
