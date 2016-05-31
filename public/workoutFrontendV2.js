@@ -69,6 +69,7 @@ function main(){
 	search.addEventListener("click", function(event){
 		document.getElementById("error-message").textContent = "";
 		searchExercises();
+		event.preventDefault();
 	});
 };
 
