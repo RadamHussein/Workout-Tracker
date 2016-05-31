@@ -91,25 +91,6 @@ function convertUsersToTableRow(singleObjectRow){
 		console.log("table row clicked");
 		currentUser_Id = singleObjectRow.id;
 		getUserWorkouts();
-		/*
-		var requestUserWorkouts = new XMLHttpRequest();
-		var params = "id=" + userId;
-		requestUserWorkouts.open("POST", "http://52.33.123.66:2000/getUserWorkouts", true);
-		requestUserWorkouts.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		requestUserWorkouts.addEventListener("load", function(event){
-			var response = requestUserWorkouts.responseText;
-			console.log(response);
-			var newResponseObject = JSON.parse(response);
-
-			resetTable("workouts_table_body");
-			resetTable("exercises_table_body");
-			resetTable("sets_table_body");
-			convertWorkoutsToTable(newResponseObject);
-			currentUser_Id = userId;
-			console.log("current User is now " + currentUser_Id);
-		});
-		requestUserWorkouts.send(params);
-		*/
 	});
 	
 	//cut the time off the end of the date
@@ -131,23 +112,6 @@ function convertWorkoutsToTableRow(singleObjectRow){
 		console.log("table row clicked");
 		currentWorkout_Id = singleObjectRow.id;
 		getUserExercises();
-		/*
-		var requestExercisesForUserWorkout = new XMLHttpRequest();
-		var params = "user_id=" + currentUser_Id + "&workout_id=" + singleObjectRow.id;
-		requestExercisesForUserWorkout.open("POST", "http://52.33.123.66:2000/getExercisesForUserWorkout", true);
-		requestExercisesForUserWorkout.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		requestExercisesForUserWorkout.addEventListener("load", function(event){
-			var response = requestExercisesForUserWorkout.responseText;
-			console.log(response);
-			var newResponseObject = JSON.parse(response);
-
-			resetTable("exercises_table_body");
-			convertExercisesToTable(newResponseObject);
-			currentWorkout_Id = singleObjectRow.id;
-			console.log("Current Workouts is now " + currentWorkout_Id);
-		});
-		requestExercisesForUserWorkout.send(params);
-		*/
 	});
 
 	addTableRowToDOM(newRow, singleObjectRow.name);
@@ -163,21 +127,6 @@ function convertExercisesToTableRow(singleObjectRow){
 		console.log("table row clicked");
 		currentExercise_Id = singleObjectRow.id;
 		getExerciseSets();
-		/*
-		var requestSetsForUserExercise = new XMLHttpRequest();
-		var params = "user_id=" + currentUser_Id + "&workout_id=" + currentWorkout_Id + "&exercise_id=" + singleObjectRow.id;
-		requestSetsForUserExercise.open("POST", "http://52.33.123.66:2000/getSetsForUserExercise", true);
-		requestSetsForUserExercise.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		requestSetsForUserExercise.addEventListener("load", function(event){
-			var response = requestSetsForUserExercise.responseText;
-			console.log(response);
-			var newResponseObject = JSON.parse(response);
-
-			resetTable("sets_table_body");
-			convertSetsToTable(newResponseObject);
-		});
-		requestSetsForUserExercise.send(params);
-		*/
 	});
 
 	addTableRowToDOM(newRow, singleObjectRow.name);

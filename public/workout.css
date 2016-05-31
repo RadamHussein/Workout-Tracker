@@ -40,6 +40,10 @@ h3 {
 	display: inline-block;
 }
 
+p {
+	text-decoration-color: #BDBDBD;
+}
+
 #addButton {
 	margin-bottom: 0px;
 	margin-left: 50px;
