@@ -23,15 +23,24 @@ function main(){
 	$('#new-workout').on('show.bs.modal', function(event){
 		var modal = $(this);
 		console.log('Modal is shown');
-		modal.find("#submit-workout-modal").on('click', function(event){
-			createNewWorkout();
-			console.log("Submit Clicked");
-		});
+		//check if a user is selected
+		if(currentUser_Id == null){
+			//insert an error message into the modal
+			$('#workout-body').append("<h4 id='workout-error'>You must select a user before adding a workout</h4>");
+		}
+		else{
+			modal.find("#submit-workout-modal").on('click', function(event){
+				createNewWorkout();
+				console.log("Submit Clicked");
+			});
+		}
+		
 	});
 
 	//removes event listener from modal once modal is hidden
 	$('#new-workout').on('hide.bs.modal', function(event){
 		$('#submit-workout-modal').off();
+		$('#workout-error').remove();
 	});
 
 	//this executes code for adding a workout when the add exercise modal is shown
@@ -219,13 +228,6 @@ function addDeleteButton(newRow){
 	var cellForButtons = document.createElement("td");
 	newRow.appendChild(cellForButtons);
 	cellForButtons.innerHTML = "<button class='btn btn-danger btn-sm' data-toggle='modal' data-target='#delete-workout' id='Delete'>Delete</button>";
-	/*
-	var deleteButton = document.createElement("button");
-	deleteButton.id = "Delete";
-	deleteButton.className = "btn btn-danger btn-sm";
-	cellForButtons.appendChild(deleteButton);
-	deleteButton.textContent = "Delete";
-	*/
 }
 
 function addDeleteExerciseButton(newRow){
@@ -274,8 +276,8 @@ function getUserWorkouts(){
 			resetTable("exercises_table_body");
 			resetTable("sets_table_body");
 			convertWorkoutsToTable(newResponseObject);
-			//currentUser_Id = userId;
-			//console.log("current User is now " + currentUser_Id);
+			//currentWorkout_Id = null;
+			//currentExercise_Id = null;
 		});
 		requestUserWorkouts.send(params);
 }
@@ -421,6 +423,8 @@ function createNewWorkout(){
 		if (insertWorkoutRequest.status >= 200 && insertWorkoutRequest.status < 400){
 			var response = insertWorkoutRequest.responseText;
 			console.log(response);
+			//set current workout to null so user can't add exercise without selecting the new workout first
+			currentWorkout_Id = null;
 			getUserWorkouts();
 		} else {
 			console.log("error");
@@ -430,22 +434,27 @@ function createNewWorkout(){
 };
 
 function createNewExercise(){
-	var exercise_name = document.getElementById("exercise_name-modal").value;
-	var params = "currentUser_id=" + currentUser_Id + "&workout_id=" + currentWorkout_Id + "&exercise_name=" + exercise_name;
-	var insertExerciseRequest = new XMLHttpRequest();
+	if(currentWorkout_Id == null){
+		//do something here
+	}
+	else{
+		var exercise_name = document.getElementById("exercise_name-modal").value;
+		var params = "currentUser_id=" + currentUser_Id + "&workout_id=" + currentWorkout_Id + "&exercise_name=" + exercise_name;
+		var insertExerciseRequest = new XMLHttpRequest();
 
-	insertExerciseRequest.open("POST", "http://52.33.123.66:2000/insertExercise", true);
-	insertExerciseRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-	insertExerciseRequest.addEventListener("load", function(event){
-		if (insertExerciseRequest.status >= 200 && insertExerciseRequest.status < 400){
-			var response = insertExerciseRequest.responseText;
-			console.log(response);
-			getUserExercises();
-		} else {
-			console.log("error");
-		}
-	});
-	insertExerciseRequest.send(params);
+		insertExerciseRequest.open("POST", "http://52.33.123.66:2000/insertExercise", true);
+		insertExerciseRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		insertExerciseRequest.addEventListener("load", function(event){
+			if (insertExerciseRequest.status >= 200 && insertExerciseRequest.status < 400){
+				var response = insertExerciseRequest.responseText;
+				console.log(response);
+				getUserExercises();
+			} else {
+				console.log("error");
+			}
+		});
+		insertExerciseRequest.send(params);
+	}	
 };
 
 function createNewSet(){
