@@ -403,6 +403,7 @@ app.post('/deleteWorkout', urlencodedParser, function(req, res, next){
       next(err);
       return;
     }
+    console.log("first query complete")
     //context.results = "workouts_log updated";
     //res.send(context);
   });
@@ -411,6 +412,7 @@ app.post('/deleteWorkout', urlencodedParser, function(req, res, next){
       next(err);
       return;
     }
+    console.log("second query complete")
     context.results = "workout deleted";
     res.send(context);
   });
