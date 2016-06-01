@@ -247,6 +247,7 @@ app.post('/insertSet', urlencodedParser, function(req, res, next){
             return;
             }
           context.results = "Set added";
+          res.type('text/plain');
           res.send(context);
         });
       };
@@ -396,6 +397,7 @@ app.get('/getUsers', function(req, res, next){
   });
 });
 
+//deletes a workout for a specified user
 app.post('/deleteWorkout', urlencodedParser, function(req, res, next){
   var context = {};
   pool.query('UPDATE workouts_log SET workout_id = NULL WHERE user_id = (?) AND workout_id = (?)', [req.body.user_id, req.body.workout_id], function(err, result){
@@ -404,8 +406,6 @@ app.post('/deleteWorkout', urlencodedParser, function(req, res, next){
       return;
     }
     console.log("first query complete")
-    //context.results = "workouts_log updated";
-    //res.send(context);
   });
   pool.query('DELETE FROM user_workouts WHERE uid = (?) AND wid = (?)', [req.body.user_id, req.body.workout_id], function(err, result){
     if(err){
@@ -414,9 +414,24 @@ app.post('/deleteWorkout', urlencodedParser, function(req, res, next){
     }
     console.log("second query complete")
     context.results = "workout deleted";
+    res.type('text/plain');
     res.send(context);
   });
 });
+
+//deletes an exercise from a workout for a specified user
+app.post('/deleteExercise', urlencodedParser, function(req, res, next){
+  var context = {};
+  pool.query('UPDATE workouts_log SET workout_id = NULL WHERE user_id = (?) AND workout_id = (?) AND exercise_id = (?)', [req.body.user_id, req.body.workout_id, req.body.exercise_id], function(err, results){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = "exercise deleted";
+    res.type('text/plain');
+    res.send(context);
+  })
+})
 
 /*
 app.get('/getWorkouts', function(req, res, next){

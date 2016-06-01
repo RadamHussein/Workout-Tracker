@@ -87,6 +87,21 @@ function main(){
 		$('#delete-workout-modal').off();
 	});
 
+	//this executes code for deleting a workout when the delete workout modal is shown
+	$('#delete-exercise').on('show.bs.modal', function(event){
+		var modal = $(this);
+		console.log('Modal is shown');
+		modal.find("#delete-exercise-modal").on('click', function(event){
+			deleteWorkout();
+			console.log("Submit Clicked");
+		});
+	});
+
+	//removes event listener from modal once modal is hidden
+	$('#new-set').on('hide.bs.modal', function(event){
+		$('#delete-exercise-modal').off();
+	});
+
 };
 
 //global variables for keeping track of the current user and current workout
@@ -154,7 +169,7 @@ function convertExercisesToTableRow(singleObjectRow){
 	});
 
 	addTableRowToDOM(newRow, singleObjectRow.name);
-	addDeleteButton(newRow);
+	addDeleteExerciseButton(newRow);
 };
 
 function convertSetsToTableRow(singleObjectRow){
@@ -211,6 +226,12 @@ function addDeleteButton(newRow){
 	cellForButtons.appendChild(deleteButton);
 	deleteButton.textContent = "Delete";
 	*/
+}
+
+function addDeleteExerciseButton(newRow){
+	var cellForButtons = document.createElement("td");
+	newRow.appendChild(cellForButtons);
+	cellForButtons.innerHTML = "<button class='btn btn-danger btn-sm' data-toggle='modal' data-target='#delete-exercise' id='Delete'>Delete</button>";
 }
 
 //gets users data from database 
@@ -328,6 +349,7 @@ function searchExercises(){
 	}
 };
 
+//deletes the selected workout for the current user
 function deleteWorkout(){
 	var deleteRequest = new XMLHttpRequest();
 	var params = "user_id=" + currentUser_Id + "&workout_id=" + currentWorkout_Id;
@@ -343,6 +365,23 @@ function deleteWorkout(){
 		//currentWorkout_Id = null;
 	});
 	deleteRequest.send(params);
+};
+
+//deletes the selected exercise from the current workout for the current user
+function deleteExercise(){
+	var deleteExerciseRequest = new XMLHttpRequest();
+	var params = "user_id=" + currentUser_Id + "&workout_id=" + currentWorkout_Id + "&exercise_id=" + currentExercise_Id;
+	deleteExerciseRequest.open("POST", "http://52.33.123.66:2000/deleteExercise", true);
+	deleteExerciseRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	deleteExerciseRequest.addEventListener("load", function(event){
+		var response = deleteExerciseRequest.responseText;
+		console.log(response);
+		resetTable("exercises_table_body");
+		resetTable("sets_table_body");
+		getUserExercises();
+		//currentExercise_Id = null;
+	});
+	deleteExerciseRequest.send(params);
 };
 /**************************************************
 * Functions to handle inserting into the database
