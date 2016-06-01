@@ -92,7 +92,7 @@ function main(){
 		var modal = $(this);
 		console.log('Modal is shown');
 		modal.find("#delete-exercise-modal").on('click', function(event){
-			deleteWorkout();
+			deleteExercise();
 			console.log("Submit Clicked");
 		});
 	});
