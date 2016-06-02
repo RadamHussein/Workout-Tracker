@@ -196,6 +196,7 @@ function convertExercisesToTableRow(singleObjectRow){
 	addDeleteExerciseButton(newRow);
 };
 
+/*
 function convertSetsToTableRow(singleObjectRow){
 	var newRow = document.createElement("tr");
 	document.getElementById("sets_table_body").appendChild(newRow);
@@ -205,6 +206,31 @@ function convertSetsToTableRow(singleObjectRow){
 	var formattedDate = singleObjectRow.date.slice(0, 10);
 	addTableRowToDOM(newRow, formattedDate);
 };
+*/
+
+function convertSetsToTable(objList){
+	var setNumber = 1;
+
+	for (var i=0; i<objList.results.length; i++){
+		//convertSetsToTableRow(objList.results[i]);
+		var newRow = document.createElement("tr");
+		document.getElementById("sets_table_body").appendChild(newRow);
+		addTableRowToDOM(newRow, setNumber);
+		addTableRowToDOM(newRow, objList.results[i].reps);
+		addTableRowToDOM(newRow, objList.results[i].weight);
+		var date = objList.results[i].date;
+		var formattedDate = date.slice(0, 10);
+		addTableRowToDOM(newRow, formattedDate);
+
+		if(objList.results[i].date == objList.results[i+1].date){
+			setNumber++;
+		}
+		else{
+			setNumber = 1;
+		}
+
+	};
+}
 
 //iterates through data returned form mysql and send individual objects to be added to table.
 function convertUsersToTable(objList){
@@ -225,11 +251,13 @@ function convertExercisesToTable(objList){
 	};
 };
 
+/*
 function convertSetsToTable(objList){
 	for (var i=0; i<objList.results.length; i++){
 		convertSetsToTableRow(objList.results[i]);
 	};
 };
+*/
 
 //this function clears the table so that a new one can be built after a change
 function resetTable(table_id){
