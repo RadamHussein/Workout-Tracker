@@ -329,7 +329,7 @@ function getExerciseSets(){
 			resetTable("sets_table_body");
 
 			//if only build the table if there are sets for that exercise
-			if(newResponseObject.result[0] != null || newResponseObject.results[0] != undefined){
+			if(newResponseObject.results[0] != null || newResponseObject.results[0] != undefined){
 				convertSetsToTable(newResponseObject);
 			}
 
