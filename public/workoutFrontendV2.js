@@ -150,7 +150,10 @@ function convertUsersToTableRow(singleObjectRow){
 	newRow.addEventListener("click", function(event){
 		console.log("table row clicked");
 		currentUser_Id = singleObjectRow.id;
+		currentWorkout_Id = null;
+		currentExercise_Id = null;
 		getUserWorkouts();
+
 	});
 	
 	//cut the time off the end of the date
@@ -324,7 +327,12 @@ function getExerciseSets(){
 			var newResponseObject = JSON.parse(response);
 
 			resetTable("sets_table_body");
-			convertSetsToTable(newResponseObject);
+
+			//if only build the table if there are sets for that exercise
+			if(newResponseObject.result[0] != null || newResponseObject.results[0] != undefined){
+				convertSetsToTable(newResponseObject);
+			}
+
 		});
 		requestSetsForUserExercise.send(params);
 }
