@@ -27,7 +27,6 @@ function main(){
 		if(currentUser_Id == null){
 			//insert an error message into the modal
 			$('#workout-body').append("<h4 class='modal-error'>You must select a user before adding a workout</h4>");
-			$('#submit-workout-modal').attr("disabled");
 		}
 		else{
 			modal.find("#submit-workout-modal").on('click', function(event){
@@ -42,7 +41,6 @@ function main(){
 	$('#new-workout').on('hide.bs.modal', function(event){
 		$('#submit-workout-modal').off();
 		$('.modal-error').remove();
-		$('#submit-workout-modal').removeProp("disabled");
 	});
 
 	//this executes code for adding a workout when the add exercise modal is shown
