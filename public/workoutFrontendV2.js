@@ -222,15 +222,16 @@ function convertSetsToTable(objList){
 		var formattedDate = date.slice(0, 10);
 		addTableRowToDOM(newRow, formattedDate);
 
-		if(objList.results[i].date == objList.results[i+1].date){
-			setNumber++;
+		if((i+1) != objList.results.length){
+			if(objList.results[i].date == objList.results[i+1].date){
+				setNumber++;
+			}
+			else{
+				setNumber = 1;
+			}
 		}
-		else{
-			setNumber = 1;
-		}
-
 	};
-}
+};
 
 //iterates through data returned form mysql and send individual objects to be added to table.
 function convertUsersToTable(objList){
