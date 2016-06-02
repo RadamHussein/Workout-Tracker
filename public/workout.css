@@ -57,7 +57,7 @@ p {
 	color: red;
 }
 
-tr:first-child.sets-table {
+.sets-table:first-child {
 	font-weight: bold;
 }
 
