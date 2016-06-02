@@ -53,9 +53,8 @@ p {
 }
 
 .modal-error {
+	text-align: center;
 	color: red;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 #addButton {
