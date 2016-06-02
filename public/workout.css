@@ -57,6 +57,10 @@ p {
 	color: red;
 }
 
+.boldFont {
+	font-weight: bold;
+}
+
 #addButton {
 	margin-bottom: 0px;
 	margin-left: 50px;
