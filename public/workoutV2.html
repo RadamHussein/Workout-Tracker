@@ -184,15 +184,22 @@
 			<div class="row">
 				<div class="col-md-12 col-xs-12">
 					<div class="card-style" id="table-container">
-						<form role="form" class="form-inline">
-							<div class="form-group" id="searchDiv">
-								<label for="search">Search Exercises</label>
-								<input type="text" name="search" id="search" class="form-control">
-								<button type="submit" id="search-button" class="btn btn-info btn-sm">Search</button>
-								<p>Search all exercises for the selected user</p>
-								<p class="text-help" id="error-message"></p>
+						<div class="row">
+							<div class="col-md-9">
+								<form role="form" class="form-inline">
+									<div class="form-group" id="searchDiv">
+										<label for="search">Search Exercises</label>
+										<input type="text" name="search" id="search" class="form-control">
+										<button type="submit" id="search-button" class="btn btn-info btn-sm">Search</button>
+										<p>Search all exercises for the selected user</p>
+										<!--<p class="text-help" id="error-message"></p>-->
+									</div>
+								</form>
 							</div>
-						</form>
+							<div class="col-md-3">
+								<p id="error-message"></p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
