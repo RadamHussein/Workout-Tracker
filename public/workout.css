@@ -91,7 +91,7 @@ p {
 }
 
 .clickable-rowOFF:active {
-	color: #FFFF8D;
+	background-color: #FFFF8D;
 }
 
 .clickable-rowOFF {
