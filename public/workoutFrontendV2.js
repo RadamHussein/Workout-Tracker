@@ -149,11 +149,12 @@ function convertUsersToTableRow(singleObjectRow){
 
 	newRow.addEventListener("click", function(event){
 		console.log("table row clicked");
-		
+		/*
 		var x = document.getElementsByTagName("TR");
 		for (var i = 0; i<x.length; i++){
 			x[i].style.backgroundColor = "white";
 		}
+		*/
 		newRow.style.backgroundColor = "#FFFF8D";
 
 		currentUser_Id = singleObjectRow.id;
