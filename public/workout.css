@@ -76,6 +76,10 @@ p {
 	background-color: #E0E0E0;
 }
 
+.clickable-row:active {
+	background-color: #FFFF8D;
+}
+
 #user_login {
 	text-align: center;
 }
