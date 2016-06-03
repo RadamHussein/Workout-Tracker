@@ -157,7 +157,7 @@ function convertUsersToTableRow(singleObjectRow){
 		*/
 		//newRow.style.backgroundColor = "#FFFF8D";
 		var selectedRow = document.getElementsByClassName("clickable-row");
-		selectedRow.removeAttribut("class", "clickable-row");
+		selectedRow.removeAttribute("class", "clickable-row");
 		newRow.setAttribute("class", "clickable-row");
 		currentUser_Id = singleObjectRow.id;
 		currentWorkout_Id = null;
