@@ -50,7 +50,7 @@ p {
 	display: inline;
 	color: red;
 	/*margin-left: 15px;*/
-	text-align: right;
+	text-align: center;
 }
 
 .modal-error {
