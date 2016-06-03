@@ -143,23 +143,22 @@ function convertUsersToTableRow(singleObjectRow){
 	//get cell data from each element in the object and add to DOM
 	var newRow = document.createElement("tr");
 	document.getElementById("tableBody").appendChild(newRow);
-	//newRow.setAttribute("class", "clickable-row");
+	newRow.setAttribute("class", "clickable-row");
 	var rowId = singleObjectRow.id;
-	newRow.setAttribute("href", rowId);
+	//newRow.setAttribute("href", rowId);
 
 	newRow.addEventListener("click", function(event){
 		console.log("table row clicked");
-		/*
+		
 		var x = document.getElementsByTagName("TR");
 		for (var i = 0; i<x.length; i++){
 			x[i].style.backgroundColor = "white";
 		}
-		*/
-		//newRow.style.backgroundColor = "#FFFF8D";
-		var selectedRow = document.getElementsByClassName("clickable-row");
-		selectedRow.getAttribute("class");
-		selectedRow.removeAttribute("class");
-		newRow.setAttribute("class", "clickable-row");
+		newRow.style.backgroundColor = "#FFFF8D";
+		//var selectedRow = document.getElementsByClassName("clickable-row");
+		//selectedRow.getAttribute("class");
+		//selectedRow.removeAttribute("class");
+		//newRow.setAttribute("class", "clickable-row");
 		currentUser_Id = singleObjectRow.id;
 		currentWorkout_Id = null;
 		currentExercise_Id = null;
