@@ -93,6 +93,8 @@ function main(){
 		searchExercises();
 	});
 
+	document.getElementById("error-message").textContent = "";
+
 	//this executes code for deleting a workout when the delete workout modal is shown
 	$('#delete-workout').on('show.bs.modal', function(event){
 		var modal = $(this);
