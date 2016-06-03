@@ -408,7 +408,8 @@ function getExerciseSets(){
 function searchExercises(){
 	var name = document.getElementById("search").value;
 	if(currentUser_Id == null){
-		document.getElementById("error-message").textContent = "Please select a user to search";
+		//document.getElementById("error-message").textContent = "Please select a user to search";
+		document.getElementById("searchDiv").innerHTML = "<p>No user selected</p>";
 	}
 	else if(name == null){
 		document.getElementById("error-message").textContent = "No search term entered";
@@ -427,9 +428,6 @@ function searchExercises(){
 
 			if(newResponseObject.results[0] == null || newResponseObject.results[0] == undefined){
 				document.getElementById("error-message").textContent = "No exercise found";
-			}
-			else if(currentUser_Id == null){
-				document.getElementById("searchDiv").innerHTML = "<p>No user selected</p>";
 			}
 			else{
 				document.getElementById("error-message").textContent = "";
