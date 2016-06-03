@@ -47,11 +47,10 @@ p {
 }
 
 #error-message {
-	/*
 	display: inline;
 	color: red;
-	*/
-	margin-left: 15px;
+	/*margin-left: 15px;*/
+	text-align: right;
 }
 
 .modal-error {
