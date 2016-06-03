@@ -150,14 +150,12 @@ function convertUsersToTableRow(singleObjectRow){
 	newRow.addEventListener("click", function(event){
 		console.log("table row clicked");
 		
+		//change attributes on all tble rows to indicate selected and unselected
 		var x = document.getElementsByClassName("clickable-rowON");
 		for (var i = 0; i<x.length; i++){
 			x[i].setAttribute("class", "clickable-rowOFF");
 		}
-		
 		newRow.setAttribute("class", "clickable-rowON");
-		//newRow.style.backgroundColor = "#FFFF8D";
-		//newRow.setAttribute("style", "background-color: #FFFF8D;");
 
 		currentUser_Id = singleObjectRow.id;
 		currentWorkout_Id = null;
@@ -179,10 +177,16 @@ function convertUsersToTableRow(singleObjectRow){
 function convertWorkoutsToTableRow(singleObjectRow){
 	var newRow = document.createElement("tr");
 	document.getElementById("workouts_table_body").appendChild(newRow);
-	newRow.setAttribute("class", "clickable-row");
+	newRow.setAttribute("class", "clickable-rowOFF");
 
 	newRow.addEventListener("click", function(event){
 		console.log("table row clicked");
+		var x = document.getElementById("workouts_table_body");
+		var y = x.getElementsByClassName("clickable-rowON");
+		for (var i=0; i<y.length; i++){
+			y[i].setAttribute("class", "clickable-rowOFF");
+		}
+		newRow.setAttribute("class", "clickable-rowON");
 		currentWorkout_Id = singleObjectRow.id;
 		getUserExercises();
 	});
@@ -194,10 +198,16 @@ function convertWorkoutsToTableRow(singleObjectRow){
 function convertExercisesToTableRow(singleObjectRow){
 	var newRow = document.createElement("tr");
 	document.getElementById("exercises_table_body").appendChild(newRow);
-	newRow.setAttribute("class", "clickable-row");
+	newRow.setAttribute("class", "clickable-rowOFF");
 
 	newRow.addEventListener("click", function(event){
 		console.log("table row clicked");
+		var x = document.getElementById("exercises_table_body");
+		var y = x.getElementsByClassName("clickable-rowON");
+		for (var i=0; i<y.length; i++){
+			y[i].setAttribute("class", "clickable-rowOFF");
+		}
+		newRow.setAttribute("class", "clickable-rowON");
 		currentExercise_Id = singleObjectRow.id;
 		getExerciseSets();
 	});
