@@ -89,7 +89,7 @@ function main(){
 	var search = document.getElementById("search-button");
 	search.addEventListener("click", function(event){
 		event.preventDefault();
-		document.getElementById("error-message").textContent = "";
+		//document.getElementById("error-message").textContent = "";
 		searchExercises();
 	});
 
