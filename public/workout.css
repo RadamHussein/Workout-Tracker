@@ -47,9 +47,8 @@ p {
 }
 
 #error-message {
-	display: inline;
+	margin-top: 15px;
 	color: red;
-	/*margin-left: 15px;*/
 	text-align: center;
 }
 
