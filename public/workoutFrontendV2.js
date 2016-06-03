@@ -428,6 +428,9 @@ function searchExercises(){
 			if(newResponseObject.results[0] == null || newResponseObject.results[0] == undefined){
 				document.getElementById("error-message").textContent = "No exercise found";
 			}
+			else if(currentUser_Id == null){
+				document.getElementById("searchDiv").innerHTML = "<p>No user selected</p>";
+			}
 			else{
 				document.getElementById("error-message").textContent = "";
 				resetTable("exercises_table_body");
