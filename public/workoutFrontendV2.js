@@ -150,15 +150,16 @@ function convertUsersToTableRow(singleObjectRow){
 	newRow.addEventListener("click", function(event){
 		console.log("table row clicked");
 		
+		/*
 		var x = document.getElementsByTagName("TR");
 		for (var i = 0; i<x.length; i++){
 			x[i].style.backgroundColor = "white";
 		}
-		newRow.style.backgroundColor = "#FFFF8D";
-		//var selectedRow = document.getElementsByClassName("clickable-row");
-		//selectedRow.getAttribute("class");
-		//selectedRow.removeAttribute("class");
-		//newRow.setAttribute("class", "clickable-row");
+		*/
+		//newRow.style.backgroundColor = "#FFFF8D";
+
+		$('table tr').css("background", "white");
+		$(this).css("background", "#FFFF8D");
 		currentUser_Id = singleObjectRow.id;
 		currentWorkout_Id = null;
 		currentExercise_Id = null;
