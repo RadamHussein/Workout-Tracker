@@ -154,8 +154,9 @@ function convertUsersToTableRow(singleObjectRow){
 		for (var i = 0; i<x.length; i++){
 			x[i].style.backgroundColor = "white";
 		}
-		newRow.style.backgroundColor = "#FFFF8D";
 		*/
+		newRow.style.backgroundColor = "#FFFF8D";
+
 		currentUser_Id = singleObjectRow.id;
 		currentWorkout_Id = null;
 		currentExercise_Id = null;

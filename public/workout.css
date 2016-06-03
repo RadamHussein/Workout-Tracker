@@ -76,8 +76,8 @@ p {
 	background-color: #E0E0E0;
 }
 
-.clickable-row:active {
-	background-color: #FFFF8D;
+.clickable-row:visited {
+	background-color: white;
 }
 
 #user_login {
