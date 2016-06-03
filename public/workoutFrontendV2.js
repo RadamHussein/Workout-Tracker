@@ -143,7 +143,7 @@ function convertUsersToTableRow(singleObjectRow){
 	//get cell data from each element in the object and add to DOM
 	var newRow = document.createElement("tr");
 	document.getElementById("tableBody").appendChild(newRow);
-	newRow.setAttribute("class", "clickable-row");
+	newRow.setAttribute("class", "clickable-rowOFF");
 	var rowId = singleObjectRow.id;
 	//newRow.setAttribute("href", rowId);
 
@@ -157,7 +157,7 @@ function convertUsersToTableRow(singleObjectRow){
 		}
 		*/
 		//newRow.style.backgroundColor = "#FFFF8D";
-		newRow.setAttribute("style", "background-color: #FFFF8D;");
+		//newRow.setAttribute("style", "background-color: #FFFF8D;");
 		currentUser_Id = singleObjectRow.id;
 		currentWorkout_Id = null;
 		currentExercise_Id = null;

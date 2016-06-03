@@ -72,9 +72,26 @@ p {
 	float: right;
 }
 
-
+/*
 .clickable-row:hover {
 	background-color: #E0E0E0;
+}
+*/
+
+.clickable-rowON:hover {
+	background-color: #E0E0E0;
+}
+
+.clickable-rowON {
+	background-color: #FFFF8D;
+}
+
+.clickable-rowOFF:hover {
+	background-color: #E0E0E0;
+}
+
+.clickable-rowOFF {
+	background-color: white;
 }
 
 #user_login {
