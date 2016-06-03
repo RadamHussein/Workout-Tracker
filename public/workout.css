@@ -86,12 +86,16 @@ clickable-rowON:active {
 	background-color: #FFFF8D;
 }
 
+clickable-rowON {
+	background-color: #FFFF8D;
+}
+
 .clickable-rowOFF:hover {
 	background-color: #E0E0E0;
 }
 
 .clickable-rowOFF:active {
-	background-color: #FFFF8D;
+	background-color: #FFFF8D
 }
 
 .clickable-rowOFF {
