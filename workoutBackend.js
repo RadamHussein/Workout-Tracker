@@ -245,12 +245,12 @@ app.post('/insertSet', urlencodedParser, function(req, res, next){
           if(err){
            next(err);
             return;
-            }
-          context.results = "Set added";
-          res.type('text/plain');
-          res.send(context);
+            }    
         });
       };
+      context.results = "Set added";
+      res.type('text/plain');
+      res.send(context);
     }
   });
 });
