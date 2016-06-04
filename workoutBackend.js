@@ -87,8 +87,7 @@ app.post('/insertUser', urlencodedParser, function(req, res, next){
     if(err){
       console.log(err);
       console.log(typeof(err));
-      console.log(err[0]);
-      console.log(typeof(err[0]));
+      console.log(err.errno);
       next(err);
       return;
     }
