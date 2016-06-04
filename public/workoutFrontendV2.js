@@ -524,7 +524,10 @@ function createNewUser(){
 			if (insertRequest.status >= 200 && insertRequest.status < 400){
 				var response = insertRequest.responseText;
 				console.log(response);
-				var newResponseObject = JSON.parse(response)
+				console.log(typeof(response));
+				var newResponseObject = JSON.parse(response);
+				console.log(newResponseObject)
+				console.log(typeof(newResponseObject));
 				console.log(newResponseObject.results[0]);
 				resetTable("tableBody");
 				displayUsersTable();
