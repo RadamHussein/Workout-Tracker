@@ -491,30 +491,40 @@ function createNewUser(){
 		var lname = document.getElementById("last_name-modal").value;
 		var username = document.getElementById("user_name-modal").value;
 		var password = document.getElementById("password-modal").value;
-		console.log(fname);
-		console.log(lname);
-		console.log(username);
-		console.log(password);
-		console.log(typeof(password));
-		if(password == ""){
-			password = null;
+		if(fname == ""){
+			//cannot be empty
+			$('#first_name').append("<p class='modal-error'>First Name cannot be blank</p>");
 		}
-		var params = "first_name=" + fname + "&last_name=" + lname + "&user_name=" + username + "&password=" + password;
-		var insertRequest = new XMLHttpRequest();
+		else if(lname == ""){
+			//cannot be emptp
+			$('#last_name').append("<p class='modal-error'>Last Name cannot be blank</p>");
+		}
+		else if(username == ""){
+			//cannot be empty
+			$('#user_name').append("<p class='modal-error'>Username cannot be blank</p>");
+		}
+		else if(password == ""){
+			//password cannot be empty
+			$('#password').append("<p class='modal-error'>Password cannot be blank</p>");
+		}
+		else{
+			var params = "first_name=" + fname + "&last_name=" + lname + "&user_name=" + username + "&password=" + password;
+			var insertRequest = new XMLHttpRequest();
 
-		insertRequest.open("POST", "http://52.33.123.66:2000/insertUser", true);
-		insertRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		insertRequest.addEventListener("load", function(event){
-			if (insertRequest.status >= 200 && insertRequest.status < 400){
-				var response = insertRequest.responseText;
-				console.log(response);
-				resetTable("tableBody");
-				displayUsersTable();
-			} else {
-				console.log("error");
-			}
-		});
-		insertRequest.send(params);
+			insertRequest.open("POST", "http://52.33.123.66:2000/insertUser", true);
+			insertRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			insertRequest.addEventListener("load", function(event){
+				if (insertRequest.status >= 200 && insertRequest.status < 400){
+					var response = insertRequest.responseText;
+					console.log(response);
+					resetTable("tableBody");
+					displayUsersTable();
+				} else {
+					console.log("error");
+				}
+			});
+			insertRequest.send(params);
+		}
 };
 
 //adds a new workout for the selected user
