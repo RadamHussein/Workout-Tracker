@@ -25,6 +25,7 @@ function main(){
 				$('#password').append("<p class='modal-error'>Password cannot be blank</p>");
 			}
 			else{
+				$('#new-user').modal('hide');
 				createNewUser();
 			}
 			console.log("Submit Clicked");
