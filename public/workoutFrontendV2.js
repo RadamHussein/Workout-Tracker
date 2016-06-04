@@ -495,6 +495,7 @@ function createNewUser(){
 		console.log(lname);
 		console.log(username);
 		console.log(password);
+		console.log(typeof(password));
 		var params = "first_name=" + fname + "&last_name=" + lname + "&user_name=" + username + "&password=" + password;
 		var insertRequest = new XMLHttpRequest();
 
