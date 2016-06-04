@@ -171,11 +171,14 @@ app.post('/insertExercise', urlencodedParser, function(req, res, next){
           next(err);
           return;
         }
-        context.results = "Exercise created";
-        res.type('text/plain');
-        res.send(context);
+        //context.results = "Exercise created";
+        //res.type('text/plain');
+        //res.send(context);
       });
       insertWorkouts_LogHelper(currentUser_id, workout_id, exercise_name);
+      context.results = "Exercise created";
+      res.type('text/plain');
+      res.send(context);
     }
     else{
       var existing_id = rows[0].id;
