@@ -82,22 +82,25 @@ app.post('/insertUser', urlencodedParser, function(req, res, next){
   var last_name = req.body.last_name;
   var user_name = req.body.user_name;
   var password = req.body.password;
-  console.log(req.body.first_name);
-  console.log(req.body.last_name);
-  console.log(req.body.user_name);
-  console.log(req.body.password);
   var context = {};
   pool.query("INSERT INTO users (`first_name`, `last_name`, `user_name`, `password`) VALUES (?, ?, ?, ?)", [req.body.first_name, req.body.last_name, req.body.user_name, req.body.password], function(err, result){
-    if(err){
-      console.log(err);
-      console.log(typeof(err));
+    if(err.errno == 1062){
       console.log(err.errno);
+      //next(err);
+      //return;
+      context.results = 1062;
+      res.type('text/plain');
+      res.send(context);
+    }
+    else if(err){
       next(err);
       return;
     }
-    context.results = "User created";
-    res.type('text/plain');
-    res.send(context);
+    else{
+      context.results = "User created";
+      res.type('text/plain');
+      res.send(context);
+    }
   });
 });
 

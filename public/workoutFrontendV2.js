@@ -8,6 +8,8 @@ function main(){
 		var modal = $(this);
 		console.log('Modal is shown');
 		modal.find("#submit-modal").on('click', function(event){
+
+			//check that all fields have been entered (all fields are required)
 			var fname = document.getElementById("first_name-modal").value;
 			var lname = document.getElementById("last_name-modal").value;
 			var username = document.getElementById("user_name-modal").value;
@@ -24,6 +26,7 @@ function main(){
 			else if(password == ""){
 				$('#password').append("<p class='modal-error'>Password cannot be blank</p>");
 			}
+			//entries are okay
 			else{
 				$('#new-user').modal('hide');
 				createNewUser();
@@ -32,7 +35,7 @@ function main(){
 		});
 	});
 
-	//removes event listener from modal once modal is hidden
+	//removes event listener and error messeges from modal once modal is hidden
 	$('#new-user').on('hide.bs.modal', function(event){
 		$('#submit-modal').off();
 		$('.modal-error').remove();
@@ -511,42 +514,23 @@ function createNewUser(){
 		var lname = document.getElementById("last_name-modal").value;
 		var username = document.getElementById("user_name-modal").value;
 		var password = document.getElementById("password-modal").value;
-		/*
-		if(fname == ""){
-			//cannot be empty
-			$('#first_name').append("<p class='modal-error'>First Name cannot be blank</p>");
-		}
-		else if(lname == ""){
-			//cannot be emptp
-			$('#last_name').append("<p class='modal-error'>Last Name cannot be blank</p>");
-		}
-		else if(username == ""){
-			//cannot be empty
-			$('#user_name').append("<p class='modal-error'>Username cannot be blank</p>");
-		}
-		else if(password == ""){
-			//password cannot be empty
-			$('#password').append("<p class='modal-error'>Password cannot be blank</p>");
-		}
-		else{
-		*/
-			var params = "first_name=" + fname + "&last_name=" + lname + "&user_name=" + username + "&password=" + password;
-			var insertRequest = new XMLHttpRequest();
 
-			insertRequest.open("POST", "http://52.33.123.66:2000/insertUser", true);
-			insertRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-			insertRequest.addEventListener("load", function(event){
-				if (insertRequest.status >= 200 && insertRequest.status < 400){
-					var response = insertRequest.responseText;
-					console.log(response);
-					resetTable("tableBody");
-					displayUsersTable();
-				} else {
-					console.log("error");
-				}
-			});
-			insertRequest.send(params);
-		//}
+		var params = "first_name=" + fname + "&last_name=" + lname + "&user_name=" + username + "&password=" + password;
+		var insertRequest = new XMLHttpRequest();
+
+		insertRequest.open("POST", "http://52.33.123.66:2000/insertUser", true);
+		insertRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		insertRequest.addEventListener("load", function(event){
+			if (insertRequest.status >= 200 && insertRequest.status < 400){
+				var response = insertRequest.responseText;
+				console.log(response);
+				resetTable("tableBody");
+				displayUsersTable();
+			} else {
+				console.log("error");
+			}
+		});
+		insertRequest.send(params);
 };
 
 //adds a new workout for the selected user
