@@ -160,6 +160,7 @@ function convertUsersToTableRow(singleObjectRow){
 
 	newRow.addEventListener("click", function(event){
 		console.log("table row clicked");
+		clearSearchError();
 		
 		//change attributes on all tble rows to indicate selected and unselected
 		var x = document.getElementsByClassName("clickable-rowON");
@@ -195,6 +196,7 @@ function convertWorkoutsToTableRow(singleObjectRow){
 
 	newRow.addEventListener("click", function(event){
 		console.log("table row clicked");
+		clearSearchError();
 		var x = document.getElementById("workouts_table_body");
 		var y = x.getElementsByClassName("clickable-rowON");
 
@@ -220,6 +222,7 @@ function convertExercisesToTableRow(singleObjectRow){
 
 	newRow.addEventListener("click", function(event){
 		console.log("table row clicked");
+		clearSearchError();
 		var x = document.getElementById("exercises_table_body");
 		var y = x.getElementsByClassName("clickable-rowON");
 		setClickableRows(y, newRow);
@@ -319,6 +322,10 @@ function addDeleteExerciseButton(newRow){
 	var cellForButtons = document.createElement("td");
 	newRow.appendChild(cellForButtons);
 	cellForButtons.innerHTML = "<button class='btn btn-danger btn-sm' data-toggle='modal' data-target='#delete-exercise' id='Delete'>Delete</button>";
+}
+
+function clearSearchError(){
+	document.getElementById("error-message").textContent = "";
 }
 
 //gets users data from database 
