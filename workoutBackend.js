@@ -86,6 +86,9 @@ app.post('/insertUser', urlencodedParser, function(req, res, next){
   pool.query("INSERT INTO users (`first_name`, `last_name`, `user_name`, `password`) VALUES (?, ?, ?, ?)", [req.body.first_name, req.body.last_name, req.body.user_name, req.body.password], function(err, result){
     if(err){
       console.log(err);
+      console.log(typeof(err));
+      console.log(err[0]);
+      console.log(typeof(err[0]));
       next(err);
       return;
     }
