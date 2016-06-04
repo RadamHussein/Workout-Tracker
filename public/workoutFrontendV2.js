@@ -551,6 +551,10 @@ function createNewExercise(){
 function createNewSet(){
 	console.log("current user id is " + currentUser_Id);
 	console.log("current workout id is " + currentWorkout_Id);
+	if (currentWorkout_Id == null){
+		currentWorkout_Id = NULL;
+		console.log("current workout id is " + currentWorkout_Id);
+	}
 	var reps = document.getElementById("reps-modal").value;
 	var weight = document.getElementById("weight-modal").value;
 	var date = document.getElementById("date-modal").value;
