@@ -28,7 +28,6 @@ function main(){
 			}
 			//entries are okay
 			else{
-				//$('#new-user').modal('hide');
 				createNewUser();
 			}
 			console.log("Submit Clicked");
@@ -188,12 +187,6 @@ function convertUsersToTableRow(singleObjectRow){
 		var x = document.getElementsByClassName("clickable-rowON");
 
 		setClickableRows(x, newRow);
-		/*
-		for (var i = 0; i<x.length; i++){
-			x[i].setAttribute("class", "clickable-rowOFF");
-		}
-		newRow.setAttribute("class", "clickable-rowON");
-		*/
 		currentUser_Id = singleObjectRow.id;
 		currentWorkout_Id = null;
 		currentExercise_Id = null;
@@ -201,9 +194,6 @@ function convertUsersToTableRow(singleObjectRow){
 
 	});
 	
-	//cut the time off the end of the date
-	//var formattedDate = singleObjectRow.date.slice(0, 10);
-
 	//send to function to add entry to table
 	addTableRowToDOM(newRow, singleObjectRow.first_name);
 	addTableRowToDOM(newRow, singleObjectRow.last_name);
@@ -223,12 +213,6 @@ function convertWorkoutsToTableRow(singleObjectRow){
 		var y = x.getElementsByClassName("clickable-rowON");
 
 		setClickableRows(y, newRow);
-		/*
-		for (var i=0; i<y.length; i++){
-			y[i].setAttribute("class", "clickable-rowOFF");
-		}
-		newRow.setAttribute("class", "clickable-rowON");
-		*/
 		currentWorkout_Id = singleObjectRow.id;
 		getUserExercises();
 	});
@@ -248,12 +232,6 @@ function convertExercisesToTableRow(singleObjectRow){
 		var x = document.getElementById("exercises_table_body");
 		var y = x.getElementsByClassName("clickable-rowON");
 		setClickableRows(y, newRow);
-		/*
-		for (var i=0; i<y.length; i++){
-			y[i].setAttribute("class", "clickable-rowOFF");
-		}
-		newRow.setAttribute("class", "clickable-rowON");
-		*/
 		currentExercise_Id = singleObjectRow.id;
 		getExerciseSets();
 	});
@@ -261,18 +239,6 @@ function convertExercisesToTableRow(singleObjectRow){
 	addTableRowToDOM(newRow, singleObjectRow.name);
 	addDeleteExerciseButton(newRow);
 };
-
-/*
-function convertSetsToTableRow(singleObjectRow){
-	var newRow = document.createElement("tr");
-	document.getElementById("sets_table_body").appendChild(newRow);
-	addTableRowToDOM(newRow, singleObjectRow.reps);
-	addTableRowToDOM(newRow, singleObjectRow.weight);
-
-	var formattedDate = singleObjectRow.date.slice(0, 10);
-	addTableRowToDOM(newRow, formattedDate);
-};
-*/
 
 function convertSetsToTable(objList){
 	var setNumber = 1;
@@ -317,14 +283,6 @@ function convertExercisesToTable(objList){
 		convertExercisesToTableRow(objList.results[i]);
 	};
 };
-
-/*
-function convertSetsToTable(objList){
-	for (var i=0; i<objList.results.length; i++){
-		convertSetsToTableRow(objList.results[i]);
-	};
-};
-*/
 
 //this function clears the table so that a new one can be built after a change
 function resetTable(table_id){
@@ -592,6 +550,7 @@ function createNewExercise(){
 
 function createNewSet(){
 	console.log("current user id is " + currentUser_Id);
+	console.log("current workout id is " + currentWorkout_Id);
 	var reps = document.getElementById("reps-modal").value;
 	var weight = document.getElementById("weight-modal").value;
 	var date = document.getElementById("date-modal").value;
