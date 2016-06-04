@@ -28,7 +28,7 @@ function main(){
 			}
 			//entries are okay
 			else{
-				$('#new-user').modal('hide');
+				//$('#new-user').modal('hide');
 				createNewUser();
 			}
 			console.log("Submit Clicked");
@@ -528,9 +528,15 @@ function createNewUser(){
 				var newResponseObject = JSON.parse(response);
 				console.log(newResponseObject)
 				console.log(typeof(newResponseObject));
-				console.log(newResponseObject.results[0]);
-				resetTable("tableBody");
-				displayUsersTable();
+				if(newResponseObject.results == 1062){
+					$('#user_name').append("<p class='modal-error'>That email already exists</p>");
+				}
+				else{
+					//hide modal on success
+					$('#new-user').modal('hide');
+					resetTable("tableBody");
+					displayUsersTable();
+				}
 			} else {
 				console.log("error");
 			}
