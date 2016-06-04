@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", main);
 
 function main(){
 	displayUsersTable();
-	//handleInsert();
 
 	//this executes code for adding a user when the add user modal is shown
 	$('#new-user').on('show.bs.modal', function(event){
@@ -501,6 +500,7 @@ function createNewUser(){
 			if (insertRequest.status >= 200 && insertRequest.status < 400){
 				var response = insertRequest.responseText;
 				console.log(response);
+				displayUsersTable();
 			} else {
 				console.log("error");
 			}
