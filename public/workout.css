@@ -47,9 +47,8 @@ p {
 }
 
 #error-message {
-	margin-top: 15px;
 	color: red;
-	text-align: center;
+	text-align: right;
 }
 
 .modal-error {
