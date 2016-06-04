@@ -89,6 +89,9 @@ function main(){
 	$('#new-set').on('show.bs.modal', function(event){
 		var modal = $(this);
 		console.log('Modal is shown');
+		if(currentWorkout_Id == null && currentExercise_Id != null){
+			$('#set-body').append("<h4 class='modal-error'>You must add this exercise to a workout before adding a new set</h4>");
+		}
 		if(currentExercise_Id == null){
 			$('#set-body').append("<h4 class='modal-error'>You must select an exercise before adding a new set</h4>");
 		}
@@ -552,8 +555,7 @@ function createNewSet(){
 	console.log("current user id is " + currentUser_Id);
 	console.log("current workout id is " + currentWorkout_Id);
 	if (currentWorkout_Id == null){
-		currentWorkout_Id = NULL;
-		console.log("current workout id is " + currentWorkout_Id);
+		//do something
 	}
 	var reps = document.getElementById("reps-modal").value;
 	var weight = document.getElementById("weight-modal").value;
