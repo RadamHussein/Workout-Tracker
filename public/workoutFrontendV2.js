@@ -500,6 +500,7 @@ function createNewUser(){
 			if (insertRequest.status >= 200 && insertRequest.status < 400){
 				var response = insertRequest.responseText;
 				console.log(response);
+				resetTable("tableBody");
 				displayUsersTable();
 			} else {
 				console.log("error");

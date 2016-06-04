@@ -10,7 +10,8 @@ CREATE TABLE `users` (
 	`user_name` varchar(255) NOT NULL,
 	`password` varchar(255) NOT NULL, 
 	PRIMARY KEY (`id`), 
-	UNIQUE KEY `password` (`password`)
+	/*UNIQUE KEY `password` (`password`)*/
+	UNIQUE KEY 'user_name' ('user_name')
 ) ENGINE=InnoDB AUTO_INCREMENT=0;
 
 -- populate users table
@@ -46,11 +47,11 @@ DROP TABLE IF EXISTS `exercise_log`;
 CREATE TABLE `workouts_log`(
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`user_id` int(11) NOT NULL DEFAULT '0',
-	`workout_id` int(11) NOT NULL DEFAULT '0',
+	`workout_id` int(11) DEFAULT NULL,
 	`exercise_id` int(11) NOT NULL DEFAULT '0',
-	`weight` DECIMAL(4,1),
-	`reps` int(11),
-	`date` DATE,
+	`weight` DECIMAL(4,1) DEFAULT NULL,
+	`reps` int(11) DEFAULT NULL,
+	`date` DATE DEFAULT NULL,
 	PRIMARY KEY (`id`),
 	FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
 	FOREIGN KEY (`workout_id`) REFERENCES `workouts` (`id`),
@@ -66,6 +67,7 @@ INSERT INTO `workouts_log` (user_id, workout_id, exercise_id, weight, reps, date
 /*data for Aria Stark*/
 INSERT INTO `workouts_log` (user_id, workout_id, exercise_id, weight, reps, date) VALUES (4, 4, 6, 10, 10, '2016-02-04'), (4, 4, 6, 10, 10, '2016-02-04'), (4, 4, 6, 10, 9, '2016-02-04'), (4, 4, 6, 10, 8, '2016-02-04'), (4, 4, 5, 20, 12, '2016-02-04'), (4, 4, 5, 20, 12, '2016-02-04'), (4, 4, 5, 20, 12, '2016-02-04'), (4, 4, 1, 10, 12, '2016-02-04'), (4, 4, 1, 10, 12, '2016-02-04'), (4, 4, 1, 10, 12, '2016-02-04'), (4, 4, 1, 10, 10, '2016-02-04'), (4, 4, 3, 15, 10, '2016-02-04'), (4, 4, 3, 15, 10, '2016-02-04'), (4, 4, 3, 15, 10, '2016-02-04'), (4, 4, 3, 15, 10, '2016-02-04');
 
+INSERT INTO `workouts_log` (user_id, workout_id, exercise_id) VALUES (1, 6, 16);
 DROP TABLE IF EXISTS `sets`;
 
 -- Create the sets table
