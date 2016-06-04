@@ -422,6 +422,9 @@ function searchExercises(){
 			}
 			else{
 				document.getElementById("error-message").textContent = "";
+				currentWorkout_Id = null;
+				currentExercise_Id = null;
+				resetTable("workouts_table_body");
 				resetTable("exercises_table_body");
 				resetTable("sets_table_body");
 				convertExercisesToTable(newResponseObject);
