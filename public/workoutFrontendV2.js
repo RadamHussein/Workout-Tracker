@@ -8,7 +8,25 @@ function main(){
 		var modal = $(this);
 		console.log('Modal is shown');
 		modal.find("#submit-modal").on('click', function(event){
-			createNewUser();
+			var fname = document.getElementById("first_name-modal").value;
+			var lname = document.getElementById("last_name-modal").value;
+			var username = document.getElementById("user_name-modal").value;
+			var password = document.getElementById("password-modal").value;
+			if(fname == ""){
+				$('#first_name').append("<p class='modal-error'>First Name cannot be blank</p>");
+			}
+			else if(lname == ""){
+				$('#last_name').append("<p class='modal-error'>Last Name cannot be blank</p>");
+			}
+			else if(username == ""){
+				$('#user_name').append("<p class='modal-error'>Username cannot be blank</p>");
+			}
+			else if(password == ""){
+				$('#password').append("<p class='modal-error'>Password cannot be blank</p>");
+			}
+			else{
+				createNewUser();
+			}
 			console.log("Submit Clicked");
 		});
 	});
@@ -16,6 +34,7 @@ function main(){
 	//removes event listener from modal once modal is hidden
 	$('#new-user').on('hide.bs.modal', function(event){
 		$('#submit-modal').off();
+		$('.modal-error').remove();
 	});
 
 	//this executes code for adding a workout when the add workout modal is shown
@@ -491,6 +510,7 @@ function createNewUser(){
 		var lname = document.getElementById("last_name-modal").value;
 		var username = document.getElementById("user_name-modal").value;
 		var password = document.getElementById("password-modal").value;
+		/*
 		if(fname == ""){
 			//cannot be empty
 			$('#first_name').append("<p class='modal-error'>First Name cannot be blank</p>");
@@ -508,6 +528,7 @@ function createNewUser(){
 			$('#password').append("<p class='modal-error'>Password cannot be blank</p>");
 		}
 		else{
+		*/
 			var params = "first_name=" + fname + "&last_name=" + lname + "&user_name=" + username + "&password=" + password;
 			var insertRequest = new XMLHttpRequest();
 
@@ -524,7 +545,7 @@ function createNewUser(){
 				}
 			});
 			insertRequest.send(params);
-		}
+		//}
 };
 
 //adds a new workout for the selected user
