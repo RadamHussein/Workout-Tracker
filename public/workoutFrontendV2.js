@@ -491,6 +491,10 @@ function createNewUser(){
 		var lname = document.getElementById("last_name-modal").value;
 		var username = document.getElementById("user_name-modal").value;
 		var password = document.getElementById("password-modal").value;
+		console.log(fname);
+		console.log(lname);
+		console.log(username);
+		console.log(password);
 		var params = "first_name=" + fname + "&last_name=" + lname + "&user_name=" + username + "&password=" + password;
 		var insertRequest = new XMLHttpRequest();
 
