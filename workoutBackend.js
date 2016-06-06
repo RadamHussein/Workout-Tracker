@@ -121,12 +121,12 @@ app.post('/insertWorkout', urlencodedParser, function(req, res, next){
           next(err);
           return;
         }
-        context.results = "Workout created";
-        res.type('text/plain');
-        res.send(context);
       });
 
       insertWorkoutsHelper(currentUser_id, workout_name);
+      context.results = "Workout created";
+      res.type('text/plain');
+      res.send(context);
     }
     else{
       var existing_id = rows[0].id;

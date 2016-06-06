@@ -545,6 +545,7 @@ function createNewExercise(){
 			if (insertExerciseRequest.status >= 200 && insertExerciseRequest.status < 400){
 				var response = insertExerciseRequest.responseText;
 				console.log(response);
+				currentExercise_Id = null;
 				getUserExercises();
 			} else {
 				console.log("error");

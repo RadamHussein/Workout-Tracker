@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `workouts`;
 -- Create the workouts table
 CREATE TABLE `workouts` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`name` varchar(255),
+	`name` varchar(255) NOT NULL,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0;
 
@@ -34,7 +34,7 @@ DROP TABLE IF EXISTS `exercises`;
 -- Create the exercises table
 CREATE TABLE `exercises` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`name` varchar(255),
+	`name` varchar(255) NOT NULL,
 	`date` date,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0;
@@ -42,7 +42,7 @@ CREATE TABLE `exercises` (
 -- populate exercises table
 INSERT INTO `exercises` (name, date) VALUES ('Squats', '2015-12-01'), ('Lunges', '2015-12-01'), ('Dead Lift', '2015-12-01'), ('Leg Press', '2015-12-01'), ('Shoulder Press', '2016-02-04'), ('Dumbbell Lateral Raise', '2016-02-04'), ('Front Dumbbell Raise', '2016-02-04'), ('Upright Barbell Row', '2016-02-04'), ('Preacher Curl', '2016-03-15'), ('Barbell Curl', '2016-03-15'), ('Lying Tricep Extension', '2016-03-05'), ('V-Bar Pushdown', '2016-03-15');
 
-DROP TABLE IF EXISTS `exercise_log`;
+DROP TABLE IF EXISTS `workouts_log`;
 
 CREATE TABLE `workouts_log`(
 	`id` int(11) NOT NULL AUTO_INCREMENT,
