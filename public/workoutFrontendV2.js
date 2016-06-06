@@ -391,13 +391,10 @@ function getExerciseSets(){
 
 			resetTable("sets_table_body");
 
-			for (var i=0; i<newResponseObject.results.length; i++){
 				//only add the object to the table if there are sets for that exercise
-				if(newResponseObject.results[i].weight != null){
-					convertSetsToTable(newResponseObject);
-				}
-			};
-
+				//if(newResponseObject.results[i].weight != null){
+				convertSetsToTable(newResponseObject);
+				
 		});
 		requestSetsForUserExercise.send(params);
 }
