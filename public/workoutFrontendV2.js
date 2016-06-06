@@ -254,15 +254,18 @@ function convertSetsToTable(objList){
 		addTableRowToDOM(newRow, objList.results[i].reps);
 		addTableRowToDOM(newRow, objList.results[i].weight);
 		var date = objList.results[i].date;
-		var formattedDate = date.slice(0, 10);
-		addTableRowToDOM(newRow, formattedDate);
+		
+		if (date != null){
+			var formattedDate = date.slice(0, 10);
+			addTableRowToDOM(newRow, formattedDate);
 
-		if((i+1) != objList.results.length){
-			if(objList.results[i].date == objList.results[i+1].date){
-				setNumber++;
-			}
-			else{
-				setNumber = 1;
+			if((i+1) != objList.results.length){
+				if(objList.results[i].date == objList.results[i+1].date){
+					setNumber++;
+				}
+				else{
+					setNumber = 1;
+				}
 			}
 		}
 	};
@@ -388,10 +391,12 @@ function getExerciseSets(){
 
 			resetTable("sets_table_body");
 
-			//if only build the table if there are sets for that exercise
-			if(newResponseObject.results[0].weight != null){
-				convertSetsToTable(newResponseObject);
-			}
+			for (var i=0; i<newResponseObject.results.length; i++){
+				//only add the object to the table if there are sets for that exercise
+				if(newResponseObject.results[i].weight != null){
+					convertSetsToTable(newResponseObject);
+				}
+			};
 
 		});
 		requestSetsForUserExercise.send(params);
