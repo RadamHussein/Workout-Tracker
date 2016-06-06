@@ -501,6 +501,9 @@ function createNewUser(){
 					//hide modal on success
 					$('#new-user').modal('hide');
 					resetTable("tableBody");
+					resetTable("workouts_table_body");
+					resetTable("exercises_table_body");
+					currentUser_Id = null;
 					displayUsersTable();
 				}
 			} else {
