@@ -1,3 +1,9 @@
+/***************************************
+Final Project
+CS 340 - spring 2016
+Adam Smith
+****************************************/
+
 document.addEventListener("DOMContentLoaded", main);
 
 function main(){
@@ -6,7 +12,7 @@ function main(){
 	//this executes code for adding a user when the add user modal is shown
 	$('#new-user').on('show.bs.modal', function(event){
 		var modal = $(this);
-		console.log('Modal is shown');
+		//console.log('Modal is shown');
 		modal.find("#submit-modal").on('click', function(event){
 
 			//check that all fields have been entered (all fields are required)
@@ -30,7 +36,7 @@ function main(){
 			else{
 				createNewUser();
 			}
-			console.log("Submit Clicked");
+			//console.log("Submit Clicked");
 		});
 	});
 
@@ -43,7 +49,7 @@ function main(){
 	//this executes code for adding a workout when the add workout modal is shown
 	$('#new-workout').on('show.bs.modal', function(event){
 		var modal = $(this);
-		console.log('Modal is shown');
+		//console.log('Modal is shown');
 		//check if a user is selected
 		if(currentUser_Id == null){
 			//insert an error message into the modal
@@ -52,7 +58,7 @@ function main(){
 		else{
 			modal.find("#submit-workout-modal").on('click', function(event){
 				createNewWorkout();
-				console.log("Submit Clicked");
+				//console.log("Submit Clicked");
 			});
 		}
 		
@@ -67,14 +73,14 @@ function main(){
 	//this executes code for adding a workout when the add exercise modal is shown
 	$('#new-exercise').on('show.bs.modal', function(event){
 		var modal = $(this);
-		console.log('Modal is shown');
+		//console.log('Modal is shown');
 		if(currentWorkout_Id == null){
 			$('#exercise-body').append("<h4 class='modal-error'>You must select a workout before adding an exercise</h4>")
 		}
 		else{
 			modal.find("#submit-exercise-modal").on('click', function(event){
 				createNewExercise();
-				console.log("Submit Clicked");
+				//console.log("Submit Clicked");
 			});
 		}
 	});
@@ -88,7 +94,7 @@ function main(){
 	//this executes code for adding a set when the new set modal is shown
 	$('#new-set').on('show.bs.modal', function(event){
 		var modal = $(this);
-		console.log('Modal is shown');
+		//console.log('Modal is shown');
 		if(currentWorkout_Id == null && currentExercise_Id != null){
 			$('#set-body').append("<h4 class='modal-error'>You must add this exercise to a workout before adding a new set</h4>");
 		}
@@ -98,7 +104,7 @@ function main(){
 		else{
 			modal.find("#submit-set-modal").on('click', function(event){
 				createNewSet();
-				console.log("Submit Clicked");
+				//console.log("Submit Clicked");
 			});
 		}
 	});
@@ -113,7 +119,6 @@ function main(){
 	var search = document.getElementById("search-button");
 	search.addEventListener("click", function(event){
 		event.preventDefault();
-		//document.getElementById("error-message").textContent = "";
 		searchExercises();
 	});
 
@@ -122,7 +127,7 @@ function main(){
 	//this executes code for deleting a workout when the delete workout modal is shown
 	$('#delete-workout').on('show.bs.modal', function(event){
 		var modal = $(this);
-		console.log('Modal is shown');
+		//console.log('Modal is shown');
 		modal.find("#delete-workout-modal").on('click', function(event){
 			deleteWorkout();
 			console.log("Submit Clicked");
@@ -140,7 +145,7 @@ function main(){
 		console.log('Modal is shown');
 		modal.find("#delete-exercise-modal").on('click', function(event){
 			deleteExercise();
-			console.log("Submit Clicked");
+			//console.log("Submit Clicked");
 		});
 	});
 
@@ -151,7 +156,7 @@ function main(){
 
 };
 
-//global variables for keeping track of the current user and current workout
+//global variables for keeping track of the current user, current workout and current exercise
 var currentUser_Id = null;
 var currentWorkout_Id = null;
 var currentExercise_Id = null;
@@ -163,12 +168,12 @@ function addTableRowToDOM(newRow, singleTableItem){
 	cellData.textContent = singleTableItem;
 };
 
+//changes attributes on rows for highlighting when clicked
 function setClickableRows(elementOrListOfElements, newRow){
 
 	for (var i=0; i<elementOrListOfElements.length; i++){
 		elementOrListOfElements[i].setAttribute("class", "clickable-rowOFF");
 	}
-
 	newRow.setAttribute("class", "clickable-rowON");
 }
 
@@ -179,11 +184,10 @@ function convertUsersToTableRow(singleObjectRow){
 	var newRow = document.createElement("tr");
 	document.getElementById("tableBody").appendChild(newRow);
 	newRow.setAttribute("class", "clickable-rowOFF");
-	//var rowId = singleObjectRow.id;
-	//newRow.setAttribute("href", rowId);
 
+	//add event listener to new row
 	newRow.addEventListener("click", function(event){
-		console.log("table row clicked");
+		//console.log("table row clicked");
 		clearSearchError();
 		
 		//change attributes on all tble rows to indicate selected and unselected
@@ -209,8 +213,9 @@ function convertWorkoutsToTableRow(singleObjectRow){
 	document.getElementById("workouts_table_body").appendChild(newRow);
 	newRow.setAttribute("class", "clickable-rowOFF");
 
+	//add event listener to new row
 	newRow.addEventListener("click", function(event){
-		console.log("table row clicked");
+		//console.log("table row clicked");
 		clearSearchError();
 		var x = document.getElementById("workouts_table_body");
 		var y = x.getElementsByClassName("clickable-rowON");
@@ -229,8 +234,9 @@ function convertExercisesToTableRow(singleObjectRow){
 	document.getElementById("exercises_table_body").appendChild(newRow);
 	newRow.setAttribute("class", "clickable-rowOFF");
 
+	//add event listener to new row
 	newRow.addEventListener("click", function(event){
-		console.log("table row clicked");
+		//console.log("table row clicked");
 		clearSearchError();
 		var x = document.getElementById("exercises_table_body");
 		var y = x.getElementsByClassName("clickable-rowON");
@@ -247,7 +253,6 @@ function convertSetsToTable(objList){
 	var setNumber = 1;
 
 	for (var i=0; i<objList.results.length; i++){
-		//convertSetsToTableRow(objList.results[i]);
 		var newRow = document.createElement("tr");
 		document.getElementById("sets_table_body").appendChild(newRow);
 		addTableRowToDOM(newRow, setNumber);
@@ -255,6 +260,7 @@ function convertSetsToTable(objList){
 		addTableRowToDOM(newRow, objList.results[i].weight);
 		var date = objList.results[i].date;
 		
+		//ensure any data returned from backend does not contain null values
 		if (date != null){
 			var formattedDate = date.slice(0, 10);
 			addTableRowToDOM(newRow, formattedDate);
@@ -271,7 +277,10 @@ function convertSetsToTable(objList){
 	};
 };
 
-//iterates through data returned form mysql and send individual objects to be added to table.
+/******************************************************
+These functions iterate through data returned form mysql and send 
+individual objects to be added to table.
+*******************************************************/
 function convertUsersToTable(objList){
 	for (var i=0; i<objList.results.length; i++){
 		convertUsersToTableRow(objList.results[i])
@@ -289,6 +298,7 @@ function convertExercisesToTable(objList){
 		convertExercisesToTableRow(objList.results[i]);
 	};
 };
+/*******************************************************/
 
 //this function clears the table so that a new one can be built after a change
 function resetTable(table_id){
@@ -298,18 +308,21 @@ function resetTable(table_id){
 	newTableBody.id = table_id;
 }
 
+//add delete buttons for workouts table
 function addDeleteButton(newRow){
 	var cellForButtons = document.createElement("td");
 	newRow.appendChild(cellForButtons);
 	cellForButtons.innerHTML = "<button class='btn btn-danger btn-sm' data-toggle='modal' data-target='#delete-workout' id='Delete'>Delete</button>";
 }
 
+//add delete buttons for exercises table
 function addDeleteExerciseButton(newRow){
 	var cellForButtons = document.createElement("td");
 	newRow.appendChild(cellForButtons);
 	cellForButtons.innerHTML = "<button class='btn btn-danger btn-sm' data-toggle='modal' data-target='#delete-exercise' id='Delete'>Delete</button>";
 }
 
+//clear error message from search
 function clearSearchError(){
 	document.getElementById("error-message").textContent = "";
 }
@@ -322,9 +335,9 @@ function getUsers(Users){
 	request.withCredentials = true;
 	request.addEventListener("load", function(){
 		var response = request.responseText;
-		console.log(response);
+		//console.log(response);
 		var objectListFromDatabase = JSON.parse(response); //change it to an object
-		console.log(typeof(objectListFromDatabase));
+		//console.log(typeof(objectListFromDatabase));
 		Users(objectListFromDatabase); // Call the callback provided by the caller
 	});
 	request.send(null);
@@ -334,12 +347,13 @@ function getUsers(Users){
 //gets called first. Calls getWorkouts and calls converWorkoutsToTable with results;
 function displayUsersTable(){
 	//Actually insert all of these construct elements into the DOM
-	console.log("Displaying users...");
+	//console.log("Displaying users...");
 	getUsers(function Users(objectListFromDatabase){
 		convertUsersToTable(objectListFromDatabase);
 	});
 };
 
+//requests user's workouts from backend
 function getUserWorkouts(){
 	var requestUserWorkouts = new XMLHttpRequest();
 		var params = "id=" + currentUser_Id;
@@ -347,19 +361,18 @@ function getUserWorkouts(){
 		requestUserWorkouts.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		requestUserWorkouts.addEventListener("load", function(event){
 			var response = requestUserWorkouts.responseText;
-			console.log(response);
+			//console.log(response);
 			var newResponseObject = JSON.parse(response);
 
 			resetTable("workouts_table_body");
 			resetTable("exercises_table_body");
 			resetTable("sets_table_body");
 			convertWorkoutsToTable(newResponseObject);
-			//currentWorkout_Id = null;
-			//currentExercise_Id = null;
 		});
 		requestUserWorkouts.send(params);
 }
 
+//requests exercises from backend
 function getUserExercises(){
 	var requestUserExercises = new XMLHttpRequest();
 		var params = "user_id=" + currentUser_Id + "&workout_id=" + currentWorkout_Id;
@@ -367,18 +380,17 @@ function getUserExercises(){
 		requestUserExercises.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		requestUserExercises.addEventListener("load", function(event){
 			var response = requestUserExercises.responseText;
-			console.log(response);
+			//console.log(response);
 			var newResponseObject = JSON.parse(response);
 
 			resetTable("exercises_table_body");
 			resetTable("sets_table_body");
 			convertExercisesToTable(newResponseObject);
-			//currentUser_Id = userId;
-			//console.log("current User is now " + currentUser_Id);
 		});
 		requestUserExercises.send(params);
 }
 
+//requests sets from the backend
 function getExerciseSets(){
 	var requestSetsForUserExercise = new XMLHttpRequest();
 		var params = "user_id=" + currentUser_Id + "&exercise_id=" + currentExercise_Id;
@@ -386,19 +398,18 @@ function getExerciseSets(){
 		requestSetsForUserExercise.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		requestSetsForUserExercise.addEventListener("load", function(event){
 			var response = requestSetsForUserExercise.responseText;
-			console.log(response);
+			//console.log(response);
 			var newResponseObject = JSON.parse(response);
 
 			resetTable("sets_table_body");
 
-				//only add the object to the table if there are sets for that exercise
-				//if(newResponseObject.results[i].weight != null){
-				convertSetsToTable(newResponseObject);
+			convertSetsToTable(newResponseObject);
 				
 		});
 		requestSetsForUserExercise.send(params);
 }
 
+//handles search functionality
 function searchExercises(){
 	var name = document.getElementById("search").value;
 	if(currentUser_Id == null){
@@ -415,9 +426,9 @@ function searchExercises(){
 		searchRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		searchRequest.addEventListener("load", function(event){
 			var response = searchRequest.responseText;
-			console.log(response);
+			//console.log(response);
 			var newResponseObject = JSON.parse(response);
-			console.log(newResponseObject.results[0]);
+			//console.log(newResponseObject.results[0]);
 
 			if(newResponseObject.results[0] == null || newResponseObject.results[0] == undefined){
 				document.getElementById("error-message").textContent = "No exercise found";
@@ -444,7 +455,7 @@ function deleteWorkout(){
 	deleteRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	deleteRequest.addEventListener("load", function(event){
 		var response = deleteRequest.responseText;
-		console.log(response);
+		//console.log(response);
 		resetTable("workouts_table_body");
 		resetTable("exercises_table_body");
 		resetTable("sets_table_body");
@@ -462,7 +473,7 @@ function deleteExercise(){
 	deleteExerciseRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	deleteExerciseRequest.addEventListener("load", function(event){
 		var response = deleteExerciseRequest.responseText;
-		console.log(response);
+		//console.log(response);
 		resetTable("exercises_table_body");
 		resetTable("sets_table_body");
 		currentExercise_Id = null;
@@ -489,11 +500,11 @@ function createNewUser(){
 		insertRequest.addEventListener("load", function(event){
 			if (insertRequest.status >= 200 && insertRequest.status < 400){
 				var response = insertRequest.responseText;
-				console.log(response);
-				console.log(typeof(response));
+				//console.log(response);
+				//console.log(typeof(response));
 				var newResponseObject = JSON.parse(response);
-				console.log(newResponseObject)
-				console.log(typeof(newResponseObject));
+				//console.log(newResponseObject)
+				//console.log(typeof(newResponseObject));
 				if(newResponseObject.results == 1062){
 					$('#user_name').append("<p class='modal-error'>That email already exists</p>");
 				}
@@ -524,7 +535,7 @@ function createNewWorkout(){
 	insertWorkoutRequest.addEventListener("load", function(event){
 		if (insertWorkoutRequest.status >= 200 && insertWorkoutRequest.status < 400){
 			var response = insertWorkoutRequest.responseText;
-			console.log(response);
+			//console.log(response);
 			//set current workout to null so user can't add exercise without selecting the new workout first
 			currentWorkout_Id = null;
 			getUserWorkouts();
@@ -535,9 +546,10 @@ function createNewWorkout(){
 	insertWorkoutRequest.send(params);
 };
 
+//creates a new exercise
 function createNewExercise(){
 	if(currentWorkout_Id == null){
-		//do something here
+		console.log("request not sent");
 	}
 	else{
 		var exercise_name = document.getElementById("exercise_name-modal").value;
@@ -549,7 +561,7 @@ function createNewExercise(){
 		insertExerciseRequest.addEventListener("load", function(event){
 			if (insertExerciseRequest.status >= 200 && insertExerciseRequest.status < 400){
 				var response = insertExerciseRequest.responseText;
-				console.log(response);
+				//console.log(response);
 				currentExercise_Id = null;
 				getUserExercises();
 			} else {
@@ -564,26 +576,28 @@ function createNewSet(){
 	console.log("current user id is " + currentUser_Id);
 	console.log("current workout id is " + currentWorkout_Id);
 	if (currentWorkout_Id == null){
-		//do something
+		console.log('request not sent');
 	}
-	var reps = document.getElementById("reps-modal").value;
-	var weight = document.getElementById("weight-modal").value;
-	var date = document.getElementById("date-modal").value;
-	var params = "user_id=" + currentUser_Id + "&workout_id=" + currentWorkout_Id + "&exercise_id=" + currentExercise_Id + "&reps=" + reps + "&weight=" + weight + "&date=" + date;
-	insertSetRequest = new XMLHttpRequest();
+	else{
+		var reps = document.getElementById("reps-modal").value;
+		var weight = document.getElementById("weight-modal").value;
+		var date = document.getElementById("date-modal").value;
+		var params = "user_id=" + currentUser_Id + "&workout_id=" + currentWorkout_Id + "&exercise_id=" + currentExercise_Id + "&reps=" + reps + "&weight=" + weight + "&date=" + date;
+		insertSetRequest = new XMLHttpRequest();
 
-	insertSetRequest.open("POST", "http://52.33.123.66:2000/insertSet", true);
-	insertSetRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-	insertSetRequest.addEventListener("load", function(event){
-		if (insertSetRequest.status >= 200 && insertSetRequest.status < 400){
-			var response = insertSetRequest.responseText;
-			console.log(response);
-			getExerciseSets();
-		} else {
-			console.log("error");
-		}
-	});
-	insertSetRequest.send(params);
+		insertSetRequest.open("POST", "http://52.33.123.66:2000/insertSet", true);
+		insertSetRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		insertSetRequest.addEventListener("load", function(event){
+			if (insertSetRequest.status >= 200 && insertSetRequest.status < 400){
+				var response = insertSetRequest.responseText;
+				//console.log(response);
+				getExerciseSets();
+			} else {
+				console.log("error");
+			}
+		});
+		insertSetRequest.send(params);
+	}
 };
 
 
